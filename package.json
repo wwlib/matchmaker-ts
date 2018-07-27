@@ -1,0 +1,38 @@
+{
+  "name": "matchmaker-ts",
+  "version": "0.1.0",
+  "description": "A game matchmaking example using TypeScript (node).",
+  "main": "dist/main/index.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "docs": "gulp typedoc",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "tsc -v && yarn build && yarn restart",
+    "restart": "node ./dist/renderer/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwlib/matchmaker-ts.git"
+  },
+  "author": "Andrew Rapo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wwlib/matchmaker-ts/issues"
+  },
+  "homepage": "https://github.com/wwlib/matchmaker-ts#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "gulp-typedoc": "^2.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {}
+}
