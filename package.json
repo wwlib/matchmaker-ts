@@ -2,15 +2,15 @@
   "name": "matchmaker-ts",
   "version": "0.1.0",
   "description": "A game matchmaking example using TypeScript (node).",
-  "main": "dist/main/index.ts",
+  "main": "dist/main/main.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "docs": "gulp typedoc",
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "tsc -v && yarn build && yarn restart",
-    "restart": "node ./dist/renderer/index.js"
+    "start": "tsc -v && yarn build && electron ./dist/main/main.js",
+    "restart": "electron ./dist/main/main.js"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,9 @@
     "typedoc": "^0.11.1",
     "typescript": "^2.9.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron": "^2.0.5",
+    "performance-now": "^2.1.0",
+    "uuid": "^3.3.2"
+  }
 }

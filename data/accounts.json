@@ -1,0 +1,12 @@
+[
+    {"name": "a", "email": "a@email.com", "password": "pass", "mmr": 500},
+    {"name": "b", "email": "b@email.com", "password": "pass", "mmr": 500},
+    {"name": "c", "email": "c@email.com", "password": "pass", "mmr": 500},
+    {"name": "d", "email": "d@email.com", "password": "pass", "mmr": 500},
+    {"name": "e", "email": "e@email.com", "password": "pass", "mmr": 500},
+    {"name": "f", "email": "f@email.com", "password": "pass", "mmr": 500},
+    {"name": "g", "email": "g@email.com", "password": "pass", "mmr": 500},
+    {"name": "h", "email": "h@email.com", "password": "pass", "mmr": 500},
+    {"name": "i", "email": "i@email.com", "password": "pass", "mmr": 500},
+    {"name": "j", "email": "j@email.com", "password": "pass", "mmr": 500}
+]
