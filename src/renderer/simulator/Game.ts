@@ -4,7 +4,6 @@ import { PlayerAction } from './Player';
 import { EventEmitter } from 'events';
 
 const uuidv1 = require('uuid/v1');
-const now = require("performance-now");
 
 export enum GameState {
     Waiting,
@@ -44,7 +43,7 @@ export default class Game extends EventEmitter {
         this.minPlayers = options.minPlayers;
         this.maxPlayers = options.maxPlayers;
         this.state = GameState.Waiting;
-        this._spawnTime = now();
+        this._spawnTime = performance.now();
         process.nextTick(() => {
             this.emit('spawned', {uuid: this.uuid})
         });
@@ -64,7 +63,7 @@ export default class Game extends EventEmitter {
 
     start(): boolean {
         if ((this.players.size == this.maxPlayers) || ((this.players.size >= this.minPlayers) && this.waitTime >= this.maxWaitTime)) {
-            this._startTime = now();
+            this._startTime = performance.now();
             this._currentSecond = 0;
             return true;
         } else {
@@ -73,7 +72,7 @@ export default class Game extends EventEmitter {
     }
 
     tick(): void {
-        let elapsedTime: number = now() - this._startTime;
+        let elapsedTime: number = performance.now() - this._startTime;
         let percentElapsedTime: number = elapsedTime/this.maxDuration;
         let second: number = Math.floor(elapsedTime/1000);
         if (second > this._currentSecond) {
@@ -97,7 +96,7 @@ export default class Game extends EventEmitter {
         if (this.players.size < this.minPlayers) {
             this.state = GameState.Aborted;
             this.emit('done', {uuid: this.uuid, state: "Aborted", elapsed: percentElapsedTime});
-        } else if (now() - this._startTime < this.maxDuration) {
+        } else if (performance.now() - this._startTime < this.maxDuration) {
             this.state = GameState.Playing;
             // console.log(`Game: play: percentElapsedTime: ${percentElapsedTime}`);
             this.playersPlay(percentElapsedTime);
@@ -109,7 +108,7 @@ export default class Game extends EventEmitter {
 
     playersWait(): void {
         this.players.forEach((player: Player, account: PlayerAccount) => {
-            let elapsedTime: number = now() - this._spawnTime;
+            let elapsedTime: number = performance.now() - this._spawnTime;
             let percentElapsedTime: number = elapsedTime/player.maxWaitTime;
             let playerAction: PlayerAction = player.wait(percentElapsedTime);
             if (playerAction == PlayerAction.Bail) {
@@ -134,7 +133,7 @@ export default class Game extends EventEmitter {
     }
 
     get waitTime(): number {
-        return now() - this._spawnTime;
+        return performance.now() - this._spawnTime;
     }
 
 }

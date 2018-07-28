@@ -4,11 +4,9 @@
 // players are picky about joining games
 // players get less picky the longer they wait
 // quitting can be poor sportsmanship
-// players generally don't want to play with quitters
+// players generally don't want to play with quitters/cheaters
 
 import PlayerAccount from '../matchmaker/PlayerAccount';
-
-const now = require("performance-now");
 
 export enum PlayerAction {
     Wait,
@@ -43,7 +41,7 @@ export default class Player {
         this.account = account;
         this.action = PlayerAction.Wait;
         this.ticks = 0;
-        this._spawnTime = now();
+        this._spawnTime = performance.now();
     }
 
     wait(percentElapsedTime: number): PlayerAction {
@@ -56,7 +54,7 @@ export default class Player {
     }
 
     start(): void {
-        this._startTime = now();
+        this._startTime = performance.now();
     }
 
     play(percentElapsedTime: number): PlayerAction {
@@ -94,6 +92,6 @@ export default class Player {
     }
 
     get waitTime(): number {
-        return now() - this._spawnTime;
+        return performance.now() - this._spawnTime;
     }
 }
