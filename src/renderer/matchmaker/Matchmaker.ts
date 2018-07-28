@@ -1,5 +1,5 @@
 import PlayerAccount from './PlayerAccount';
-import ActiveAccount from './ActiveAccount';
+import LobbyAccount from './LobbyAccount';
 import Lobby from './Lobby';
 
 const EloRank = require('elo-rank');
@@ -30,8 +30,8 @@ export default class Matchmaker {
         loser.mmr = elo.updateRating(expectedScoreB, 0, loser);
     }
 
-    addActiveAccountToLobby(activeAccount: ActiveAccount): void {
-        this.lobby.addActiveAccount(activeAccount);
-        activeAccount.lobby = this.lobby;
+    addLobbyAccountToLobby(lobbyAccount: LobbyAccount): void {
+        this.lobby.addLobbyAccount(lobbyAccount);
+        lobbyAccount.lobby = this.lobby;
     }
 }

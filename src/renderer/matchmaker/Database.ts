@@ -1,14 +1,14 @@
 import PlayerAccount from './PlayerAccount';
-import ActiveAccount from './ActiveAccount';
+import LobbyAccount from './LobbyAccount';
 
 export default class Database {
 
     static playerAccounts: Map<string, PlayerAccount>;
-    static activeAccounts: Map<string, ActiveAccount>;
+    static lobbyAccounts: Map<string, LobbyAccount>;
 
     static init(): void {
         Database.playerAccounts = new Map<string, PlayerAccount>();
-        Database.activeAccounts = new Map<string, ActiveAccount>();
+        Database.lobbyAccounts = new Map<string, LobbyAccount>();
     }
 
     static addPlayerAccount(playerAccount: PlayerAccount): void {
@@ -19,15 +19,15 @@ export default class Database {
         Database.playerAccounts.delete(playerAccount.uuid);
     }
 
-    static addActiveAccount(activeAccount: ActiveAccount): void {
-        Database.activeAccounts.set(activeAccount.playerAccount.uuid, activeAccount);
+    static addLobbyAccount(lobbyAccount: LobbyAccount): void {
+        Database.lobbyAccounts.set(lobbyAccount.playerAccount.uuid, lobbyAccount);
     }
 
-    static removeActiveAccount(activeAccount: ActiveAccount): void {
-        Database.playerAccounts.delete(activeAccount.playerAccount.uuid);
+    static removeLobbyAccount(lobbyAccount: LobbyAccount): void {
+        Database.playerAccounts.delete(lobbyAccount.playerAccount.uuid);
     }
 
-    static getActiveAcountWithUUID(uuid: string): ActiveAccount {
-        return this.activeAccounts.get(uuid);
+    static getLobbyAccountWithUUID(uuid: string): LobbyAccount {
+        return this.lobbyAccounts.get(uuid);
     }
 }

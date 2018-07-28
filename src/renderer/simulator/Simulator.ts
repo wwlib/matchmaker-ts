@@ -1,5 +1,5 @@
 import PlayerAccount from '../matchmaker/PlayerAccount';
-import ActiveAccount from '../matchmaker/ActiveAccount';
+import LobbyAccount from '../matchmaker/LobbyAccount';
 import Player from './Player';
 import Game, { GameState, GameOptions } from './Game';
 import Database from '../matchmaker/Database';
@@ -42,8 +42,14 @@ export default class Simulator {
         this.start();
     }
 
-    getStats(): any {
-        return {games: this.games.size}
+    get json(): any {
+        let json: any = {};
+        json.games = [];
+        json.gameCount = this.games.size;
+        this.games.forEach((game: Game, uuid: string) => {
+            json.games.push(game.json);
+        });
+        return json;
     }
 
     start(): void {
@@ -63,15 +69,15 @@ export default class Simulator {
         for (let i: number=0; i<=count; i++) {
             let playerAccount = new PlayerAccount();
             Database.addPlayerAccount(playerAccount);
-            Database.addActiveAccount(new ActiveAccount(playerAccount));
+            Database.addLobbyAccount(new LobbyAccount(playerAccount));
         }
     }
 
     activateAccounts(): void {
         Database.playerAccounts.forEach((playerAccount: PlayerAccount, uuid: string) => {
-            if (!Database.getActiveAcountWithUUID(uuid)) {
-                let activeAcount: ActiveAccount = new ActiveAccount(playerAccount);
-                Matchmaker.Instance.addActiveAccountToLobby(activeAcount);
+            if (!Database.getLobbyAccountWithUUID(uuid)) {
+                let lobbyAccount: LobbyAccount = new LobbyAccount(playerAccount);
+                Matchmaker.Instance.addLobbyAccountToLobby(lobbyAccount);
             }
         });
     }

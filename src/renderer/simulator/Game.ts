@@ -3,7 +3,7 @@ import PlayerAccount from '../matchmaker/PlayerAccount';
 import { PlayerAction } from './Player';
 import { EventEmitter } from 'events';
 
-const uuidv1 = require('uuid/v1');
+const uuidv4 = require('uuid/v4');
 
 export enum GameState {
     Waiting,
@@ -13,6 +13,7 @@ export enum GameState {
 }
 
 export interface GameOptions {
+    uuid: string;
     maxDuration: number; // (ms) the game will last this long if no team quits
     maxWaitTime: number;
     minPlayers: number;
@@ -34,10 +35,19 @@ export default class Game extends EventEmitter {
     private _startTime: number;
     private _currentSecond: number;
 
-    constructor(options?: GameOptions) {
+    constructor(options?: any) {
         super();
-        options = options || { maxDuration: 10000, maxWaitTime: 10000, minPlayers: 2, maxPlayers: 2};
-        this.uuid = uuidv1();
+        options = options || {};
+        let defaultOptions: GameOptions =  {
+            uuid: uuidv4(),
+            maxDuration: 10000,
+            maxWaitTime: 10000,
+            minPlayers: 2,
+            maxPlayers: 2
+        }
+        options = Object.assign(defaultOptions, options);
+
+        this.uuid = options.uuid;
         this.maxDuration = options.maxDuration;
         this.maxWaitTime = options.maxWaitTime;
         this.minPlayers = options.minPlayers;
@@ -136,4 +146,20 @@ export default class Game extends EventEmitter {
         return performance.now() - this._spawnTime;
     }
 
+    get playTime(): number {
+        return performance.now() - this._startTime;
+    }
+
+    get json(): any {
+        let json: any = {};
+        json.uuid = this.uuid;
+        json.playTime = this.playTime;
+        json.state = GameState[this.state];
+        json.playerCount = this.players.size;
+        json.players = [];
+        this.players.forEach((player: Player, account: PlayerAccount) => {
+            json.players.push(player.json);
+        });
+        return json;
+    }
 }

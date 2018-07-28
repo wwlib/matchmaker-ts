@@ -1,4 +1,4 @@
-const uuidv1 = require('uuid/v1');
+const uuidv4 = require('uuid/v4');
 
 export type AccountOptions = {
     uuid: string;
@@ -47,9 +47,10 @@ export default class PlayerAccount {
     public losses: number;
     public quits: number;
 
-    constructor(options?: AccountOptions) {
-        options = options || {
-            uuid: uuidv1(),
+    constructor(options?: any) {
+        options = options || {};
+        let defaultOptions: AccountOptions =  {
+            uuid: uuidv4(),
             name: 'name',
             email: 'name@email.com',
             password: 'password',
@@ -59,6 +60,8 @@ export default class PlayerAccount {
             losses: 0,
             quits: 0
         }
+        options = Object.assign(defaultOptions, options);
+
         this.uuid = options.uuid;
         this.name = options.name;
         this.email = options.email;

@@ -1,4 +1,6 @@
-import ActiveAccount from './ActiveAccount';
+import LobbyAccount from './LobbyAccount';
+
+const uuidv4 = require('uuid/v4');
 
 export enum Location {
     NorthAmericaEast,
@@ -13,6 +15,7 @@ export type Range = {
 }
 
 export type LobbyOptions = {
+    uuid: string;
     memberRange: Range;
     location: Location;
     mmrRange: Range;
@@ -22,21 +25,25 @@ export type LobbyOptions = {
 
 export default class Lobby {
 
-    public activeAccounts: Map<string, ActiveAccount> = new Map<string, ActiveAccount>();
+    public uuid: string;
+    public activeAccounts: Map<string, LobbyAccount> = new Map<string, LobbyAccount>();
     public memberRange: Range;
     public location: Location;
     public mmrRange: Range;
     public latencyRange: Range;
     public priorityRange: Range;
 
-    constructor(options?: LobbyOptions) {
-        options = options || {
+    constructor(options?: any) {
+        options = options || {};
+        let defaultOptions: LobbyOptions =  {
+            uuid: uuidv4(),
             memberRange: {min: 10, max: 20},
             location: Location.NorthAmericaEast,
             mmrRange: {min: 400, max: 600},
             latencyRange: {min: 10, max: 100},
             priorityRange: {min: 0, max: 3}
         }
+        options = Object.assign(defaultOptions, options);
 
         this.memberRange = options.memberRange;
         this.location = options.location;
@@ -45,21 +52,21 @@ export default class Lobby {
         this.priorityRange = options.priorityRange;
     }
 
-    addActiveAccount(activeAccount: ActiveAccount): void {
-        this.activeAccounts.set(activeAccount.playerAccount.uuid, activeAccount);
+    addLobbyAccount(lobbyAccount: LobbyAccount): void {
+        this.activeAccounts.set(lobbyAccount.playerAccount.uuid, lobbyAccount);
     }
 
-    removeActiveAccount(activeAccount: ActiveAccount): void {
-        activeAccount.lobby = null;
-        this.activeAccounts.delete(activeAccount.playerAccount.uuid);
+    removeLobbyAccount(lobbyAccount: LobbyAccount): void {
+        lobbyAccount.lobby = null;
+        this.activeAccounts.delete(lobbyAccount.playerAccount.uuid);
     }
 
-    getMatchedPlayers(count: number = 2): ActiveAccount[] {
-        let result: ActiveAccount[] = [];
-        this.activeAccounts.forEach((activeAccount: ActiveAccount, uuid: string) => {
+    getMatchedPlayers(count: number = 2): LobbyAccount[] {
+        let result: LobbyAccount[] = [];
+        this.activeAccounts.forEach((lobbyAccount: LobbyAccount, uuid: string) => {
             if (result.length < count) {
-                result.push(activeAccount);
-                this.removeActiveAccount(activeAccount);
+                result.push(lobbyAccount);
+                this.removeLobbyAccount(lobbyAccount);
             }
         });
         return result;

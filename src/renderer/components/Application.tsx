@@ -2,13 +2,15 @@ import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import Simulator from '../simulator/Simulator';
 
+const prettyjson = require('prettyjson');
+
 export interface ApplicationProps { simulator: Simulator }
-export interface ApplicationState { games: number }
+export interface ApplicationState { gameCount: number; stats: string }
 
 export default class Application extends React.Component < ApplicationProps, ApplicationState > {
 
     componentWillMount() {
-        this.setState({ games: 0 });
+        this.setState({ gameCount: 0, stats: '' });
     }
 
     componentDidMount() {
@@ -24,9 +26,12 @@ export default class Application extends React.Component < ApplicationProps, App
             case 'addLobby':
                 break;
             case 'stats':
-                let stats: any =  this.props.simulator.getStats();
+                let stats: any =  this.props.simulator.json;
                 console.log(stats);
-                this.setState({games: stats.games})
+                let statsString: string = prettyjson.render(stats, {noColor: true});
+                console.log(statsString);
+
+                this.setState({gameCount: stats.gameCount, stats: statsString})
                 break;
         }
     }
@@ -44,9 +49,8 @@ export default class Application extends React.Component < ApplicationProps, App
                 <ReactBootstrap.Button bsStyle={'info'} key={"stats"} style = {{width: 100}}
                     onClick={this.onButtonClicked.bind(this, "stats")}>stats</ReactBootstrap.Button>
                 </div>
-                <div>
-                    <p>Games: {this.state.games}</p>
-                </div>
+
+                <textarea name="stats" value={this.state.stats} style={{width: 800, height: 500}}/>
 
             </div>
         );

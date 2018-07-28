@@ -1,7 +1,7 @@
 import PlayerAccount from './PlayerAccount';
 import Lobby from './Lobby';
 
-export default class ActiveAccount {
+export default class LobbyAccount {
 
     public playerAccount: PlayerAccount;
 
@@ -20,11 +20,11 @@ export default class ActiveAccount {
         this._lobby = lobby;
     }
 
-    get waitTime(): number {
+    get lobbyWaitTime(): number {
         return performance.now() - this._lobbyStartTime;
     }
 
-    get activeTime(): number {
+    get aliveTime(): number {
         return performance.now() - this._spawnTime;
     }
 }

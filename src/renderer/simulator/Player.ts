@@ -33,8 +33,15 @@ export default class Player {
     private _spawnTime: number;
     private _startTime: number;
 
-    constructor(account: PlayerAccount, options?: PlayerOptions) {
-        options = options || { maxWaitTime: 3000, bailProbability: 0.01, quitProbability: 0.01};
+    constructor(account: PlayerAccount, options?: any) {
+        options = options || {};
+        let defaultOptions: PlayerOptions =  {
+            maxWaitTime: 3000,
+            bailProbability: 0.01,
+            quitProbability: 0.01
+        }
+        options = Object.assign(defaultOptions, options);
+
         this.maxWaitTime = options.maxWaitTime;
         this.bailProbability = options.bailProbability;
         this.quitProbability = options.quitProbability;
@@ -93,5 +100,17 @@ export default class Player {
 
     get waitTime(): number {
         return performance.now() - this._spawnTime;
+    }
+
+    get playTime(): number {
+        return performance.now() - this._startTime;
+    }
+
+    get json(): any {
+        let json: any = {};
+        json.uuid = this.account.uuid;
+        json.playTime = this.playTime;
+        json.action = PlayerAction[this.action]
+        return json;
     }
 }
