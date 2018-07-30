@@ -25,9 +25,11 @@
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
+    "@types/pubsub-js": "^1.5.18",
     "@types/react": "^16.4.7",
     "@types/react-bootstrap": "^0.32.11",
     "@types/react-dom": "^16.0.6",
+    "@types/ws": "^5.1.2",
     "chai": "^4.1.2",
     "gulp": "^3.9.1",
     "gulp-typedoc": "^2.2.0",
@@ -41,9 +43,12 @@
     "electron": "^2.0.5",
     "elo-rank": "^1.0.3",
     "prettyjson": "^1.2.1",
+    "pubsub-js": "^1.6.0",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
-    "uuid": "^3.3.2"
+    "schemapack": "^1.4.2",
+    "uuid": "^3.3.2",
+    "ws": "^6.0.0"
   }
 }

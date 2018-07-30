@@ -16,9 +16,9 @@ export enum PlayerAction {
 }
 
 export interface PlayerOptions {
-    maxWaitTime: number;
-    bailProbability: number;
-    quitProbability: number;
+    maxWaitTime?: number;
+    bailProbability?: number;
+    quitProbability?: number;
 }
 
 export default class Player {
@@ -33,7 +33,7 @@ export default class Player {
     private _spawnTime: number;
     private _startTime: number;
 
-    constructor(account: PlayerAccount, options?: any) {
+    constructor(account: PlayerAccount, options?: PlayerOptions) {
         options = options || {};
         let defaultOptions: PlayerOptions =  {
             maxWaitTime: 3000,

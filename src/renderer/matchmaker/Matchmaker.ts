@@ -1,6 +1,6 @@
 import PlayerAccount from './PlayerAccount';
 import LobbyAccount from './LobbyAccount';
-import Lobby from './Lobby';
+// import Lobby from './Lobby';
 
 const EloRank = require('elo-rank');
 const elo = new EloRank(32);
@@ -9,10 +9,10 @@ export default class Matchmaker {
 
     private static _instance: Matchmaker;
 
-    public lobby: Lobby;
+    // public lobby: Lobby;
 
     constructor() {
-        this.lobby = new Lobby();
+        // this.lobby = new Lobby();
     }
 
     static get Instance()
@@ -31,7 +31,7 @@ export default class Matchmaker {
     }
 
     addLobbyAccountToLobby(lobbyAccount: LobbyAccount): void {
-        this.lobby.addLobbyAccount(lobbyAccount);
-        lobbyAccount.lobby = this.lobby;
+        // this.lobby.addLobbyAccount(lobbyAccount);
+        // lobbyAccount.lobby = this.lobby;
     }
 }

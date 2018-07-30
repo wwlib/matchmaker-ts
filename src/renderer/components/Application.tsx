@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import Simulator from '../simulator/Simulator';
+import * as PubSubJS from 'pubsub-js';
+import Director, { DirectorTopic } from '../matchmaker/Director';
+import ClientProxy from '../matchmaker/ClientProxy';
+import Lobby from '../matchmaker/game/Lobby';
 
 const prettyjson = require('prettyjson');
 
@@ -8,6 +12,9 @@ export interface ApplicationProps { simulator: Simulator }
 export interface ApplicationState { gameCount: number; stats: string }
 
 export default class Application extends React.Component < ApplicationProps, ApplicationState > {
+
+    public mockClient: ClientProxy;
+    public lobby: Lobby;
 
     componentWillMount() {
         this.setState({ gameCount: 0, stats: '' });
@@ -21,17 +28,25 @@ export default class Application extends React.Component < ApplicationProps, App
         switch (action) {
             case 'addGame':
                 break;
-            case 'addPlayer':
+            case 'addMockClient':
+                this.mockClient = Director.Instance().addMockClient();
                 break;
             case 'addLobby':
+                this.lobby = Director.Instance().addLobby();
+                break;
+            case 'sendClientMsg':
+                this.mockClient.sendMessageToGameWorld('hello to the lobby');
+                break;
+            case 'sendLobbyMsg':
+                this.lobby.broadcast('hello from the lobby');
                 break;
             case 'stats':
                 let stats: any =  this.props.simulator.json;
-                console.log(stats);
                 let statsString: string = prettyjson.render(stats, {noColor: true});
-                console.log(statsString);
-
-                this.setState({gameCount: stats.gameCount, stats: statsString})
+                this.setState({gameCount: stats.gameCount, stats: statsString});
+                break;
+            case 'requestLobby':
+                PubSubJS.publish(DirectorTopic.Lobby, { director: Director.Instance().uuid }); //, { director: Director.Instance().uuid }
                 break;
         }
     }
@@ -42,12 +57,18 @@ export default class Application extends React.Component < ApplicationProps, App
                 <div>
                 <ReactBootstrap.Button bsStyle={'success'} key={"addGame"} style = {{width: 100}}
                     onClick={this.onButtonClicked.bind(this, "addGame")}>addGame</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"addPlayer"} style = {{width: 100}}
-                    onClick={this.onButtonClicked.bind(this, "addPlayer")}>addPlayer</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"addMockClient"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClient</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"addLobby"} style = {{width: 100}}
                     onClick={this.onButtonClicked.bind(this, "addLobby")}>addLobby</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"sendClientMsg"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "sendClientMsg")}>sendClientMsg</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"sendLobbyMsg"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "sendLobbyMsg")}>sendLobbyMsg</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"stats"} style = {{width: 100}}
                     onClick={this.onButtonClicked.bind(this, "stats")}>stats</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"requestLobby"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "requestLobby")}>requestLobby</ReactBootstrap.Button>
                 </div>
 
                 <textarea name="stats" value={this.state.stats} style={{width: 800, height: 500}}/>

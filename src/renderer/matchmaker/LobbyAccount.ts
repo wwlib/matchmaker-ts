@@ -1,11 +1,11 @@
 import PlayerAccount from './PlayerAccount';
-import Lobby from './Lobby';
+// import Lobby from './Lobby';
 
 export default class LobbyAccount {
 
     public playerAccount: PlayerAccount;
 
-    private _lobby: Lobby;
+    // private _lobby: Lobby;
     private _lobbyStartTime: number;
     private _spawnTime: number;
 
@@ -15,10 +15,10 @@ export default class LobbyAccount {
         this._spawnTime = performance.now();
     }
 
-    set lobby(lobby: Lobby) {
-        this._lobbyStartTime = performance.now();
-        this._lobby = lobby;
-    }
+    // set lobby(lobby: Lobby) {
+    //     this._lobbyStartTime = performance.now();
+    //     this._lobby = lobby;
+    // }
 
     get lobbyWaitTime(): number {
         return performance.now() - this._lobbyStartTime;
