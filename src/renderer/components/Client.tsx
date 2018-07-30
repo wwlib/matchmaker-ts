@@ -119,8 +119,9 @@ export default class Client extends React.Component < ClientProps, ClientState >
     }
 
     handleSubmit(event: any) {
-        //this.sendMessage(this.state.input);
-        console.log(`handleSubmit`);
+        this.sendMessage(this.state.input);
+        this.setState({input: ''});
+        event.preventDefault();
     }
 
     render() {
