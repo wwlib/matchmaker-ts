@@ -97,7 +97,11 @@ export default class TCPClientSession {
 					authMsg.port = this._port;
 					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg);
 					this.userUUID = Director.Instance().authenticateUser(authMsg);
-					// this.publish(authMsg, 'auth');
+					authMsg.userUUID = this.userUUID;
+					authMsg.password = '';
+					authMsg.authToken = '<AUTH-TOKEN>';
+					authMsg.command = 'authorized';
+					this.sendMessage(authMsg); // ACK
 					break;
 				case MessageType.Chat:
 					// let chatMsg: Msg_Chat = msg as Msg_Chat;

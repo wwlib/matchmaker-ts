@@ -5,7 +5,7 @@ const sp = require('schemapack');
 const messageSchema = sp.build({
     __type: "uint8",
     id: "string",
-    authToken: "string",
+    sourceUUID: "string",
     targetUUID: "string",
     body: "string",
     direct: "boolean"
@@ -13,7 +13,7 @@ const messageSchema = sp.build({
 
 export type ChatMessageOptions = {
     id?: string;
-    authToken?: string;
+    sourceUUID?: string;
     targetUUID?: string;
     body?: string;
     direct?: boolean;
@@ -21,7 +21,7 @@ export type ChatMessageOptions = {
 
 export default class Msg_Chat extends Message {
 
-    public authToken: string;
+    public sourceUUID: string;
 	public targetUUID: string;
 	public body: string;
     public direct: boolean;
@@ -31,7 +31,7 @@ export default class Msg_Chat extends Message {
         options = options || {};
         let defaultOptions: ChatMessageOptions =  {
             id: '',
-            authToken: '',
+            sourceUUID: '',
             targetUUID: '',
             body: '',
             direct: false
@@ -39,7 +39,7 @@ export default class Msg_Chat extends Message {
         options = Object.assign(defaultOptions, options);
 
         this._id = options.id;
-        this.authToken = options.authToken;
+        this.sourceUUID = options.sourceUUID;
         this.targetUUID = options.targetUUID;
         this.body = options.body;
         this.direct = options.direct;
@@ -49,7 +49,7 @@ export default class Msg_Chat extends Message {
 		var message = {
 			__type: this.getType(),
 			id: this._id,
-            authToken: this.authToken,
+            sourceUUID: this.sourceUUID,
 			targetUUID: this.targetUUID,
 			body: this.body,
 			direct: this.direct
@@ -62,7 +62,7 @@ export default class Msg_Chat extends Message {
 		if (payload) {
 			if (payload.__type == this.getType()) {
 				this._id = payload.id;
-                this.authToken = payload.authToken,
+                this.sourceUUID = payload.sourceUUID,
     			this.targetUUID = payload.targetUUID,
     			this.body = payload.body,
                 this.direct = payload.direct;

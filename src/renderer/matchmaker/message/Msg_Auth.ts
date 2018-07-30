@@ -6,6 +6,7 @@ const messageSchema = sp.build({
     __type: "uint8",
     id: "string",
     password: "string",
+    userUUID: "string",
     command: "string",
     authToken: "string",
 });
@@ -13,6 +14,7 @@ const messageSchema = sp.build({
 export type AuthMessageOptions = {
     id?: string;
 	password?: string
+    userUUID?: string;
     command?: string;
     authToken?: string;
 }
@@ -28,6 +30,7 @@ export default class Msg_Auth extends Message {
         let defaultOptions: AuthMessageOptions =  {
             id: '',
 			password: '',
+            userUUID: '',
             command: '',
             authToken: '',
         }
@@ -35,6 +38,7 @@ export default class Msg_Auth extends Message {
 
         this._id = options.id;
         this._password = options.password;
+        this.userUUID = options.userUUID;
         this.command = options.command;
         this.authToken = options.authToken;
 	}
@@ -44,6 +48,7 @@ export default class Msg_Auth extends Message {
 			__type: this.getType(),
 			id: this._id,
             password: this._password,
+            userUUID: this.userUUID,
             command: this.command,
             authToken: this.authToken
 		};
@@ -56,6 +61,7 @@ export default class Msg_Auth extends Message {
 			if (payload.__type == this.getType()) {
 				this._id = payload.id;
 				this._password = payload.password;
+                this.userUUID = payload.userUUID;
                 this.command = payload.command,
     			this.authToken = payload.authToken
 			} else {

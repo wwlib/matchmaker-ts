@@ -26,6 +26,8 @@ export default class Client extends React.Component < ClientProps, ClientState >
     public hostname = 'localhost';
     public port = 9696;
     public webSocket;
+    public id: string;
+    public userUUID: string;
 
     componentWillMount() {
         this.setState({ input: '<input>', messages: '<messages>' });
@@ -118,11 +120,15 @@ export default class Client extends React.Component < ClientProps, ClientState >
                 case MessageType.Auth:
                     let authMsg: Msg_Auth = msg as Msg_Auth;
                     console.log(`  --> Client: received Msg_Auth: `, authMsg);
+                    if (authMsg.command === 'authorized') {
+                        this.id = authMsg.id;
+                        this.userUUID = authMsg.userUUID;
+                    }
                     break;
                 case MessageType.Chat:
                     let chatMsg: Msg_Chat = msg as Msg_Chat;
                     console.log(`  --> Client: received Msg_Chat: `, chatMsg);
-                    this.setState({messages: this.state.messages + '\n' + chatMsg.body});
+                    this.setState({messages: this.state.messages + '\n' + chatMsg.sourceUUID + ': ' + chatMsg.body});
                     break;
                 default:
                     console.log("Unidentified packet type.");
@@ -136,7 +142,9 @@ export default class Client extends React.Component < ClientProps, ClientState >
 
     sendChatMessage(msg: string): void {
         let chatMsg: Msg_Chat = new Msg_Chat({
-            body: this.state.input
+            sourceUUID: this.userUUID,
+            body: this.state.input,
+            direct: false,
         });
         if (this.webSocket) {
             this.webSocket.send(chatMsg.getBytes());
