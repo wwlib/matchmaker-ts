@@ -1,14 +1,16 @@
 import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import WebSocket = require('ws');
+import Msg_Auth from '../matchmaker/message/Msg_Auth';
+import Msg_Chat from '../matchmaker/message/Msg_Chat';
 
-const prettyjson = require('prettyjson');
-const sp = require('schemapack');
+// const prettyjson = require('prettyjson');
+// const sp = require('schemapack');
 
-const messageSchema = sp.build({
-    __type: "uint8",
-    body: "string"
-});
+// const messageSchema = sp.build({
+//     __type: "uint8",
+//     body: "string"
+// });
 
 const cert = '-----BEGIN CERTIFICATE-----\n\
 CERT\n\
@@ -37,7 +39,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
                 this.startWebSocket();
                 break;
             case 'send':
-                this.sendMessage(this.state.input);
+                this.sendChatMessage(this.state.input);
                 break;
             case 'clear':
                 this.setState({ input: '<input>', messages: '<messages>' });
@@ -82,11 +84,12 @@ export default class Client extends React.Component < ClientProps, ClientState >
                     onConnect(this.webSocket);
                 }
 
-                // let message = {
-                //     __type: 1,
-                //     body: 'Hello, world'
-                // };
-                // this.webSocket.send(messageSchema.encode(message));
+                let authMsg: Msg_Auth = new Msg_Auth({
+                    id: 'arapo',
+                    password: 'password',
+                    command: 'login'
+                });
+                this.webSocket.send(authMsg.getBytes());
             });
 
             this.webSocket.on('message', (message, flags) => {
@@ -103,9 +106,12 @@ export default class Client extends React.Component < ClientProps, ClientState >
         }
     }
 
-    sendMessage(msg: string): void {
+    sendChatMessage(msg: string): void {
+        let chatMsg: Msg_Chat = new Msg_Chat({
+            body: this.state.input
+        });
         if (this.webSocket) {
-            this.webSocket.send(msg);
+            this.webSocket.send(chatMsg.getBytes());
         }
     }
 
@@ -119,7 +125,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
     }
 
     handleSubmit(event: any) {
-        this.sendMessage(this.state.input);
+        this.sendChatMessage(this.state.input);
         this.setState({input: ''});
         event.preventDefault();
     }

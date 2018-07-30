@@ -1,6 +1,5 @@
-import Msg_Text from '../message/Msg_Text';
-import PlayerAccount from '../PlayerAccount';
 import TCPClientServer from './TCPClientServer';
+import Message from '../message/Message';
 
 export interface RemoteInfo {
 	address: string;
@@ -37,12 +36,8 @@ export default class ConnectionManager {
 		this.log("Restarted.");
 	}
 
-	// public sendMsg_Text(playerAccount: PlayerAccount, msg: Msg_Text): void {
-	// 	playerAccount.tcpClientSession.sendText(msg.body);
-	// }
-
-	public broadcast(msg: Msg_Text): void {
-		this.TCP_s.broadcastMessage(msg.body);
+	public broadcast(message: Message): void {
+		this.TCP_s.broadcastMessage(message);
 	}
 
     log(text: string): void {

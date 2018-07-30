@@ -3,10 +3,12 @@ import TCPClientSession from '../connection/TCPClientSession';
 
 export enum MessageType {
     Auth,
-    Text,
-	JoinGame,
-    Admin,
     Chat,
+}
+
+export type MessageOptions = {
+	id?: string;
+	password?: string
 }
 
 export default abstract class Message {
@@ -22,6 +24,18 @@ export default abstract class Message {
 	public abstract getType(): number;
 
     private _tcpClientSession: TCPClientSession;
+
+    constructor( options?: MessageOptions) {
+        options = options || {};
+        let defaultOptions: MessageOptions =  {
+			id: '',
+			password: '',
+        }
+		options = Object.assign(defaultOptions, options);
+
+		this._id = options.id;
+		this._password= options.password;
+    }
 
     get id(): string {
         return this._id;

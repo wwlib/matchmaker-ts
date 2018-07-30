@@ -1,5 +1,6 @@
 import ConnectionManager from './ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './TCPClientSession';
+import Message from '../message/Message';
 // import TCPClientMonitor from './TCPClientMonitor';
 import WebSocket = require('ws');
 const fs = require('fs');
@@ -88,9 +89,9 @@ export default class TCPClientServer {
 		return client;
 	}
 
-	public broadcastMessage(message: string): void {
+	public broadcastMessage(message: Message): void {
 		this.clients.forEach((socket: WebSocket, client: TCPClientSession) => {
-			client.sendText(message);
+			client.sendMessage(message);
 		});
 	}
 

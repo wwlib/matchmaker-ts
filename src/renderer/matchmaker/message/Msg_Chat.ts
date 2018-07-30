@@ -6,22 +6,43 @@ const messageSchema = sp.build({
     __type: "uint8",
     id: "string",
     authToken: "string",
-    targetHost: "string",
-    targetPort: "string",
-    body: "string"
+    targetUUID: "string",
+    body: "string",
+    direct: "boolean"
 });
+
+export type ChatMessageOptions = {
+    id?: string;
+    authToken?: string;
+    targetUUID?: string;
+    body?: string;
+    direct?: boolean;
+}
 
 export default class Msg_Chat extends Message {
 
-    public accessLevel: number = 0;
     public authToken: string;
-	public targetHost: string;
-	public targetPort: string;
+	public targetUUID: string;
 	public body: string;
-    public p2p: boolean;
+    public direct: boolean;
 
-    constructor() {
-		super();
+    constructor(options?: ChatMessageOptions) {
+        super();
+        options = options || {};
+        let defaultOptions: ChatMessageOptions =  {
+            id: '',
+            authToken: '',
+            targetUUID: '',
+            body: '',
+            direct: false
+        }
+        options = Object.assign(defaultOptions, options);
+
+        this._id = options.id;
+        this.authToken = options.authToken;
+        this.targetUUID = options.targetUUID;
+        this.body = options.body;
+        this.direct = options.direct;
 	}
 
 	public getBytes(): any {
@@ -29,9 +50,9 @@ export default class Msg_Chat extends Message {
 			__type: this.getType(),
 			id: this._id,
             authToken: this.authToken,
-			targetHost: this.targetHost,
-			targetPort: this.targetPort,
-			body: this.body
+			targetUUID: this.targetUUID,
+			body: this.body,
+			direct: this.direct
 		};
 		return messageSchema.encode(message);
 	}
@@ -42,10 +63,9 @@ export default class Msg_Chat extends Message {
 			if (payload.__type == this.getType()) {
 				this._id = payload.id;
                 this.authToken = payload.authToken,
-    			this.targetHost = payload.targetHost,
-    			this.targetPort = payload.targetPort,
+    			this.targetUUID = payload.targetUUID,
     			this.body = payload.body,
-                this.p2p = (this.targetHost == 'ALL');
+                this.direct = payload.direct;
 			} else {
 				console.log(`Expecting MessageType: ${this.getType()} but got: ${payload.__type}`)
 			}

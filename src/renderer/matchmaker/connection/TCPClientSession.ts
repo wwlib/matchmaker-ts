@@ -1,11 +1,8 @@
 import * as PubSubJS from 'pubsub-js';
-import Message from '../message/Message';
+import Message, { MessageType } from '../message/Message';
 import MessageFactory from '../message/MessageFactory';
 import WebSocket = require('ws');
-import PlayerAccount from '../PlayerAccount';
 import Msg_Chat from '../message/Msg_Chat';
-import Msg_Text from '../message/Msg_Text';
-import Msg_JoinGame from '../message/Msg_JoinGame';
 import Msg_Auth from '../message/Msg_Auth';
 import TCPClientServer from './TCPClientServer';
 
@@ -69,49 +66,38 @@ export default class TCPClientSession {
 
 		this._socket.on('message', (message: any, flags: any) => {
 			console.log('TCPClientSession: on message: ', message, flags);
-			// this.onMessage(message, this._socket);
+			this.onMessage(message);
 		});
 	}
 
-/* from Message
-export enum MessageType {
-    Auth,
-    Text,
-	JoinGame,
-    Admin,
-    Chat,
-}
-*/
+	/* From Message
+	export enum MessageType {
+	    Auth,
+	    Chat,
+	}
+	*/
 
-	onMessage(message: any, socket: WebSocket | MockWebSocket): void {
+	onMessage(message: any): void {
 		this.lastMessageReceivedTime = performance.now();
 		let rinfo: any = {address: this._ip, port: this._port};
-		let msg: Message = MessageFactory.parse(message, rinfo, this);
+		let msg: Message = MessageFactory.parse(message, rinfo);
 		let message_type: number = msg.getType();
 		console.log(msg);
 
 		switch (message_type) {
-			case 0: //AUTH:
-				let tempAuthMsg: Msg_Auth = msg as Msg_Auth;
-				tempAuthMsg.host = this._ip;
-				tempAuthMsg.port = this._port;
-				this.publish(tempAuthMsg, 'auth');
+			case MessageType.Auth:
+				let authMsg: Msg_Auth = msg as Msg_Auth;
+				authMsg.host = this._ip;
+				authMsg.port = this._port;
+				console.log(`onMessage: `, authMsg);
+				this.publish(authMsg, 'auth');
 				break;
-			case 1: //TEXT:
-				break;
-			case 2: //JOIN_GAME
-				let tempJoinGameMsg: Msg_JoinGame = msg as Msg_JoinGame;
-				tempJoinGameMsg.host = this._ip;
-				tempJoinGameMsg.port = this._port;
-				this.publish(tempJoinGameMsg, 'join');
-				break;
-			case 3: //ADMIN:
-				break;
-			case 4: //CHAT
-				let tempChatMsg: Msg_Chat = msg as Msg_Chat;
-				tempChatMsg.host = this._ip;
-				tempChatMsg.port = this._port;
-				this.publish(tempChatMsg, 'chat');
+			case MessageType.Chat:
+				let chatMsg: Msg_Chat = msg as Msg_Chat;
+				chatMsg.host = this._ip;
+				chatMsg.port = this._port;
+				console.log(`onMessage: `, chatMsg);
+				this.publish(chatMsg, 'chat');
 				break;
 			default:
 				console.log("Unidentified packet type.");
@@ -137,6 +123,10 @@ export enum MessageType {
 
 	public sendText(message: string): void {
 		this._socket.send(message);
+	}
+
+	public sendMessage(message: Message): void {
+		this._socket.send(message.getBytes());
 	}
 
 	dispose(): void {

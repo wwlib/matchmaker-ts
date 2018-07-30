@@ -5,31 +5,47 @@ const sp = require('schemapack');
 const messageSchema = sp.build({
     __type: "uint8",
     id: "string",
-    authToken: "string",
     password: "string",
     command: "string",
-    data: "string"
+    authToken: "string",
 });
+
+export type AuthMessageOptions = {
+    id?: string;
+	password?: string
+    command?: string;
+    authToken?: string;
+}
 
 export default class Msg_Auth extends Message {
 
 	public command: string;
-	public data: string;
-	public accessLevel: number = 0;
     public authToken: string;
 
-	constructor() {
-		super();
+    constructor(options?: AuthMessageOptions) {
+        super();
+        options = options || {};
+        let defaultOptions: AuthMessageOptions =  {
+            id: '',
+			password: '',
+            command: '',
+            authToken: '',
+        }
+        options = Object.assign(defaultOptions, options);
+
+        this._id = options.id;
+        this._password = options.password;
+        this.command = options.command;
+        this.authToken = options.authToken;
 	}
 
 	public getBytes(): any {
 		var message = {
 			__type: this.getType(),
 			id: this._id,
-            authToken: this.authToken,
-			password: this._password,
-			command: this.command,
-			data: this.data
+            password: this._password,
+            command: this.command,
+            authToken: this.authToken
 		};
 		return messageSchema.encode(message);
 	}
@@ -41,7 +57,7 @@ export default class Msg_Auth extends Message {
 				this._id = payload.id;
 				this._password = payload.password;
                 this.command = payload.command,
-    			this.data = payload.data
+    			this.authToken = payload.authToken
 			} else {
 				console.log(`Expecting MessageType: ${this.getType()} but got: ${payload.__type}`)
 			}
