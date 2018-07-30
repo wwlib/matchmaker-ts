@@ -1,6 +1,7 @@
 import ConnectionManager from './ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './TCPClientSession';
 import Message from '../message/Message';
+import Msg_Auth from '../message/Msg_Auth';
 // import TCPClientMonitor from './TCPClientMonitor';
 import WebSocket = require('ws');
 const fs = require('fs');
@@ -85,7 +86,10 @@ export default class TCPClientServer {
 		let client: TCPClientSession = new TCPClientSession(this, socket);
 		console.log(`${client.ip} : ${client.port} connected to the server.`);
 		this.clients.set(client, socket);
-		client.sendText('CONNECTED_OK');
+		let authMsg: Msg_Auth = new Msg_Auth({
+			command: 'connected'
+		});
+		client.sendMessage(authMsg);
 		return client;
 	}
 

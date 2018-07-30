@@ -42,9 +42,11 @@ export default class Application extends React.Component < ApplicationProps, App
                 this.lobby.broadcast('hello from the lobby');
                 break;
             case 'stats':
-                let stats: any =  this.props.simulator.json;
-                let statsString: string = prettyjson.render(stats, {noColor: true});
-                this.setState({gameCount: stats.gameCount, stats: statsString});
+                if (this.props.simulator) {
+                    let stats: any =  this.props.simulator.json;
+                    let statsString: string = prettyjson.render(stats, {noColor: true});
+                    this.setState({gameCount: stats.gameCount, stats: statsString});
+                }
                 break;
             case 'requestLobby':
                 PubSubJS.publish(DirectorTopic.Lobby, { director: Director.Instance().uuid }); //, { director: Director.Instance().uuid }

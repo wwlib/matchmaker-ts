@@ -3,6 +3,8 @@ import * as ReactBootstrap from "react-bootstrap";
 import WebSocket = require('ws');
 import Msg_Auth from '../matchmaker/message/Msg_Auth';
 import Msg_Chat from '../matchmaker/message/Msg_Chat';
+import Message, { MessageType } from '../matchmaker/message/Message';
+import MessageFactory from '../matchmaker/message/MessageFactory';
 
 // const prettyjson = require('prettyjson');
 // const sp = require('schemapack');
@@ -42,7 +44,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
                 this.sendChatMessage(this.state.input);
                 break;
             case 'clear':
-                this.setState({ input: '<input>', messages: '<messages>' });
+                this.setState({ input: '', messages: '' });
                 break;
         }
     }
@@ -93,17 +95,43 @@ export default class Client extends React.Component < ClientProps, ClientState >
             });
 
             this.webSocket.on('message', (message, flags) => {
-                console.log(`Client: on message: `, message, flags);
+                // console.log(`Client: on(message): `, message, flags);
+                this.onMessage(message);
             });
 
             this.webSocket.on('close', () => {
-                console.log('Client: websocket client closed')
+                console.log('Client: on(close)')
                 this.webSocket = null;
             });
         } catch (err) {
             this.webSocket = null;
             console.log(err);
         }
+    }
+
+    onMessage(message: any): void {
+        let msg: Message = MessageFactory.parse(message);
+        if (msg) {
+            let message_type: number = msg.getType();
+
+            switch (message_type) {
+                case MessageType.Auth:
+                    let authMsg: Msg_Auth = msg as Msg_Auth;
+                    console.log(`  --> Client: received Msg_Auth: `, authMsg);
+                    break;
+                case MessageType.Chat:
+                    let chatMsg: Msg_Chat = msg as Msg_Chat;
+                    console.log(`  --> Client: received Msg_Chat: `, chatMsg);
+                    this.setState({messages: this.state.messages + '\n' + chatMsg.body});
+                    break;
+                default:
+                    console.log("Unidentified packet type.");
+                    break;
+            }
+        } else {
+            console.log(`  --> Client: unrecognized message: `, message);
+        }
+
     }
 
     sendChatMessage(msg: string): void {

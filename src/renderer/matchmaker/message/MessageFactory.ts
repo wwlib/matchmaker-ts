@@ -18,13 +18,15 @@ export default class MessageFactory {
 
     constructor() { }
 
-    static parse(messageBuffer: any, rinfo: RemoteInfo): Message | undefined {
+    static parse(messageBuffer: any, rinfo?: RemoteInfo): Message | undefined {
         let type: number = messageBuffer[0];
         try {
             let msgClass: any = MessageFactory.msgClz[type];
             let msg: Message = new msgClass() as Message;
-            msg.host = rinfo.address;
-            msg.port = rinfo.port;
+            if (rinfo) {
+                msg.host = rinfo.address;
+                msg.port = rinfo.port;
+            }
             msg.load(messageBuffer);
             return msg;
         } catch (err) {

@@ -5,6 +5,7 @@ import WebSocket = require('ws');
 import Msg_Chat from '../message/Msg_Chat';
 import Msg_Auth from '../message/Msg_Auth';
 import TCPClientServer from './TCPClientServer';
+import Director from '../Director';
 
 export type MockWebSocket = {
 	host: string;
@@ -44,28 +45,32 @@ export default class TCPClientSession {
 	}
 
 	userSubscriber(msg: any, data: any): void {
-		console.log(`TCPClientSession: userSubscriber: ${this.userUUID}: `, data);
-		this.sendText(`${data}`);
+		console.log(`TCP_c: userSubscriber: ${this.userUUID}: received -->`, data);
+		this.sendBytes(data);
 	}
 
 	publish(data: any, subtopic?: string): void {
-		let topic: string = this.userUUID;
-		if (subtopic) {
-			topic = `${topic}.${subtopic}`;
+		if (this._userUUID) {
+			let topic: string = this.userUUID;
+			if (subtopic) {
+				topic = `${topic}.${subtopic}`;
+			}
+			PubSubJS.publish(topic, data);
+		} else {
+			console.log(`TCP_c: publish: error: userUUID undefined.`)
 		}
-		PubSubJS.publish(topic, data);
 	}
 
 	start(): void {
-		console.log(`TCPClientSession: start`);
+		console.log(`TCP_c: start`);
 		this._spawnTime = performance.now();
 		this._socket.on('close', () => {
-			console.log('TCPClientSession: on close');
+			console.log('TCP_c: on(close)');
 			this.dispose();
 		});
 
 		this._socket.on('message', (message: any, flags: any) => {
-			console.log('TCPClientSession: on message: ', message, flags);
+			// console.log('TCP_c: on(message): ', message, flags);
 			this.onMessage(message);
 		});
 	}
@@ -78,30 +83,35 @@ export default class TCPClientSession {
 	*/
 
 	onMessage(message: any): void {
+		console.log(`TCP_c: onMessage: `, message);
 		this.lastMessageReceivedTime = performance.now();
 		let rinfo: any = {address: this._ip, port: this._port};
 		let msg: Message = MessageFactory.parse(message, rinfo);
-		let message_type: number = msg.getType();
-		console.log(msg);
+		if (msg) {
+			let message_type: number = msg.getType();
 
-		switch (message_type) {
-			case MessageType.Auth:
-				let authMsg: Msg_Auth = msg as Msg_Auth;
-				authMsg.host = this._ip;
-				authMsg.port = this._port;
-				console.log(`onMessage: `, authMsg);
-				this.publish(authMsg, 'auth');
-				break;
-			case MessageType.Chat:
-				let chatMsg: Msg_Chat = msg as Msg_Chat;
-				chatMsg.host = this._ip;
-				chatMsg.port = this._port;
-				console.log(`onMessage: `, chatMsg);
-				this.publish(chatMsg, 'chat');
-				break;
-			default:
-				console.log("Unidentified packet type.");
-				break;
+			switch (message_type) {
+				case MessageType.Auth:
+					let authMsg: Msg_Auth = msg as Msg_Auth;
+					authMsg.host = this._ip;
+					authMsg.port = this._port;
+					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg);
+					this.userUUID = Director.Instance().authenticateUser(authMsg);
+					// this.publish(authMsg, 'auth');
+					break;
+				case MessageType.Chat:
+					let chatMsg: Msg_Chat = msg as Msg_Chat;
+					chatMsg.host = this._ip;
+					chatMsg.port = this._port;
+					console.log(`  --> TCP_c: received Msg_Chat: `, chatMsg);
+					this.publish(message, 'chat');
+					break;
+				default:
+					console.log("  --> TCP_c: unrecognized message type.");
+					break;
+			}
+		} else {
+			console.log(`  --> TCP_c: unrecognized message format: `, message);
 		}
 	}
 
@@ -127,6 +137,10 @@ export default class TCPClientSession {
 
 	public sendMessage(message: Message): void {
 		this._socket.send(message.getBytes());
+	}
+
+	public sendBytes(bytes: any): void {
+		this._socket.send(bytes);
 	}
 
 	dispose(): void {

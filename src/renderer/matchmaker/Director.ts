@@ -3,6 +3,7 @@ import ConnectionManager from './connection/ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './connection/TCPClientSession';
 import Lobby from './game/Lobby';
 import ClientProxy from './ClientProxy';
+import Msg_Auth from './message/Msg_Auth';
 
 const uuidv4 = require('uuid/v4');
 
@@ -90,6 +91,12 @@ export default class Director {
         let client: ClientProxy = new ClientProxy(clientSession.userUUID);
         this.addClientToLobby(client);
         return client;
+    }
+
+    authenticateUser(authMsg: Msg_Auth): string {
+        //TODO: implement authentication
+        console.log(`Director: authenticateUser: `, authMsg);
+        return uuidv4();
     }
 
     log(msg: string, obj?: any): void {
