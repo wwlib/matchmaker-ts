@@ -1,6 +1,7 @@
 import * as PubSubJS from 'pubsub-js';
 import Director, { DirectorTopic } from '../Director';
-import GameWorld, { GameWorldType, GameWorldState } from './GameWorld'
+import GameWorld, { GameWorldType, GameWorldState } from './GameWorld';
+import ClientProxy from '../ClientProxy';
 
 export enum Location {
     NorthAmericaEast,
@@ -74,6 +75,11 @@ export default class Lobby extends GameWorld {
 
     tick(): void {
         this.log(`tick`);
+    }
+
+    receiveMessageFromClient(data: any, client: ClientProxy): void {
+        this.log(`receiveMessageFromClient: ${client.shortId}`, data);
+        this.broadcast(data);
     }
 
     // addLobbyAccount(lobbyAccount: LobbyAccount): void {

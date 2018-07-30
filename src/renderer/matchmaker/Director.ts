@@ -96,7 +96,10 @@ export default class Director {
     authenticateUser(authMsg: Msg_Auth): string {
         //TODO: implement authentication
         console.log(`Director: authenticateUser: `, authMsg);
-        return uuidv4();
+        let userUUID: string = uuidv4();
+        let client: ClientProxy = new ClientProxy(userUUID);
+        this.addClientToLobby(client);
+        return userUUID;
     }
 
     log(msg: string, obj?: any): void {

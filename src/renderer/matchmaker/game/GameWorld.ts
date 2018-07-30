@@ -84,11 +84,13 @@ export default abstract class GameWorld {
 		client.publish(data, subtopic);
 	}
 
-	broadcast(data: any, subtopic?: string): void {
+	broadcast(data: any, sourceClient?: ClientProxy, subtopic?: string): void {
 		this.log(`broadcasting...`);
 		this._clients.forEach((client: ClientProxy, key: string) => {
-			this.log(`broadcasting to: ${client.shortId}`, data);
-			client.publish(data, subtopic);
+			if (client != sourceClient) {
+				this.log(`broadcasting to: ${client.shortId}`, data);
+				client.publish(data, subtopic);
+			}
 		});
 	}
 

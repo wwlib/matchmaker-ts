@@ -10,14 +10,14 @@ export default class ClientProxy {
 
     constructor(userUUID: string) {
         this._userUUID = userUUID;
-        this._userToken = PubSubJS.subscribe(this._userUUID, this.userSubscriber.bind(this));
+        this._userToken = PubSubJS.subscribe(`${this._userUUID}.in`, this.userSubscriberIn.bind(this));
     }
 
     get userUUID(): string {
         return this._userUUID;
     }
 
-    publish(data: any, subtopic?: string): void {
+    publish(data: any, subtopic: string = 'out'): void {
 		let topic: string = this._userUUID;
 		if (subtopic) {
 			topic = `${topic}.${subtopic}`;
@@ -26,8 +26,9 @@ export default class ClientProxy {
 		PubSubJS.publish(topic, data);
 	}
 
-    userSubscriber(msg: any, data: any): void {
+    userSubscriberIn(msg: any, data: any): void {
         console.log(`ClientProxy: ${this._userUUID}: `, data);
+        this.sendMessageToGameWorld(data);
     }
 
     set gameWorld(lobby: Lobby) {

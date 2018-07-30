@@ -41,15 +41,15 @@ export default class TCPClientSession {
 
 	set userUUID(uuid: string) {
 		this._userUUID = uuid;
-		this._userToken = PubSubJS.subscribe(this._userUUID, this.userSubscriber.bind(this));
+		this._userToken = PubSubJS.subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
 	}
 
-	userSubscriber(msg: any, data: any): void {
-		console.log(`TCP_c: userSubscriber: ${this.userUUID}: received -->`, data);
+	userSubscriberOut(msg: any, data: any): void {
+		console.log(`TCP_c: userSubscriberOut: ${this.userUUID}: received -->`, data);
 		this.sendBytes(data);
 	}
 
-	publish(data: any, subtopic?: string): void {
+	publish(data: any, subtopic: string = 'in'): void {
 		if (this._userUUID) {
 			let topic: string = this.userUUID;
 			if (subtopic) {
@@ -100,11 +100,11 @@ export default class TCPClientSession {
 					// this.publish(authMsg, 'auth');
 					break;
 				case MessageType.Chat:
-					let chatMsg: Msg_Chat = msg as Msg_Chat;
-					chatMsg.host = this._ip;
-					chatMsg.port = this._port;
-					console.log(`  --> TCP_c: received Msg_Chat: `, chatMsg);
-					this.publish(message, 'chat');
+					// let chatMsg: Msg_Chat = msg as Msg_Chat;
+					// chatMsg.host = this._ip;
+					// chatMsg.port = this._port;
+					console.log(`  --> TCP_c: received Msg_Chat: `, message);
+					this.publish(message);
 					break;
 				default:
 					console.log("  --> TCP_c: unrecognized message type.");
