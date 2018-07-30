@@ -69,7 +69,7 @@ export default class TCPClientSession {
 
 		this._socket.on('message', (message: any, flags: any) => {
 			console.log('TCPClientSession: on message: ', message, flags);
-			this.onMessage(message, this._socket);
+			// this.onMessage(message, this._socket);
 		});
 	}
 

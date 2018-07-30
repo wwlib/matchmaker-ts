@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
+import Client from './Client';
 import Simulator from '../simulator/Simulator';
 import * as PubSubJS from 'pubsub-js';
 import Director, { DirectorTopic } from '../matchmaker/Director';
@@ -70,8 +71,8 @@ export default class Application extends React.Component < ApplicationProps, App
                 <ReactBootstrap.Button bsStyle={'info'} key={"requestLobby"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "requestLobby")}>requestLobby</ReactBootstrap.Button>
                 </div>
-
-                <textarea name="stats" value={this.state.stats} style={{width: 800, height: 500}}/>
+                <Client />
+                <textarea name="stats" value={this.state.stats} style={{width: 800, height: 400}}/>
 
             </div>
         );
