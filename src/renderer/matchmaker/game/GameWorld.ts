@@ -27,7 +27,7 @@ export type GameWorldOptions = {
 
 export default abstract class GameWorld {
 
-	private _clients: Map<string, ClientProxy> = new Map<string, ClientProxy>();
+	protected _clients: Map<string, ClientProxy> = new Map<string, ClientProxy>();
 
 	public uuid: string;
 	public minClients: number;
@@ -65,24 +65,24 @@ export default abstract class GameWorld {
 
 		this._state = GameWorldState.Ready;
 
-		this._channelToken = PubSubJS.subscribe(this.uuid, this.channelSubscriber.bind(this));
+		// this._channelToken = PubSubJS.subscribe(this.uuid, this.channelSubscriber.bind(this));
 	}
 
-	publish(data: any, subtopic?: string): void {
-		let topic: string = this.uuid;
-		if (subtopic) {
-			topic = `${topic}.${subtopic}`;
-		}
-		PubSubJS.publish(topic, data);
-	}
+	// publish(data: any, subtopic?: string): void {
+	// 	let topic: string = this.uuid;
+	// 	if (subtopic) {
+	// 		topic = `${topic}.${subtopic}`;
+	// 	}
+	// 	PubSubJS.publish(topic, data);
+	// }
 
-	channelSubscriber(msg: any, data: any): void {
-		this.log(`channelSubscriber: ${msg}: `, data);
-	}
+	// channelSubscriber(msg: any, data: any): void {
+	// 	this.log(`channelSubscriber: ${msg}: `, data);
+	// }
 
-	publishViaClientProxy(data: any, client: ClientProxy, subtopic?: string): void {
-		client.publish(data, subtopic);
-	}
+	// publishViaClientProxy(data: any, client: ClientProxy, subtopic?: string): void {
+	// 	client.publish(data, subtopic);
+	// }
 
 	broadcast(data: any, sourceClient?: ClientProxy, subtopic?: string): void {
 		this.log(`broadcasting...`);
@@ -133,6 +133,19 @@ export default abstract class GameWorld {
 
 	get shortId(): string {
 		return this.uuid.substring(0,8);
+	}
+
+	logClients(): void {
+		this._clients.forEach((client: ClientProxy, key: string) => {
+			console.log(`  GameWorld: Client: ${client.shortId} `)
+		});
+	}
+
+	dispose(): void {
+		PubSubJS.unsubscribe(this._channelToken);
+		clearInterval(this._tickInterval);
+		this._tickHandler = undefined;
+		this.removeAllClients();
 	}
 
 	log(msg: string, obj?: any): void {

@@ -17,7 +17,7 @@ export default class ConnectionManager {
 	constructor(options?: any) {
         options = options || {};
         let defaultOptions: any =  {
-            debug: true,
+            debug: false,
             port: 9696,
         }
         options = Object.assign(defaultOptions, options);
@@ -42,7 +42,7 @@ export default class ConnectionManager {
 
     log(text: string): void {
         if (this.debug) {
-            let message: string = "CM: " + text;
+            let message: string = "ConnectionManager: " + text;
             console.log(message);
         }
     }

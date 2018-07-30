@@ -33,7 +33,7 @@ export default class Application extends React.Component < ApplicationProps, App
                 this.mockClient = Director.Instance().addMockClient();
                 break;
             case 'addLobby':
-                this.lobby = Director.Instance().addLobby();
+                // this.lobby = Director.Instance().addLobby();
                 break;
             case 'sendClientMsg':
                 this.mockClient.sendMessageToGameWorld('hello to the lobby');

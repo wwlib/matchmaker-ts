@@ -20,7 +20,6 @@ export default class TCPClientServer {
 	constructor(port: number, connectionManager: ConnectionManager) {
 		this.port = port;
 		this.connectionManager = connectionManager;
-		console.log("Initializing TCP_s.");
 		this.start();
 	}
 
@@ -30,16 +29,13 @@ export default class TCPClientServer {
 
 	public restart(): void {
 		this.clients.forEach((socket: WebSocket, client: TCPClientSession) => {
-			console.log("Killing: " + client.ip + ":" + client.port);
 			client.dispose();
 		});
 		this.clients = new Map<TCPClientSession, WebSocket>();
-		console.log("Restarted.");
 	}
 
 	public start(): void {
 		var processRequest = function( req: any, res: any ) {
-			console.log(`processRequest: `, req);
 			res.writeHead(200);
 			res.end("OK\n");
 		};
@@ -84,7 +80,7 @@ export default class TCPClientServer {
 
 	onConnection(socket: WebSocket | MockWebSocket): TCPClientSession {
 		let client: TCPClientSession = new TCPClientSession(this, socket);
-		console.log(`${client.ip} : ${client.port} connected to the server.`);
+		// console.log(`${client.ip} : ${client.port} connected to the server.`);
 		this.clients.set(client, socket);
 		let authMsg: Msg_Auth = new Msg_Auth({
 			command: 'connected'

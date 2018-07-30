@@ -1,10 +1,18 @@
 const uuidv4 = require('uuid/v4');
 
+export enum PlayerLocation {
+    NorthAmericaEast,
+    NortAmericaWest,
+    Europe,
+    Asia
+}
+
 export type AccountOptions = {
     uuid: string;
     name: string;
     email: string;
     password: string;
+    location: PlayerLocation;
     mmr: number;
     gamesPlayed:number;
     wins: number;
@@ -41,6 +49,7 @@ export default class PlayerAccount {
     public name: string;
     public email: string;
     public password: string;
+    public location: PlayerLocation;
     public mmr: number;
     public gamesPlayed: number;
     public wins: number;
@@ -54,6 +63,7 @@ export default class PlayerAccount {
             name: 'name',
             email: 'name@email.com',
             password: 'password',
+            location: PlayerLocation.NorthAmericaEast,
             mmr: 1000 + Math.floor(100 - Math.random() * 200),
             gamesPlayed: 0,
             wins: 0,
@@ -66,6 +76,7 @@ export default class PlayerAccount {
         this.name = options.name;
         this.email = options.email;
         this.password = options.password;
+        this.location = options.location;
         this.mmr = options.mmr;
         this.gamesPlayed = options.gamesPlayed;
         this.wins = options.wins;

@@ -31,21 +31,25 @@ export default class ClientProxy {
         this.sendMessageToGameWorld(data);
     }
 
-    set gameWorld(lobby: Lobby) {
-        this._gameWorld = lobby;
-    }
+    // get gameWorld() {
+    //     return this._gameWorld as Lobby;
+    // }
+    //
+    // set gameWorld(lobby: Lobby) {
+    //     this._gameWorld = lobby;
+    // }
 
-    removeFromLobby(): void {
-        this._gameWorld = undefined;
-    }
-
-    addToGame(game: GameWorld) {
-        this._gameWorld = game;
-    }
-
-    removeFromGame(): void {
-        this._gameWorld = undefined;
-    }
+    // removeFromLobby(): void {
+    //     this._gameWorld = undefined;
+    // }
+    //
+    // addToGame(game: GameWorld) {
+    //     this._gameWorld = game;
+    // }
+    //
+    // removeFromGame(): void {
+    //     this._gameWorld = undefined;
+    // }
 
     sendMessageToGameWorld(data: any): void {
         this._gameWorld.receiveMessageFromClient(data, this);

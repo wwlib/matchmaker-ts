@@ -31,7 +31,7 @@ export default class TCPClientSession {
 		this._socket = socket;
 		this._ip = this._socket.host;
 		this._port = this._socket.port;
-		console.log(`ip: ${this._ip}, port: ${this._port}`);
+		// console.log(`ip: ${this._ip}, port: ${this._port}`);
 		this.start();
 	}
 
@@ -45,7 +45,7 @@ export default class TCPClientSession {
 	}
 
 	userSubscriberOut(msg: any, data: any): void {
-		console.log(`TCP_c: userSubscriberOut: ${this.userUUID}: received -->`, data);
+		// console.log(`TCP_c: userSubscriberOut: ${this.userUUID}: received -->`, data);
 		this.sendBytes(data);
 	}
 
@@ -62,7 +62,7 @@ export default class TCPClientSession {
 	}
 
 	start(): void {
-		console.log(`TCP_c: start`);
+		// console.log(`TCP_c: start`);
 		this._spawnTime = performance.now();
 		this._socket.on('close', () => {
 			console.log('TCP_c: on(close)');
@@ -83,7 +83,7 @@ export default class TCPClientSession {
 	*/
 
 	onMessage(message: any): void {
-		console.log(`TCP_c: onMessage: `, message);
+		// console.log(`TCP_c: onMessage: `, message);
 		this.lastMessageReceivedTime = performance.now();
 		let rinfo: any = {address: this._ip, port: this._port};
 		let msg: Message = MessageFactory.parse(message, rinfo);
@@ -156,7 +156,7 @@ export default class TCPClientSession {
 			console.log(err);
 		}
 		this._socket = undefined;
-		PubSub.unsubscribe(this._userToken);
+		PubSubJS.unsubscribe(this._userToken);
 		this._userToken = undefined;
 	}
 }
