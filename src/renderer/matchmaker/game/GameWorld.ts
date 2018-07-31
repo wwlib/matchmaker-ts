@@ -85,17 +85,17 @@ export default abstract class GameWorld {
 	// }
 
 	broadcast(data: any, sourceClient?: ClientProxy, subtopic?: string): void {
-		this.log(`broadcasting...`);
+		// this.log(`broadcasting...`);
 		this._clients.forEach((client: ClientProxy, key: string) => {
 			if (client != sourceClient) {
-				this.log(`broadcasting to: ${client.shortId}`, data);
+				// this.log(`broadcasting to: ${client.shortId}`, data);
 				client.publish(data, subtopic);
 			}
 		});
 	}
 
 	receiveMessageFromClient(data: any, client: ClientProxy): void {
-		this.log(`receiveMessageFromClient: ${client.shortId}`, data);
+		// this.log(`receiveMessageFromClient: ${client.shortId}`, data);
 	}
 
 	start(): void {

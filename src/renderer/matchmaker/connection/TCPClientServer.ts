@@ -64,17 +64,16 @@ export default class TCPClientServer {
 		// });
 
 		this.socketServer.on('connection', (socket: any, req: any) => { //FIXME: WebSocket
-			console.log(`SocketServer: on connection`);
+			console.log(`SocketServer: on connection ${req.headers.host}`);
 			var terms = req.headers.host.split(':');
 			socket.host = terms[0];
 			socket.port = Number(terms[1]);
-			console.log(req.headers.host, terms, socket.host, socket.port);
 			this.onConnection(socket);
 		});
 
 		this.socketServer.on('error', (error: any) => {
 			console.log(`SocketServer: on error: `, error);
-			this.killServer();
+			// this.killServer();
 		});
 	}
 
@@ -98,14 +97,14 @@ export default class TCPClientServer {
 		clientSession.dispose();
 	}
 
-	removeClientSessionWithSocket(socket: WebSocket | MockWebSocket): void {
-		this.clients.forEach((testSocket: WebSocket, clientSession: TCPClientSession) => {
-			if (socket == testSocket) {
-				this.clients.delete(clientSession);
-				clientSession.dispose();
-			}
-		});
-	}
+	// removeClientSessionWithSocket(socket: WebSocket | MockWebSocket): void {
+	// 	this.clients.forEach((testSocket: WebSocket, clientSession: TCPClientSession) => {
+	// 		if (socket == testSocket) {
+	// 			this.clients.delete(clientSession);
+	// 			clientSession.dispose();
+	// 		}
+	// 	});
+	// }
 
 	public broadcastMessage(message: Message): void {
 		this.clients.forEach((socket: WebSocket, clientSession: TCPClientSession) => {

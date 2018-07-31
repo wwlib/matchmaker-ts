@@ -1,5 +1,6 @@
 import PlayerAccount from '../matchmaker/PlayerAccount';
 import Database from '../matchmaker/Database';
+import Director from '../matchmaker/Director';
 
 
 export type SimulatorOptions = {
@@ -15,11 +16,10 @@ export default class Simulator {
     constructor( options?: SimulatorOptions) {
         options = options || {};
         let defaultOptions: SimulatorOptions =  {
-            deltaTime: 1000,
+            deltaTime: 10,
         }
 		options = Object.assign(defaultOptions, options);
         this._deltaTime = options.deltaTime;
-        this.start();
     }
 
     get json(): any {
@@ -28,7 +28,7 @@ export default class Simulator {
     }
 
     tick(): void {
-
+		Director.Instance().addMockClient();
     }
 
     start(): void {
@@ -38,6 +38,11 @@ export default class Simulator {
     stop(): void {
         clearInterval(this._tickInterval);
     }
+
+	dispose(): void {
+		this.stop();
+		this._tickHandler = undefined;
+	}
 
     set deltaTime(deltaTime: number) {
         this._deltaTime = deltaTime;

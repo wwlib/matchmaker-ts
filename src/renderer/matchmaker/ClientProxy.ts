@@ -36,17 +36,21 @@ export default class ClientProxy {
 		if (subtopic) {
 			topic = `${topic}.${subtopic}`;
 		}
-        console.log(`ClientProxy publishing to: ${topic}`, data);
+        console.log(`ClientProxy publishing to: ${topic}`);
 		PubSubJS.publish(topic, data);
 	}
 
     userSubscriberIn(msg: any, data: any): void {
-        console.log(`ClientProxy: ${this._userUUID}: `, data);
+        console.log(`ClientProxy: userSubscriberIn: ${this._userUUID}: `);
         this.sendMessageToGameWorld(data);
     }
 
     restartGameTime(): void {
         this._startGameTime = now();
+    }
+
+    set gameWorld(gameWorld: GameWorld) {
+        this._gameWorld = gameWorld;
     }
 
     get aliveTime(): number {
@@ -74,6 +78,7 @@ export default class ClientProxy {
     }
 
     dispose(): void {
+        this.playerAccount = undefined;
         this._gameWorld = undefined;
         PubSubJS.unsubscribe(this._userToken);
     }

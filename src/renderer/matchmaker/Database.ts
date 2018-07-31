@@ -19,6 +19,7 @@ export default class Database {
     }
 
     static removePlayerAccount(playerAccount: PlayerAccount): void {
+        playerAccount.dispose();
         Database.playerAccounts.delete(playerAccount.uuid);
     }
 

@@ -96,4 +96,7 @@ export default class PlayerAccount {
                 break;
         }
     }
+
+    dispose(): void {
+    }
 }

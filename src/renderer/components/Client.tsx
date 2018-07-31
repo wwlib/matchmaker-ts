@@ -53,7 +53,6 @@ export default class Client extends React.Component < ClientProps, ClientState >
 
     startWebSocket(onError?: any, onConnect?: any) {
         let connectionString = `wss://${this.hostname}:${this.port}`;
-        console.log(`startWebSocket: ${connectionString}`);
 
         if (this.webSocket) {
             try {
@@ -119,7 +118,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
             switch (message_type) {
                 case MessageType.Auth:
                     let authMsg: Msg_Auth = msg as Msg_Auth;
-                    console.log(`  --> Client: received Msg_Auth: `, authMsg);
+                    console.log(`  --> Client: received Msg_Auth: ${authMsg.command}`);
                     if (authMsg.command === 'authorized') {
                         this.id = authMsg.id;
                         this.userUUID = authMsg.userUUID;
@@ -127,7 +126,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
                     break;
                 case MessageType.Chat:
                     let chatMsg: Msg_Chat = msg as Msg_Chat;
-                    console.log(`  --> Client: received Msg_Chat: `, chatMsg);
+                    console.log(`  --> Client: received Msg_Chat: `, chatMsg.body);
                     this.setState({messages: this.state.messages + '\n' + chatMsg.sourceUUID + ': ' + chatMsg.body});
                     break;
                 default:
@@ -169,7 +168,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
     render() {
         return(
             <div>
-                <textarea name="messages" value={this.state.messages} readOnly style={{width: 800, height: 100}}/>
+                <textarea name="messages" value={this.state.messages} readOnly style={{width: 800, height: 190}}/>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                         <label>Input:</label>
                         <input ref="input" type="text" style = {{width: 800}}

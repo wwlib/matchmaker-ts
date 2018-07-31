@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import Client from './Client';
+import Chart from './Chart';
 import Simulator from '../simulator/Simulator';
 import * as PubSubJS from 'pubsub-js';
 import Director, { DirectorTopic } from '../matchmaker/Director';
@@ -16,6 +17,7 @@ export default class Application extends React.Component < ApplicationProps, App
 
     public mockClient: ClientProxy;
     public lobby: Lobby;
+    public simulator: Simulator;
 
     componentWillMount() {
         this.setState({ gameCount: 0, stats: '' });
@@ -27,29 +29,21 @@ export default class Application extends React.Component < ApplicationProps, App
     onButtonClicked(action: string): void {
         // console.log(`onButtonClicked: ${action}`);
         switch (action) {
-            case 'addGame':
+            case 'getStats':
+                console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'addMockClient':
                 this.mockClient = Director.Instance().addMockClient();
                 break;
-            case 'addLobby':
-                // this.lobby = Director.Instance().addLobby();
-                break;
-            case 'sendClientMsg':
-                this.mockClient.sendMessageToGameWorld('hello to the lobby');
-                break;
-            case 'sendLobbyMsg':
-                this.lobby.broadcast('hello from the lobby');
-                break;
-            case 'stats':
-                if (this.props.simulator) {
-                    let stats: any =  this.props.simulator.json;
-                    let statsString: string = prettyjson.render(stats, {noColor: true});
-                    this.setState({gameCount: stats.gameCount, stats: statsString});
+            case 'startSim':
+                if (this.simulator) {
+                    this.simulator.dispose();
                 }
+                this.simulator = new Simulator({deltaTime: 10});
+                this.simulator.start();
                 break;
-            case 'requestLobby':
-                PubSubJS.publish(DirectorTopic.Lobby, { director: Director.Instance().uuid }); //, { director: Director.Instance().uuid }
+            case 'stopSim':
+                this.simulator.stop();
                 break;
         }
     }
@@ -58,24 +52,17 @@ export default class Application extends React.Component < ApplicationProps, App
         return(
             <div>
                 <div>
-                <ReactBootstrap.Button bsStyle={'success'} key={"addGame"} style = {{width: 100}}
-                    onClick={this.onButtonClicked.bind(this, "addGame")}>addGame</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"getStats"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "getStats")}>getStats</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"addMockClient"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClient</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"addLobby"} style = {{width: 100}}
-                    onClick={this.onButtonClicked.bind(this, "addLobby")}>addLobby</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"sendClientMsg"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "sendClientMsg")}>sendClientMsg</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"sendLobbyMsg"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "sendLobbyMsg")}>sendLobbyMsg</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"stats"} style = {{width: 100}}
-                    onClick={this.onButtonClicked.bind(this, "stats")}>stats</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"requestLobby"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "requestLobby")}>requestLobby</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"startSim"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "startSim")}>startSim</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"stopSim"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "stopSim")}>stopSim</ReactBootstrap.Button>
                 </div>
                 <Client />
-                <textarea name="stats" value={this.state.stats} style={{width: 800, height: 400}}/>
-
+                <Chart />
             </div>
         );
     }

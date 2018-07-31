@@ -2,6 +2,7 @@ import * as PubSubJS from 'pubsub-js';
 import ConnectionManager from './connection/ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './connection/TCPClientSession';
 import Lobby, { Range } from './game/Lobby';
+import ChatLobby from './game/ChatLobby';
 import ClientProxy from './ClientProxy';
 import Msg_Auth from './message/Msg_Auth';
 import PlayerAccount from './PlayerAccount';
@@ -79,11 +80,15 @@ export default class Director {
     //     this.log(`lobbySubscriber : msg: ${msg}`, data);
     // }
 
-    // addLobby(): Lobby {
-    //     let lobby: Lobby = new Lobby();
-    //     this._lobbies.set(lobby.uuid, lobby);
-    //     return lobby;
-    // }
+    addChatLobby(): ChatLobby {
+        let lobby: ChatLobby = new ChatLobby({
+            mmrRange: {min: 0, max: 300},
+            minClients: 0,
+            maxClients: 8,
+        });
+        this._lobbies.set(lobby.uuid, lobby);
+        return lobby;
+    }
 
     get lobyCount(): number {
         return this._lobbies.size;
@@ -112,6 +117,7 @@ export default class Director {
                 // console.log(`Director: addClientToLobby: new lobby for PlayerAccount:`, lobby, player);
             }
             lobby.addClient(clientProxy);
+            clientProxy.gameWorld = lobby;
         } else {
             throw new Error('Invalid PlayerAccount.');
         }
@@ -132,22 +138,13 @@ export default class Director {
         clientSession.userUUID = playerAccount.uuid;
         let client: ClientProxy = new ClientProxy(playerAccount.uuid);
         this.addClientToLobby(client);
-        // console.log(`Director: addedMockClient: `, client, playerAccount);
-        this.logLobbyStats();
         return client;
-    }
-
-    logLobbyStats(): void {
-        this._lobbies.forEach((lobby: Lobby, key: string) => {
-            console.log(`Director: Lobby count: ${this._lobbies.size} mmrRange: `, lobby.mmrRange);
-            lobby.logClients();
-        });
     }
 
     authenticateUser(authMsg: Msg_Auth): string {
         //TODO: implement authentication
-        console.log(`Director: authenticateUser: `, authMsg);
-        let playerAccount: PlayerAccount = Database.generateMockPlayerAccount();
+        // console.log(`Director: authenticateUser: `, authMsg);
+        let playerAccount: PlayerAccount = Database.generateMockPlayerAccount({mmr: 100});
         let client: ClientProxy = new ClientProxy(playerAccount.uuid);
         this.addClientToLobby(client);
         return playerAccount.uuid;
@@ -188,12 +185,26 @@ export default class Director {
 
     handleGameOver(client1: ClientProxy, client2: ClientProxy): void {
         // for now, dispose clients and remove associated player activeAccounts
-        this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
+        // this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
 
         this.removeAuthenticatedClientSession(client1.userUUID);
         this.removeAuthenticatedClientSession(client2.userUUID);
+        Database.removePlayerAccount(client1.playerAccount);
+        Database.removePlayerAccount(client2.playerAccount);
         client1.dispose();
         client2.dispose();
+    }
+
+    getPerformanceStats(): any {
+        let clientCount: number = this._authenticatedClientSessions.size;
+        return { lobbies: this._lobbies.size, clients:  clientCount }
+    }
+
+    logLobbyStats(): void {
+        this._lobbies.forEach((lobby: Lobby, key: string) => {
+            console.log(`Director: Lobby count: ${this._lobbies.size} mmrRange: `, lobby.mmrRange);
+            lobby.logClients();
+        });
     }
 
     log(msg: string, obj?: any): void {

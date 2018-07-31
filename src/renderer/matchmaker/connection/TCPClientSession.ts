@@ -100,7 +100,7 @@ export default class TCPClientSession {
 					let authMsg: Msg_Auth = msg as Msg_Auth;
 					authMsg.host = this._ip;
 					authMsg.port = this._port;
-					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg);
+					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg.command);
 					this.userUUID = Director.Instance().authenticateUser(authMsg); //TODO: add real authentication flow
 					authMsg.userUUID = this.userUUID;
 					authMsg.password = '';
@@ -109,7 +109,7 @@ export default class TCPClientSession {
 					this.sendMessage(authMsg); // ACK
 					break;
 				case MessageType.Chat:
-					console.log(`  --> TCP_c: received Msg_Chat: `, message);
+					console.log(`  --> TCP_c: received Msg_Chat: `);
 					this.publish(message);
 					break;
 				default:
@@ -151,9 +151,11 @@ export default class TCPClientSession {
 
 	dispose(): void {
 		this.clientServer = undefined;
-		this._socket.removeAllListeners();
 		try {
-			this._socket.close();
+			if (this._socket) {
+				this._socket.removeAllListeners();
+				this._socket.close();
+			}
 		} catch (err) {
 			console.log(err);
 		}

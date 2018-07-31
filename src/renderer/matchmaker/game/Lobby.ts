@@ -33,7 +33,7 @@ export default class Lobby extends GameWorld {
     public mmrRange: Range;
     public latencyRange: Range;
     public priorityRange: Range;
-    public maxClientWaitTime: number = 10000;
+    public maxCombinedClientWaitTime: number = 30000;
     public maxClientMMRDifference: number = 100;
 
     constructor(options?: any) {
@@ -100,7 +100,7 @@ export default class Lobby extends GameWorld {
     }
 
     receiveMessageFromClient(data: any, client: ClientProxy): void {
-        this.log(`receiveMessageFromClient: ${client.shortId}`, data);
+        // this.log(`receiveMessageFromClient: ${client.shortId}`, data);
         this.broadcast(data);
     }
 
@@ -116,7 +116,7 @@ export default class Lobby extends GameWorld {
         let result: boolean = false;
         let combinedWaitTime: number = client1.gameTime + client2.gameTime;
         if (Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr) <= this.maxClientMMRDifference) {result = true};
-        if (combinedWaitTime >= this.maxClientWaitTime) {result = true};
+        if (combinedWaitTime >= this.maxCombinedClientWaitTime) {result = true};
         return result;
     }
 
