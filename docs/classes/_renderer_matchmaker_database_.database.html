@@ -84,18 +84,16 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#activeaccounts" class="tsd-kind-icon">active<wbr>Accounts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#playeraccounts" class="tsd-kind-icon">player<wbr>Accounts</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#addactiveaccount" class="tsd-kind-icon">add<wbr>Active<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#addplayeraccount" class="tsd-kind-icon">add<wbr>Player<wbr>Account</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#getactiveacountwithuuid" class="tsd-kind-icon">get<wbr>Active<wbr>Acount<wbr>WithUUID</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#generatemockplayeraccount" class="tsd-kind-icon">generate<wbr>Mock<wbr>Player<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#getplayerwithuuid" class="tsd-kind-icon">get<wbr>Player<wbr>WithUUID</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#init" class="tsd-kind-icon">init</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#removeactiveaccount" class="tsd-kind-icon">remove<wbr>Active<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_database_.database.html#removeplayeraccount" class="tsd-kind-icon">remove<wbr>Player<wbr>Account</a></li>
 							</ul>
 						</section>
@@ -105,51 +103,18 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="activeaccounts" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> active<wbr>Accounts</h3>
-					<div class="tsd-signature tsd-kind-icon">active<wbr>Accounts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in renderer/matchmaker/Database.ts:7</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="playeraccounts" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> player<wbr>Accounts</h3>
 					<div class="tsd-signature tsd-kind-icon">player<wbr>Accounts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in renderer/matchmaker/Database.ts:6</li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L5">renderer/matchmaker/Database.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="addactiveaccount" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> add<wbr>Active<wbr>Account</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Active<wbr>Account<span class="tsd-signature-symbol">(</span>activeAccount<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:22</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>activeAccount: <a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="addplayeraccount" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> add<wbr>Player<wbr>Account</h3>
@@ -160,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:14</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L17">renderer/matchmaker/Database.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -174,16 +139,39 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="getactiveacountwithuuid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Active<wbr>Acount<wbr>WithUUID</h3>
+					<a name="generatemockplayeraccount" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Mock<wbr>Player<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Active<wbr>Acount<wbr>WithUUID<span class="tsd-signature-symbol">(</span>uuid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></li>
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Mock<wbr>Player<wbr>Account<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:30</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L11">renderer/matchmaker/Database.ts:11</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getplayerwithuuid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Player<wbr>WithUUID</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Player<wbr>WithUUID<span class="tsd-signature-symbol">(</span>uuid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L26">renderer/matchmaker/Database.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -192,7 +180,7 @@
 									<h5>uuid: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -206,32 +194,9 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:9</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L7">renderer/matchmaker/Database.ts:7</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="removeactiveaccount" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> remove<wbr>Active<wbr>Account</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Active<wbr>Account<span class="tsd-signature-symbol">(</span>activeAccount<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:26</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>activeAccount: <a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -246,7 +211,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/Database.ts:18</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/Database.ts#L21">renderer/matchmaker/Database.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -271,25 +236,49 @@
 						<a href="../modules/_main_main_.html">"main/main"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_activeaccount_.html">"renderer/matchmaker/<wbr>Active<wbr>Account"</a>
+						<a href="../modules/_renderer_matchmaker_clientproxy_.html">"renderer/matchmaker/<wbr>Client<wbr>Proxy"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_database_.html">"renderer/matchmaker/<wbr>Database"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_lobby_.html">"renderer/matchmaker/<wbr>Lobby"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_matchmaker_.html">"renderer/matchmaker/<wbr>Matchmaker"</a>
+						<a href="../modules/_renderer_matchmaker_director_.html">"renderer/matchmaker/<wbr>Director"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_game_.html">"renderer/simulator/<wbr>Game"</a>
+						<a href="../modules/_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_player_.html">"renderer/simulator/<wbr>Player"</a>
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientmonitor_.html">"renderer/matchmaker/connection/TCPClient<wbr>Monitor"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientserver_.html">"renderer/matchmaker/connection/TCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientsession_.html">"renderer/matchmaker/connection/TCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_chatlobby_.html">"renderer/matchmaker/game/<wbr>Chat<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_gameworld_.html">"renderer/matchmaker/game/<wbr>Game<wbr>World"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_messagefactory_.html">"renderer/matchmaker/message/<wbr>Message<wbr>Factory"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_auth_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Auth"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -304,25 +293,19 @@
 						<a href="_renderer_matchmaker_database_.database.html" class="tsd-kind-icon">Database</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="_renderer_matchmaker_database_.database.html#activeaccounts" class="tsd-kind-icon">active<wbr>Accounts</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 								<a href="_renderer_matchmaker_database_.database.html#playeraccounts" class="tsd-kind-icon">player<wbr>Accounts</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_renderer_matchmaker_database_.database.html#addactiveaccount" class="tsd-kind-icon">add<wbr>Active<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_renderer_matchmaker_database_.database.html#addplayeraccount" class="tsd-kind-icon">add<wbr>Player<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_renderer_matchmaker_database_.database.html#getactiveacountwithuuid" class="tsd-kind-icon">get<wbr>Active<wbr>Acount<wbr>WithUUID</a>
+								<a href="_renderer_matchmaker_database_.database.html#generatemockplayeraccount" class="tsd-kind-icon">generate<wbr>Mock<wbr>Player<wbr>Account</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_renderer_matchmaker_database_.database.html#getplayerwithuuid" class="tsd-kind-icon">get<wbr>Player<wbr>WithUUID</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_renderer_matchmaker_database_.database.html#init" class="tsd-kind-icon">init</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_renderer_matchmaker_database_.database.html#removeactiveaccount" class="tsd-kind-icon">remove<wbr>Active<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_renderer_matchmaker_database_.database.html#removeplayeraccount" class="tsd-kind-icon">remove<wbr>Player<wbr>Account</a>

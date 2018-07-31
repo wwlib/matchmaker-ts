@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;renderer/matchmaker/ActiveAccount&quot; | matchmaker-ts</title>
+	<title>&quot;renderer/matchmaker/game/GameWorld&quot; | matchmaker-ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_renderer_matchmaker_activeaccount_.html">&quot;renderer/matchmaker/ActiveAccount&quot;</a>
+					<a href="_renderer_matchmaker_game_gameworld_.html">&quot;renderer/matchmaker/game/GameWorld&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;renderer/matchmaker/ActiveAccount&quot;</h1>
+			<h1>External module &quot;renderer/matchmaker/game/GameWorld&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,12 +71,80 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldstate.html" class="tsd-kind-icon">Game<wbr>World<wbr>State</a></li>
+								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-kind-icon">Game<wbr>World<wbr>Type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-kind-icon">Active<wbr>Account</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-kind-icon">Game<wbr>World</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_renderer_matchmaker_game_gameworld_.html#gameworldoptions" class="tsd-kind-icon">Game<wbr>World<wbr>Options</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_renderer_matchmaker_game_gameworld_.html#uuidv4" class="tsd-kind-icon">uuidv4</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="gameworldoptions" class="tsd-anchor"></a>
+					<h3>Game<wbr>World<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Game<wbr>World<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/game/GameWorld.ts#L19">renderer/matchmaker/game/GameWorld.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> delta<wbr>Time<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Clients<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> min<wbr>Clients<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> type<span class="tsd-signature-symbol">?: </span><a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-signature-type">GameWorldType</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> uuid<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="uuidv4" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> uuidv4</h3>
+					<div class="tsd-signature tsd-kind-icon">uuidv4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;uuid/v4&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/game/GameWorld.ts#L6">renderer/matchmaker/game/GameWorld.ts:6</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -89,26 +157,50 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_main_main_.html">"main/main"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_renderer_matchmaker_activeaccount_.html">"renderer/matchmaker/<wbr>Active<wbr>Account"</a>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_clientproxy_.html">"renderer/matchmaker/<wbr>Client<wbr>Proxy"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_renderer_matchmaker_database_.html">"renderer/matchmaker/<wbr>Database"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_renderer_matchmaker_lobby_.html">"renderer/matchmaker/<wbr>Lobby"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_renderer_matchmaker_matchmaker_.html">"renderer/matchmaker/<wbr>Matchmaker"</a>
+						<a href="_renderer_matchmaker_director_.html">"renderer/matchmaker/<wbr>Director"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_renderer_simulator_game_.html">"renderer/simulator/<wbr>Game"</a>
+						<a href="_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_renderer_simulator_player_.html">"renderer/simulator/<wbr>Player"</a>
+						<a href="_renderer_matchmaker_connection_tcpclientmonitor_.html">"renderer/matchmaker/connection/TCPClient<wbr>Monitor"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_connection_tcpclientserver_.html">"renderer/matchmaker/connection/TCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_connection_tcpclientsession_.html">"renderer/matchmaker/connection/TCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_game_chatlobby_.html">"renderer/matchmaker/game/<wbr>Chat<wbr>Lobby"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_renderer_matchmaker_game_gameworld_.html">"renderer/matchmaker/game/<wbr>Game<wbr>World"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_message_messagefactory_.html">"renderer/matchmaker/message/<wbr>Message<wbr>Factory"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_message_msg_auth_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Auth"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -117,8 +209,20 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldstate.html" class="tsd-kind-icon">Game<wbr>World<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-kind-icon">Game<wbr>World<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-kind-icon">Active<wbr>Account</a>
+						<a href="../classes/_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-kind-icon">Game<wbr>World</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="_renderer_matchmaker_game_gameworld_.html#gameworldoptions" class="tsd-kind-icon">Game<wbr>World<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_renderer_matchmaker_game_gameworld_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>
 					</li>
 				</ul>
 			</nav>

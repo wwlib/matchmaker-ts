@@ -87,22 +87,28 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_simulator_simulator_.simulator.html#_game" class="tsd-kind-icon">_game</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_simulator_simulator_.simulator.html#_updatehandler" class="tsd-kind-icon">_update<wbr>Handler</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#games" class="tsd-kind-icon">games</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_renderer_simulator_simulator_.simulator.html#_deltatime" class="tsd-kind-icon">_delta<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_simulator_simulator_.simulator.html#_tickhandler" class="tsd-kind-icon">_tick<wbr>Handler</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_simulator_simulator_.simulator.html#_tickinterval" class="tsd-kind-icon">_tick<wbr>Interval</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-set-signature tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#deltatime" class="tsd-kind-icon">delta<wbr>Time</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#json" class="tsd-kind-icon">json</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#activateaccounts" class="tsd-kind-icon">activate<wbr>Accounts</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#getstats" class="tsd-kind-icon">get<wbr>Stats</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#spawnaccounts" class="tsd-kind-icon">spawn<wbr>Accounts</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#dispose" class="tsd-kind-icon">dispose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#start" class="tsd-kind-icon">start</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_simulator_simulator_.simulator.html#tick" class="tsd-kind-icon">tick</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,108 +120,117 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Simulator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_simulator_simulator_.simulator.html" class="tsd-signature-type">Simulator</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Simulator<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../modules/_renderer_simulator_simulator_.html#simulatoroptions" class="tsd-signature-type">SimulatorOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_simulator_simulator_.simulator.html" class="tsd-signature-type">Simulator</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L19">renderer/simulator/Simulator.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L14">renderer/simulator/Simulator.ts:14</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../modules/_renderer_simulator_simulator_.html#simulatoroptions" class="tsd-signature-type">SimulatorOptions</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_renderer_simulator_simulator_.simulator.html" class="tsd-signature-type">Simulator</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_game" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _game</h3>
-					<div class="tsd-signature tsd-kind-icon">_game<span class="tsd-signature-symbol">:</span> <a href="_renderer_simulator_game_.game.html" class="tsd-signature-type">Game</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_deltatime" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _delta<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">_delta<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L19">renderer/simulator/Simulator.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L12">renderer/simulator/Simulator.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_updatehandler" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _update<wbr>Handler</h3>
-					<div class="tsd-signature tsd-kind-icon">_update<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;this.update.bind(this)</span></div>
+					<a name="_tickhandler" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tick<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;this.tick.bind(this)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L18">renderer/simulator/Simulator.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L14">renderer/simulator/Simulator.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="games" class="tsd-anchor"></a>
-					<h3>games</h3>
-					<div class="tsd-signature tsd-kind-icon">games<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_simulator_game_.game.html" class="tsd-signature-type">Game</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, Game&gt;()</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tickinterval" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tick<wbr>Interval</h3>
+					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L16">renderer/simulator/Simulator.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L13">renderer/simulator/Simulator.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="activateaccounts" class="tsd-anchor"></a>
-					<h3>activate<wbr>Accounts</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">activate<wbr>Accounts<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class">
+					<a name="deltatime" class="tsd-anchor"></a>
+					<h3>delta<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> deltaTime<span class="tsd-signature-symbol">(</span>deltaTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L70">renderer/simulator/Simulator.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L47">renderer/simulator/Simulator.ts:47</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>deltaTime: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getstats" class="tsd-anchor"></a>
-					<h3>get<wbr>Stats</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Stats<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="json" class="tsd-anchor"></a>
+					<h3>json</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> json<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L45">renderer/simulator/Simulator.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L25">renderer/simulator/Simulator.ts:25</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="spawnaccounts" class="tsd-anchor"></a>
-					<h3>spawn<wbr>Accounts</h3>
+					<a name="dispose" class="tsd-anchor"></a>
+					<h3>dispose</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">spawn<wbr>Accounts<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L62">renderer/simulator/Simulator.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L42">renderer/simulator/Simulator.ts:42</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>count: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -230,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L49">renderer/simulator/Simulator.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L34">renderer/simulator/Simulator.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -238,16 +253,33 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="update" class="tsd-anchor"></a>
-					<h3>update</h3>
+					<a name="stop" class="tsd-anchor"></a>
+					<h3>stop</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/9eced1c/src/renderer/simulator/Simulator.ts#L54">renderer/simulator/Simulator.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L38">renderer/simulator/Simulator.ts:38</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tick" class="tsd-anchor"></a>
+					<h3>tick</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tick<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/simulator/Simulator.ts#L30">renderer/simulator/Simulator.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -266,25 +298,49 @@
 						<a href="../modules/_main_main_.html">"main/main"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_activeaccount_.html">"renderer/matchmaker/<wbr>Active<wbr>Account"</a>
+						<a href="../modules/_renderer_matchmaker_clientproxy_.html">"renderer/matchmaker/<wbr>Client<wbr>Proxy"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_database_.html">"renderer/matchmaker/<wbr>Database"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_lobby_.html">"renderer/matchmaker/<wbr>Lobby"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_matchmaker_.html">"renderer/matchmaker/<wbr>Matchmaker"</a>
+						<a href="../modules/_renderer_matchmaker_director_.html">"renderer/matchmaker/<wbr>Director"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_game_.html">"renderer/simulator/<wbr>Game"</a>
+						<a href="../modules/_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_player_.html">"renderer/simulator/<wbr>Player"</a>
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientmonitor_.html">"renderer/matchmaker/connection/TCPClient<wbr>Monitor"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientserver_.html">"renderer/matchmaker/connection/TCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientsession_.html">"renderer/matchmaker/connection/TCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_chatlobby_.html">"renderer/matchmaker/game/<wbr>Chat<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_gameworld_.html">"renderer/matchmaker/game/<wbr>Game<wbr>World"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_messagefactory_.html">"renderer/matchmaker/message/<wbr>Message<wbr>Factory"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_auth_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Auth"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -301,36 +357,39 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="_renderer_simulator_simulator_.simulator.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_renderer_simulator_simulator_.simulator.html#_game" class="tsd-kind-icon">_game</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="_renderer_simulator_simulator_.simulator.html#_deltatime" class="tsd-kind-icon">_delta<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_renderer_simulator_simulator_.simulator.html#_updatehandler" class="tsd-kind-icon">_update<wbr>Handler</a>
+								<a href="_renderer_simulator_simulator_.simulator.html#_tickhandler" class="tsd-kind-icon">_tick<wbr>Handler</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_renderer_simulator_simulator_.simulator.html#games" class="tsd-kind-icon">games</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_simulator_simulator_.simulator.html#_tickinterval" class="tsd-kind-icon">_tick<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-set-signature tsd-parent-kind-class">
+								<a href="_renderer_simulator_simulator_.simulator.html#deltatime" class="tsd-kind-icon">delta<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_renderer_simulator_simulator_.simulator.html#json" class="tsd-kind-icon">json</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_simulator_simulator_.simulator.html#activateaccounts" class="tsd-kind-icon">activate<wbr>Accounts</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_simulator_simulator_.simulator.html#getstats" class="tsd-kind-icon">get<wbr>Stats</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_simulator_simulator_.simulator.html#spawnaccounts" class="tsd-kind-icon">spawn<wbr>Accounts</a>
+								<a href="_renderer_simulator_simulator_.simulator.html#dispose" class="tsd-kind-icon">dispose</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_simulator_simulator_.simulator.html#start" class="tsd-kind-icon">start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_simulator_simulator_.simulator.html#update" class="tsd-kind-icon">update</a>
+								<a href="_renderer_simulator_simulator_.simulator.html#stop" class="tsd-kind-icon">stop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_simulator_simulator_.simulator.html#tick" class="tsd-kind-icon">tick</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_renderer_simulator_simulator_.html#accountdata" class="tsd-kind-icon">account<wbr>Data</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_renderer_simulator_simulator_.html#simulatoroptions" class="tsd-kind-icon">Simulator<wbr>Options</a>
 					</li>
 				</ul>
 			</nav>

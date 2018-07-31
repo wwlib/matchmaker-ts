@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ActiveAccount | matchmaker-ts</title>
+	<title>MessageFactory | matchmaker-ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_renderer_matchmaker_activeaccount_.html">&quot;renderer/matchmaker/ActiveAccount&quot;</a>
+					<a href="../modules/_renderer_matchmaker_message_messagefactory_.html">&quot;renderer/matchmaker/message/MessageFactory&quot;</a>
 				</li>
 				<li>
-					<a href="_renderer_matchmaker_activeaccount_.activeaccount.html">ActiveAccount</a>
+					<a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html">MessageFactory</a>
 				</li>
 			</ul>
-			<h1>Class ActiveAccount</h1>
+			<h1>Class MessageFactory</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ActiveAccount</span>
+						<span class="target">MessageFactory</span>
 					</li>
 				</ul>
 			</section>
@@ -84,24 +84,19 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_lobby" class="tsd-kind-icon">_lobby</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_lobbystarttime" class="tsd-kind-icon">_lobby<wbr>Start<wbr>Time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_spawntime" class="tsd-kind-icon">_spawn<wbr>Time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#playeraccount" class="tsd-kind-icon">player<wbr>Account</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#msgclz" class="tsd-kind-icon">msg<wbr>Clz</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Accessors</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#activetime" class="tsd-kind-icon">active<wbr>Time</a></li>
-								<li class="tsd-kind-set-signature tsd-parent-kind-class"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#lobby" class="tsd-kind-icon">lobby</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_renderer_matchmaker_activeaccount_.activeaccount.html#waittime" class="tsd-kind-icon">wait<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#parse" class="tsd-kind-icon">parse</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,125 +108,61 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Active<wbr>Account<span class="tsd-signature-symbol">(</span>playerAccount<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Message<wbr>Factory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html" class="tsd-signature-type">MessageFactory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/ActiveAccount.ts:10</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/message/MessageFactory.ts#L17">renderer/matchmaker/message/MessageFactory.ts:17</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>playerAccount: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-signature-type">ActiveAccount</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html" class="tsd-signature-type">MessageFactory</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_lobby" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _lobby</h3>
-					<div class="tsd-signature tsd-kind-icon">_lobby<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_lobby_.lobby.html" class="tsd-signature-type">Lobby</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="msgclz" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> msg<wbr>Clz</h3>
+					<div class="tsd-signature tsd-kind-icon">msg<wbr>Clz<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[Msg_Auth,Msg_Chat,]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in renderer/matchmaker/ActiveAccount.ts:8</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_lobbystarttime" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _lobby<wbr>Start<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">_lobby<wbr>Start<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in renderer/matchmaker/ActiveAccount.ts:9</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_spawntime" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _spawn<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">_spawn<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in renderer/matchmaker/ActiveAccount.ts:10</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="playeraccount" class="tsd-anchor"></a>
-					<h3>player<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">player<wbr>Account<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in renderer/matchmaker/ActiveAccount.ts:6</li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/message/MessageFactory.ts#L14">renderer/matchmaker/message/MessageFactory.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="activetime" class="tsd-anchor"></a>
-					<h3>active<wbr>Time</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> activeTime<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="parse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>messageBuffer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, rinfo<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_renderer_matchmaker_connection_connectionmanager_.remoteinfo.html" class="tsd-signature-type">RemoteInfo</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_message_message_.message.html" class="tsd-signature-type">Message</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in renderer/matchmaker/ActiveAccount.ts:27</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class">
-					<a name="lobby" class="tsd-anchor"></a>
-					<h3>lobby</h3>
-					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> lobby<span class="tsd-signature-symbol">(</span>lobby<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_lobby_.lobby.html" class="tsd-signature-type">Lobby</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in renderer/matchmaker/ActiveAccount.ts:18</li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/b206cfb/src/renderer/matchmaker/message/MessageFactory.ts#L21">renderer/matchmaker/message/MessageFactory.ts:21</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>lobby: <a href="_renderer_matchmaker_lobby_.lobby.html" class="tsd-signature-type">Lobby</a></h5>
+									<h5>messageBuffer: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> rinfo: <a href="../interfaces/_renderer_matchmaker_connection_connectionmanager_.remoteinfo.html" class="tsd-signature-type">RemoteInfo</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="waittime" class="tsd-anchor"></a>
-					<h3>wait<wbr>Time</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> waitTime<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in renderer/matchmaker/ActiveAccount.ts:23</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_message_message_.message.html" class="tsd-signature-type">Message</a>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">undefined</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
@@ -246,26 +177,50 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_main_.html">"main/main"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_activeaccount_.html">"renderer/matchmaker/<wbr>Active<wbr>Account"</a>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_clientproxy_.html">"renderer/matchmaker/<wbr>Client<wbr>Proxy"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_database_.html">"renderer/matchmaker/<wbr>Database"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_lobby_.html">"renderer/matchmaker/<wbr>Lobby"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_matchmaker_.html">"renderer/matchmaker/<wbr>Matchmaker"</a>
+						<a href="../modules/_renderer_matchmaker_director_.html">"renderer/matchmaker/<wbr>Director"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_game_.html">"renderer/simulator/<wbr>Game"</a>
+						<a href="../modules/_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_renderer_simulator_player_.html">"renderer/simulator/<wbr>Player"</a>
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientmonitor_.html">"renderer/matchmaker/connection/TCPClient<wbr>Monitor"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientserver_.html">"renderer/matchmaker/connection/TCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_connection_tcpclientsession_.html">"renderer/matchmaker/connection/TCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_chatlobby_.html">"renderer/matchmaker/game/<wbr>Chat<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_gameworld_.html">"renderer/matchmaker/game/<wbr>Game<wbr>World"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_messagefactory_.html">"renderer/matchmaker/message/<wbr>Message<wbr>Factory"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_auth_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Auth"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -277,31 +232,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_renderer_matchmaker_activeaccount_.activeaccount.html" class="tsd-kind-icon">Active<wbr>Account</a>
+						<a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html" class="tsd-kind-icon">Message<wbr>Factory</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_lobby" class="tsd-kind-icon">_lobby</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#msgclz" class="tsd-kind-icon">msg<wbr>Clz</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_lobbystarttime" class="tsd-kind-icon">_lobby<wbr>Start<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#_spawntime" class="tsd-kind-icon">_spawn<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#playeraccount" class="tsd-kind-icon">player<wbr>Account</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#activetime" class="tsd-kind-icon">active<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-set-signature tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#lobby" class="tsd-kind-icon">lobby</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_activeaccount_.activeaccount.html#waittime" class="tsd-kind-icon">wait<wbr>Time</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_renderer_matchmaker_message_messagefactory_.messagefactory.html#parse" class="tsd-kind-icon">parse</a>
 							</li>
 						</ul>
 					</li>
