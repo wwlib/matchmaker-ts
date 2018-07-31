@@ -2,10 +2,6 @@
 
 ![matchmaker-ts](./docs/img/matchmaker-ts.png)
 
-[https://wwlib.github.io/matchmaker-ts/](https://wwlib.github.io/matchmaker-ts/)
-
-[https://wwlib.github.io](https://wwlib.github.io/)
-
 matchmaker-ts is a tool for designing and analyzing multiplayer matchmaking.  
 
 
@@ -18,7 +14,7 @@ yarn start
 
 ### Documentation
 
-[https://wwlib.github.io/matchmaker-ts/typedoc/index.html](https://wwlib.github.io/matchmaker-ts/typedoc/index.html)
+[./docs/typedoc/index.html](./docs/typedoc/index.html)
 
 ### Getting Started
 
