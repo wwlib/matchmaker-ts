@@ -46,15 +46,8 @@ describe('Director addClientToLobby', () => {
         playerAccount.mmr = 400;
         let client: ClientProxy = new ClientProxy(playerAccount.uuid);
         const lobby: Lobby = Director.Instance().addClientToLobby(client);
+        lobby.stop();
         expect(Director.Instance().lobyCount).to.equal(1);
         expect(lobby.mmrRange).to.deep.equal({min: 301, max: 600});
-    });
-});
-
-describe('Director addMockClient', () => {
-    it('should return lobby count = 1', () => {
-        const clientProxy: ClientProxy = Director.Instance().addMockClient();
-        expect(Director.Instance().lobyCount).to.equal(1);
-        // expect(clientProxy.)
     });
 });

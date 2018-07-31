@@ -41,6 +41,7 @@ export default class Director {
     private _connectionManager: ConnectionManager;
     // private _lobbyToken: any;
     private _lobbies: Map<string, Lobby> = new Map<string, Lobby>();
+    private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
 
     constructor( options?: DirectorOptions) {
         options = options || {};
@@ -108,7 +109,7 @@ export default class Director {
             });
             if (!lobby) {
                 lobby = this.addLobbyWithPlayerAccount(player);
-                console.log(`Director: addClientToLobby: new lobby for PlayerAccount:`, lobby, player);
+                // console.log(`Director: addClientToLobby: new lobby for PlayerAccount:`, lobby, player);
             }
             lobby.addClient(clientProxy);
         } else {
@@ -123,6 +124,8 @@ export default class Director {
             port: 0,
             on: () => {},
             send:  (msg: any) => {},
+            removeAllListeners: () => {},
+            close: () => {},
         }
         let clientSession: TCPClientSession = this._connectionManager.TCP_s.onConnection(mockWebSocket);
         let playerAccount: PlayerAccount = Database.generateMockPlayerAccount();
@@ -169,6 +172,28 @@ export default class Director {
         this._lobbies.forEach((lobby: Lobby, key: string) => {
             this.removeLobby(lobby);
         });
+    }
+
+    addAuthenticatedClientSession(userUUID: string, clientSession: TCPClientSession): void {
+        this._authenticatedClientSessions.set(userUUID, clientSession);
+    }
+
+    removeAuthenticatedClientSession(userUUID: string): void {
+        let clientSession: TCPClientSession = this._authenticatedClientSessions.get(userUUID);
+        if (this._connectionManager && this._connectionManager.TCP_s) {
+            this._connectionManager.TCP_s.removeClientSession(clientSession); // _connectionManager is undefined when running tests
+        }
+        this._authenticatedClientSessions.delete(userUUID);
+    }
+
+    handleGameOver(client1: ClientProxy, client2: ClientProxy): void {
+        // for now, dispose clients and remove associated player activeAccounts
+        this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
+
+        this.removeAuthenticatedClientSession(client1.userUUID);
+        this.removeAuthenticatedClientSession(client2.userUUID);
+        client1.dispose();
+        client2.dispose();
     }
 
     log(msg: string, obj?: any): void {

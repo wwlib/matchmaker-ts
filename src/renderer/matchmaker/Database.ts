@@ -8,8 +8,8 @@ export default class Database {
         Database.playerAccounts = new Map<string, PlayerAccount>();
     }
 
-    static generateMockPlayerAccount(): PlayerAccount {
-        let mockPlayerAccount: PlayerAccount = new PlayerAccount();
+    static generateMockPlayerAccount(options?: any): PlayerAccount {
+        let mockPlayerAccount: PlayerAccount = new PlayerAccount(options);
         Database.addPlayerAccount(mockPlayerAccount);
         return mockPlayerAccount;
     }

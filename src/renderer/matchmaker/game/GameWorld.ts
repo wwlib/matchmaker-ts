@@ -103,14 +103,18 @@ export default abstract class GameWorld {
 		this._state = GameWorldState.InProgress;
 	}
 
-	over(): void {
+	stop(): void {
 		clearInterval(this._tickInterval);
+	}
+
+	over(): void {
+		this.stop();
 		this._state = GameWorldState.Over;
-		this.removeAllClients();
 	}
 
 	addClient(client: ClientProxy): void {
 		this._clients.set(client.userUUID, client);
+		client.restartGameTime();
 	}
 
 	removeClient(client: ClientProxy): void {
@@ -133,6 +137,10 @@ export default abstract class GameWorld {
 
 	get shortId(): string {
 		return this.uuid.substring(0,8);
+	}
+
+	get clientCount(): number {
+		return this._clients.size;
 	}
 
 	logClients(): void {

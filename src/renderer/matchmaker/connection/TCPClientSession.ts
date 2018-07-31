@@ -7,11 +7,15 @@ import Msg_Auth from '../message/Msg_Auth';
 import TCPClientServer from './TCPClientServer';
 import Director from '../Director';
 
+const now = require("performance-now");
+
 export type MockWebSocket = {
 	host: string;
 	port: number;
 	on: any,
-	send: any
+	send: any,
+	removeAllListeners: any,
+	close: any
 }
 
 export default class TCPClientSession {
@@ -41,6 +45,7 @@ export default class TCPClientSession {
 
 	set userUUID(uuid: string) {
 		this._userUUID = uuid;
+		Director.Instance().addAuthenticatedClientSession(this._userUUID, this);
 		this._userToken = PubSubJS.subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
 	}
 
@@ -63,7 +68,7 @@ export default class TCPClientSession {
 
 	start(): void {
 		// console.log(`TCP_c: start`);
-		this._spawnTime = performance.now();
+		this._spawnTime = now();
 		this._socket.on('close', () => {
 			console.log('TCP_c: on(close)');
 			this.dispose();
@@ -84,7 +89,7 @@ export default class TCPClientSession {
 
 	onMessage(message: any): void {
 		// console.log(`TCP_c: onMessage: `, message);
-		this.lastMessageReceivedTime = performance.now();
+		this.lastMessageReceivedTime = now();
 		let rinfo: any = {address: this._ip, port: this._port};
 		let msg: Message = MessageFactory.parse(message, rinfo);
 		if (msg) {
@@ -96,7 +101,7 @@ export default class TCPClientSession {
 					authMsg.host = this._ip;
 					authMsg.port = this._port;
 					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg);
-					this.userUUID = Director.Instance().authenticateUser(authMsg);
+					this.userUUID = Director.Instance().authenticateUser(authMsg); //TODO: add real authentication flow
 					authMsg.userUUID = this.userUUID;
 					authMsg.password = '';
 					authMsg.authToken = '<AUTH-TOKEN>';
@@ -104,9 +109,6 @@ export default class TCPClientSession {
 					this.sendMessage(authMsg); // ACK
 					break;
 				case MessageType.Chat:
-					// let chatMsg: Msg_Chat = msg as Msg_Chat;
-					// chatMsg.host = this._ip;
-					// chatMsg.port = this._port;
 					console.log(`  --> TCP_c: received Msg_Chat: `, message);
 					this.publish(message);
 					break;
@@ -128,11 +130,11 @@ export default class TCPClientSession {
 	}
 
 	get idleTime(): number {
-		return performance.now() - this.lastMessageReceivedTime;
+		return now() - this.lastMessageReceivedTime;
 	}
 
 	get aliveTime(): number {
-		return performance.now() - this._spawnTime;
+		return now() - this._spawnTime;
 	}
 
 	public sendText(message: string): void {

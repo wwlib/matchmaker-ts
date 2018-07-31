@@ -89,9 +89,27 @@ export default class TCPClientServer {
 		return client;
 	}
 
+	addClientSession(clientSession: TCPClientSession, socket: WebSocket | MockWebSocket): void {
+		this.clients.set(clientSession, socket);
+	}
+
+	removeClientSession(clientSession: TCPClientSession): void {
+		this.clients.delete(clientSession);
+		clientSession.dispose();
+	}
+
+	removeClientSessionWithSocket(socket: WebSocket | MockWebSocket): void {
+		this.clients.forEach((testSocket: WebSocket, clientSession: TCPClientSession) => {
+			if (socket == testSocket) {
+				this.clients.delete(clientSession);
+				clientSession.dispose();
+			}
+		});
+	}
+
 	public broadcastMessage(message: Message): void {
-		this.clients.forEach((socket: WebSocket, client: TCPClientSession) => {
-			client.sendMessage(message);
+		this.clients.forEach((socket: WebSocket, clientSession: TCPClientSession) => {
+			clientSession.sendMessage(message);
 		});
 	}
 

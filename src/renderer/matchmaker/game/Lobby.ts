@@ -33,6 +33,8 @@ export default class Lobby extends GameWorld {
     public mmrRange: Range;
     public latencyRange: Range;
     public priorityRange: Range;
+    public maxClientWaitTime: number = 10000;
+    public maxClientMMRDifference: number = 100;
 
     constructor(options?: any) {
         super();
@@ -67,10 +69,34 @@ export default class Lobby extends GameWorld {
 
         // PubSubJS.publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
         // this.publish('ready');
+
+        this.start();
     }
 
-    tick(): void {
-        this.log(`tick`);
+    tick(): number {
+        let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
+        let iterator2: IterableIterator<[string, ClientProxy]> = this._clients.entries();
+        let client1: ClientProxy;
+        let client2: ClientProxy;
+        let matchCount: number = 0;
+
+        let element1: any;
+        let element2: any;
+        while( element1 = iterator1.next().value ) {
+            client1 = element1[1];
+            while (element2 = iterator2.next().value ) {
+                client2 = element2[1];
+                if ((client1 != client2) && this.willMatchClients(client1, client2)) {
+                    matchCount++;
+                    // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
+                    this.removeClient(client1);
+                    this.removeClient(client2);
+                    Director.Instance().handleGameOver(client1, client2);
+                    break;
+                }
+            }
+        }
+        return matchCount;
     }
 
     receiveMessageFromClient(data: any, client: ClientProxy): void {
@@ -83,6 +109,14 @@ export default class Lobby extends GameWorld {
         if (player.location != this.location) { result = false };
         if (!Lobby.inRange(player.mmr, this.mmrRange)) { result = false };
         if (this._clients.size >= this.maxClients) { result = false }
+        return result;
+    }
+
+    willMatchClients(client1: ClientProxy, client2: ClientProxy): boolean {
+        let result: boolean = false;
+        let combinedWaitTime: number = client1.gameTime + client2.gameTime;
+        if (Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr) <= this.maxClientMMRDifference) {result = true};
+        if (combinedWaitTime >= this.maxClientWaitTime) {result = true};
         return result;
     }
 

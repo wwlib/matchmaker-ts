@@ -7,7 +7,7 @@ import Simulator from './simulator/Simulator';
 
 let simulator = undefined; //new Simulator();
 
-Director.Instance({ mode: DirectorMode.Primary });
+Director.Instance({ mode: DirectorMode.Primary, debug: true });
 Director.Instance().startConnectionManager();
 
 render(

@@ -3,6 +3,8 @@ import TCPClientSession from './TCPClientSession';
 import TCPClientServer from './TCPClientServer';
 import RTMPGameSubsystem from './RTMPGameSubsystem';
 
+const now = require("performance-now");
+
 export default class TCPClientMonitor extends RTMPGameSubsystem { //implements Runnable{
 
 	public server: TCPClientServer;
@@ -19,7 +21,7 @@ export default class TCPClientMonitor extends RTMPGameSubsystem { //implements R
 
 	public tick(): void {
 		this.server.clients.forEach((socket: WebSocket, client: TCPClientSession) => {
-			let elapsedTime: number = performance.now() - client.lastMessageReceivedTime;
+			let elapsedTime: number = now() - client.lastMessageReceivedTime;
 			this.debug("checking: " + client.getIP() + ":" + client.getPort() + "[" + elapsedTime + "]");
 			if (false && elapsedTime >= 11000) {
 				//kill client
