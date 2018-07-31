@@ -7,7 +7,7 @@ gulp.task("typedoc", function() {
         .pipe(typedoc({
             module: "commonjs",
             target: "es6",
-            out: "docs/",
+            out: "docs/typedoc",
             name: "matchmaker-ts"
         }))
     ;
