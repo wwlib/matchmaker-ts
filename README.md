@@ -121,6 +121,8 @@ For example: Amazon's GameLift service can provide a highly scalable multi-serve
 #### Performance
 There is room for a lot of performance tuning in the current implementation. As noted above, the matching algorithm is simplistic. The Electron wrapper is useful for design and development. A headless node instances would be used in production.
 
+TODO: Use [workers](https://nodejs.org/api/worker_threads.html) to improve matching performance.
+
 #### Matching Considerations
 Matching is an interesting (hard) problem and the subject of previous and ongoing research. These relevant links address both intuitive and counter-intuitive strategies for maximizing player engagement:
 
