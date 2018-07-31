@@ -14,7 +14,7 @@ yarn start
 
 ### Documentation
 
-[./docs/typedoc/index.html](./docs/typedoc/index.html)
+[https://wwlib.github.io/matchmaker-ts/typedoc/index.html](https://wwlib.github.io/matchmaker-ts/typedoc/index.html)
 
 ### Getting Started
 
