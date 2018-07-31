@@ -1,5 +1,7 @@
 ## matchmaker-ts
 
+[https://github.com/wwlib/matchmaker-ts](https://github.com/wwlib/matchmaker-ts)
+
 ![matchmaker-ts](./docs/img/matchmaker-ts.png)
 
 matchmaker-ts is a tool for designing and analyzing multiplayer matchmaking.  
@@ -105,7 +107,16 @@ matchmaker-ts anticipates this architecture by using a local pub/sub module (Pub
 
 For example: Amazon's GameLift service can provide a highly scalable multi-server architecture using redis. GameLift's matchmaking service also provides a configurable, scalable mechanism for matchmaking.
 
-LINKS
+- <https://aws.amazon.com/gamelift/>
+- <https://hackernoon.com/serverless-websockets-with-aws-lambda-fanout-15384bd30354>
+
+- <https://aws.amazon.com/blogs/database/how-to-build-a-chat-application-with-amazon-elasticache-for-redis/>
+![amazon-redis](./docs/img/amazon-redis.png)
+
+- <https://medium.com/containers-on-aws/scaling-a-realtime-chat-app-on-aws-using-socket-io-redis-and-aws-fargate-4ed63fb1b681>
+![medium-redis](./docs/img/medium-redis.png)
+
+- <https://medium.com/digg-data/the-way-of-the-gopher-6693db15ae1f>
 
 #### Performance
 There is room for a lot of performance tuning in the current implementation. As noted above, the matching algorithm is simplistic. The Electron wrapper is useful for design and development. A headless node instances would be used in production.
@@ -113,7 +124,35 @@ There is room for a lot of performance tuning in the current implementation. As 
 #### Matching Considerations
 Matching is an interesting (hard) problem and the subject of previous and ongoing research. These relevant links address both intuitive and counter-intuitive strategies for maximizing player engagement:
 
-LINKS
+AWS  
+- <https://aws.amazon.com/blogs/gametech/matchmaking-your-way-amazon-gamelift-flexmatch-and-game-session-queues/>
+- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html>
+- <https://aws.amazon.com/blogs/gametech/fitting-the-pattern-serverless-custom-matchmaking-with-amazon-gamelift/>
+
+Research  
+- <https://www.firstpost.com/tech/gaming/university-of-michigan-researchers-create-better-matchmaking-algorithms-for-multiplayer-games-3725015.html>
+- <https://arstechnica.com/gaming/2018/01/ea-has-tested-online-matchmaking-algorithms-to-favor-engagement-not-fairness/>
+- <https://digit.hbs.org/submission/video-game-matchmaking-a-data-driven-take-from-blizzard/>
+- <https://www.researchgate.net/figure/MMR-distribution-of-players_fig1_236887261>
+- <https://en.wikipedia.org/wiki/Stable_marriage_problem>
+- <http://www.diva-portal.se/smash/get/diva2:873273/FULLTEXT01.pdf>
+- <http://papers.www2017.com.au.s3-website-ap-southeast-2.amazonaws.com/proceedings/p1143.pdf>
+- <http://joostdevblog.blogspot.com/2014/11/why-good-matchmaking-requires-enormous.html>
+- <http://sce.carleton.ca/~mfloyd/iccbr11games/papers/Jimenez-Rodriguez.pdf>
+
+MMR/ELO
+- <https://fivethirtyeight.com/features/how-we-calculate-nba-elo-ratings/>
+- <https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/>
+
+Experience
+- <https://www.epicgames.com/fortnite/forums/battle-royale/royale-with-cheese/139705-connecting-to-matchmaking-service-takes-forever-nowadays-how-can-queue-be-full-o-o>
+- <https://www.epicgames.com/fortnite/forums/suggestions-advice/172539-skill-based-matchmaking>
+
+Approach
+- <https://wiki.guildwars2.com/wiki/PvP_Matchmaking_Algorithm>
+- <https://www.reddit.com/r/learnprogramming/comments/7rdlzf/how_is_online_game_matchmaking_done_from_a/>
+- <http://www.atonet.se/matchmaking.html>
+- <https://github.com/eerwitt/node-match-maker>
 
 #### Data/ML
 Using ML (Deep Learning) could be a valubale approach to creating an 'intelligent' adaptive matching strategy - especially given that non-obvious, counter-intuitive factors can contribute to player **engagement**, **retention** and overall **profitability**.
@@ -121,6 +160,5 @@ Using ML (Deep Learning) could be a valubale approach to creating an 'intelligen
 #### Teams vs 1v1
 Teams are conceptually like a Lobby, made up of players who have often explicitly chosen to play as a team. An approach to team matching would give players a mechanism for joining a specific TeamLobby and then matching TeamLobby instances in a TeamMatchingLobby.
 
-#### Other Reference
-
-LINKS
+AWS: GameLift
+- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-examples.html>
