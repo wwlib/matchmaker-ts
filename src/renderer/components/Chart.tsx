@@ -26,7 +26,7 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
     turnOnDataStream() {
         this._startTime = now();
         // this.resetData();
-        this.setState({ randomDataIntervalId: setInterval(this._updateDataHndler, 2000) });
+        this.setState({ randomDataIntervalId: setInterval(this._updateDataHndler, 200) });
     }
 
     turnOffDataStream() {

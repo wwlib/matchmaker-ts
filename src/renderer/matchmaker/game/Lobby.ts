@@ -75,7 +75,7 @@ export default class Lobby extends GameWorld {
 
     tick(): number {
         let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
-        let iterator2: IterableIterator<[string, ClientProxy]> = this._clients.entries();
+        let iterator2: IterableIterator<[string, ClientProxy]>;
         let client1: ClientProxy;
         let client2: ClientProxy;
         let matchCount: number = 0;
@@ -84,6 +84,7 @@ export default class Lobby extends GameWorld {
         let element2: any;
         while( element1 = iterator1.next().value ) {
             client1 = element1[1];
+            iterator2 = this._clients.entries();
             while (element2 = iterator2.next().value ) {
                 client2 = element2[1];
                 if ((client1 != client2) && this.willMatchClients(client1, client2)) {
