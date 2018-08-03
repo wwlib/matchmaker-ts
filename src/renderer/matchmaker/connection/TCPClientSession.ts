@@ -160,7 +160,7 @@ export default class TCPClientSession {
 			console.log(err);
 		}
 		this._socket = undefined;
-		PubSubJS.unsubscribe(this._userToken);
+		// PubSubJS.unsubscribe(this._userToken);
 		this._userToken = undefined;
 	}
 }

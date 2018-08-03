@@ -39,6 +39,12 @@ export default class Application extends React.Component < ApplicationProps, App
                 Director.Instance().tick();
                 console.log(Director.Instance().getPerformanceStats());
                 break;
+            case 'start':
+                Director.Instance().start();
+                break;
+            case 'stop':
+                Director.Instance().stop();
+                break;
             case 'startSim':
                 if (this.simulator) {
                     this.simulator.dispose();
@@ -62,6 +68,10 @@ export default class Application extends React.Component < ApplicationProps, App
                     onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClients</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"tick"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "tick")}>tick</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"start"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "start")}>start</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"stop"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "stop")}>stop</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"startSim"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "startSim")}>startSim</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"stopSim"} style = {{width: 120}}

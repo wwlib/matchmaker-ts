@@ -78,45 +78,49 @@ export default class Lobby extends GameWorld {
         // this.start();
     }
 
-    // tick(): number {
-    //     let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
-    //     let iterator2: IterableIterator<[string, ClientProxy]>;
-    //     let client1: ClientProxy;
-    //     let client2: ClientProxy;
-    //     let matchCount: number = 0;
-    //
-    //     let element1: any;
-    //     let element2: any;
-    //     while( element1 = iterator1.next().value ) {
-    //         client1 = element1[1];
-    //         iterator2 = this._clients.entries();
-    //         while (element2 = iterator2.next().value ) {
-    //             client2 = element2[1];
-    //             if ((client1 != client2) && this.willMatchClients(client1, client2)) {
-    //                 matchCount++;
-    //                 // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
-    //                 this.removeClient(client1);
-    //                 this.removeClient(client2);
-    //                 Director.Instance().handleGameOver(client1, client2);
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     return matchCount;
-    // }
-
     tick(): number {
         this.startTick();
+        let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
+        let iterator2: IterableIterator<[string, ClientProxy]>;
+        let client1: ClientProxy;
+        let client2: ClientProxy;
         this.lastComparisons = 0;
         this.lastMatches = 0;
-        this._clients.forEach((client: ClientProxy, key: string) => {
-            this.lastComparisons++;
-			this.removeClient(client);
-            Director.Instance().removeClient(client);
-		});
+
+        let element1: any;
+        let element2: any;
+        while( element1 = iterator1.next().value ) {
+            client1 = element1[1];
+            iterator2 = this._clients.entries();
+            while (element2 = iterator2.next().value ) {
+                client2 = element2[1];
+                this.lastComparisons++;
+                if ((client1 != client2) && this.willMatchClients(client1, client2)) {
+                    this.lastMatches++;
+                    // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
+                    this.removeClient(client1);
+                    this.removeClient(client2);
+                    Director.Instance().handleGameOver(client1, client2);
+                    break;
+                }
+            }
+        }
         this.endTick();
-        return 0;
+        return this.lastMatches;
     }
+
+    // tick(): number {
+    //     this.startTick();
+    //     this.lastComparisons = 0;
+    //     this.lastMatches = 0;
+    //     this._clients.forEach((client: ClientProxy, key: string) => {
+    //         this.lastComparisons++;
+	// 		this.removeClient(client);
+    //         Director.Instance().removeClient(client);
+	// 	});
+    //     this.endTick();
+    //     return 0;
+    // }
 
     receiveMessageFromClient(data: any, client: ClientProxy): void {
         // this.log(`receiveMessageFromClient: ${client.shortId}`, data);
@@ -134,7 +138,8 @@ export default class Lobby extends GameWorld {
     willMatchClients(client1: ClientProxy, client2: ClientProxy): boolean {
         let result: boolean = false;
         let combinedWaitTime: number = client1.gameTime + client2.gameTime;
-        if (Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr) <= this.maxClientMMRDifference) {result = true};
+        let mmrDifference: number = Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr);
+        if  (mmrDifference <= this.maxClientMMRDifference) {result = true};
         if (combinedWaitTime >= this.maxCombinedClientWaitTime) {result = true};
         return result;
     }

@@ -80,6 +80,6 @@ export default class ClientProxy {
     dispose(): void {
         this.playerAccount = undefined;
         this._gameWorld = undefined;
-        PubSubJS.unsubscribe(this._userToken);
+        // PubSubJS.unsubscribe(this._userToken);
     }
 }

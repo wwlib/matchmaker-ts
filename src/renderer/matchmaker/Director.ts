@@ -13,6 +13,7 @@ import Database from './Database';
 const uuidv4 = require('uuid/v4');
 const EloRank = require('elo-rank');
 const elo = new EloRank(32);
+const now = require("performance-now");
 
 export enum DirectorMode {
     Primary,
@@ -27,6 +28,7 @@ export enum DirectorTopic {
 export type DirectorOptions = {
     uuid?: string;
     mode?: DirectorMode;
+    deltaTime?: number;
     debug?: boolean;
 }
 
@@ -46,16 +48,24 @@ export default class Director {
     private _lobbies: Map<string, Lobby> = new Map<string, Lobby>();
     private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
 
+    private _tickInterval: any;
+    private _tickHandler: any = this.tick.bind(this);
+    private _deltaTime: number;
+    public avgTickTime: number;
+    public lastTickTime: number;
+
     constructor( options?: DirectorOptions) {
         options = options || {};
         let defaultOptions: DirectorOptions =  {
             uuid: uuidv4(),
 			mode: DirectorMode.Primary,
+            deltaTime: 1000,
             debug: false
         }
 		options = Object.assign(defaultOptions, options);
 		this.uuid = options.uuid;
 		this.mode = options.mode;
+        this._deltaTime = options.deltaTime;
         this.debug = options.debug;
 
         if (this.mode == DirectorMode.Primary) {
@@ -64,6 +74,7 @@ export default class Director {
 
         this.performanceStats = undefined;
         this.lobbyStats = [];
+        this.avgTickTime = 0;
         Database.init();
     }
 
@@ -73,20 +84,35 @@ export default class Director {
     }
 
     tick(): void {
+        let startTime: number = now();
         this.lobbyStats = [];
         this._lobbies.forEach((lobby: Lobby, key: string) => {
             if ( !(lobby instanceof ChatLobby) ) {
                 lobby.tick();
-                this.lobbyStats.push( { uuid: lobby.uuid, avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, lastComparisons: lobby.lastComparisons, lastMatches: lobby.lastMatches } )
+                this.lobbyStats.push( {mmr: `${lobby.mmrRange.min}-${lobby.mmrRange.max}`, avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, comparisons: lobby.lastComparisons, matches: lobby.lastMatches,  uuid: lobby.shortId } )
             } else {
                 // console.log(`Director: addClientToLobby: testLobby rejected PlayerAccount:`, testLobby, player);
             }
         });
+        this.lastTickTime = now() - startTime;
+        this.updateAverageTickTime(this.lastTickTime);
     }
+
+    start(): void {
+        this._tickInterval = setInterval(this._tickHandler, this._deltaTime);
+    }
+
+    stop(): void {
+        clearInterval(this._tickInterval);
+    }
+
+    updateAverageTickTime(tickTime): void {
+		this.avgTickTime += (tickTime - this.avgTickTime) * 0.1;
+	}
 
     getPerformanceStats(): any {
         let clientCount: number = this._authenticatedClientSessions.size;
-        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, lobbyStats: this.lobbyStats }
+        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
         return this.performanceStats
     }
 
