@@ -38,6 +38,8 @@ export default class Director {
     public mode: DirectorMode;
     public maxLobbies: number;
     public debug: boolean;
+    public performanceStats: any;
+    public lobbyStats: any[];
 
     private _connectionManager: ConnectionManager;
     // private _lobbyToken: any;
@@ -60,12 +62,32 @@ export default class Director {
             this.createGlobalChanels();
         }
 
+        this.performanceStats = undefined;
+        this.lobbyStats = [];
         Database.init();
     }
 
     static Instance(options?: DirectorOptions)
     {
         return this._instance || (this._instance = new this(options));
+    }
+
+    tick(): void {
+        this.lobbyStats = [];
+        this._lobbies.forEach((lobby: Lobby, key: string) => {
+            if ( !(lobby instanceof ChatLobby) ) {
+                lobby.tick();
+                this.lobbyStats.push( { uuid: lobby.uuid, avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, lastComparisons: lobby.lastComparisons, lastMatches: lobby.lastMatches } )
+            } else {
+                // console.log(`Director: addClientToLobby: testLobby rejected PlayerAccount:`, testLobby, player);
+            }
+        });
+    }
+
+    getPerformanceStats(): any {
+        let clientCount: number = this._authenticatedClientSessions.size;
+        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, lobbyStats: this.lobbyStats }
+        return this.performanceStats
     }
 
     createGlobalChanels(): void {
@@ -96,7 +118,7 @@ export default class Director {
 
     addLobbyWithPlayerAccount(player: PlayerAccount): Lobby {
         let mmrRange: Range = Lobby.getMMRRangeWithPlayerAccount(player);
-        let lobby: Lobby = new Lobby({mmrRange: mmrRange, location: player.location});
+        let lobby: Lobby = new Lobby({mmrRange: mmrRange, location: player.location, deltaTime: 3000});
         this._lobbies.set(lobby.uuid, lobby);
         return lobby;
     }
@@ -141,6 +163,12 @@ export default class Director {
         return client;
     }
 
+    addMockClients(count: number): void {
+        for (let i=0; i<count; i++) {
+            this.addMockClient();
+        }
+    }
+
     authenticateUser(authMsg: Msg_Auth): string {
         //TODO: implement authentication
         // console.log(`Director: authenticateUser: `, authMsg);
@@ -183,6 +211,12 @@ export default class Director {
         this._authenticatedClientSessions.delete(userUUID);
     }
 
+    removeClient(client: ClientProxy): void {
+        this.removeAuthenticatedClientSession(client.userUUID);
+        Database.removePlayerAccount(client.playerAccount);
+        client.dispose();
+    }
+
     handleGameOver(client1: ClientProxy, client2: ClientProxy): void {
         // for now, dispose clients and remove associated player activeAccounts
         // this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
@@ -193,11 +227,6 @@ export default class Director {
         Database.removePlayerAccount(client2.playerAccount);
         client1.dispose();
         client2.dispose();
-    }
-
-    getPerformanceStats(): any {
-        let clientCount: number = this._authenticatedClientSessions.size;
-        return { lobbies: this._lobbies.size, clients:  clientCount }
     }
 
     logLobbyStats(): void {

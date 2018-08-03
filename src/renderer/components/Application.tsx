@@ -15,7 +15,6 @@ export interface ApplicationState { gameCount: number; stats: string }
 
 export default class Application extends React.Component < ApplicationProps, ApplicationState > {
 
-    public mockClient: ClientProxy;
     public lobby: Lobby;
     public simulator: Simulator;
 
@@ -33,13 +32,18 @@ export default class Application extends React.Component < ApplicationProps, App
                 console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'addMockClient':
-                this.mockClient = Director.Instance().addMockClient();
+                Director.Instance().addMockClients(100);
+                console.log(Director.Instance().getPerformanceStats());
+                break;
+            case 'tick':
+                Director.Instance().tick();
+                console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'startSim':
                 if (this.simulator) {
                     this.simulator.dispose();
                 }
-                this.simulator = new Simulator({deltaTime: 10});
+                this.simulator = new Simulator({deltaTime: 1000});
                 this.simulator.start();
                 break;
             case 'stopSim':
@@ -55,7 +59,9 @@ export default class Application extends React.Component < ApplicationProps, App
                 <ReactBootstrap.Button bsStyle={'info'} key={"getStats"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "getStats")}>getStats</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"addMockClient"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClient</ReactBootstrap.Button>
+                    onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClients</ReactBootstrap.Button>
+                <ReactBootstrap.Button bsStyle={'info'} key={"tick"} style = {{width: 120}}
+                    onClick={this.onButtonClicked.bind(this, "tick")}>tick</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"startSim"} style = {{width: 120}}
                     onClick={this.onButtonClicked.bind(this, "startSim")}>startSim</ReactBootstrap.Button>
                 <ReactBootstrap.Button bsStyle={'info'} key={"stopSim"} style = {{width: 120}}

@@ -35,6 +35,8 @@ export default class Lobby extends GameWorld {
     public priorityRange: Range;
     public maxCombinedClientWaitTime: number = 30000;
     public maxClientMMRDifference: number = 100;
+    public lastComparisons: number;
+    public lastMatches: number;
 
     constructor(options?: any) {
         super();
@@ -65,39 +67,55 @@ export default class Lobby extends GameWorld {
 		this._deltaTime = options.deltaTime;
 		this.debug = options.debug;
 
+        this.lastComparisons = 0;
+        this.lastMatches = 0;
+
         this._state = GameWorldState.Ready;
 
         // PubSubJS.publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
         // this.publish('ready');
 
-        this.start();
+        // this.start();
     }
 
-    tick(): number {
-        let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
-        let iterator2: IterableIterator<[string, ClientProxy]>;
-        let client1: ClientProxy;
-        let client2: ClientProxy;
-        let matchCount: number = 0;
+    // tick(): number {
+    //     let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
+    //     let iterator2: IterableIterator<[string, ClientProxy]>;
+    //     let client1: ClientProxy;
+    //     let client2: ClientProxy;
+    //     let matchCount: number = 0;
+    //
+    //     let element1: any;
+    //     let element2: any;
+    //     while( element1 = iterator1.next().value ) {
+    //         client1 = element1[1];
+    //         iterator2 = this._clients.entries();
+    //         while (element2 = iterator2.next().value ) {
+    //             client2 = element2[1];
+    //             if ((client1 != client2) && this.willMatchClients(client1, client2)) {
+    //                 matchCount++;
+    //                 // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
+    //                 this.removeClient(client1);
+    //                 this.removeClient(client2);
+    //                 Director.Instance().handleGameOver(client1, client2);
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return matchCount;
+    // }
 
-        let element1: any;
-        let element2: any;
-        while( element1 = iterator1.next().value ) {
-            client1 = element1[1];
-            iterator2 = this._clients.entries();
-            while (element2 = iterator2.next().value ) {
-                client2 = element2[1];
-                if ((client1 != client2) && this.willMatchClients(client1, client2)) {
-                    matchCount++;
-                    // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
-                    this.removeClient(client1);
-                    this.removeClient(client2);
-                    Director.Instance().handleGameOver(client1, client2);
-                    break;
-                }
-            }
-        }
-        return matchCount;
+    tick(): number {
+        this.startTick();
+        this.lastComparisons = 0;
+        this.lastMatches = 0;
+        this._clients.forEach((client: ClientProxy, key: string) => {
+            this.lastComparisons++;
+			this.removeClient(client);
+            Director.Instance().removeClient(client);
+		});
+        this.endTick();
+        return 0;
     }
 
     receiveMessageFromClient(data: any, client: ClientProxy): void {

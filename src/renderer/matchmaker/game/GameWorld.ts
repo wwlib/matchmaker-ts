@@ -4,6 +4,7 @@ import TCPClientSession from '../connection/TCPClientSession';
 import ClientProxy from '../ClientProxy';
 
 const uuidv4 = require('uuid/v4');
+const now = require("performance-now");
 
 export enum GameWorldState {
 	Ready,
@@ -42,6 +43,10 @@ export default abstract class GameWorld {
 	private _tickInterval: any;
 	private _tickHandler: any = this.tick.bind(this);
 
+	public tickStartTime: number;
+	public avgTickTime: number;
+	public lastTickTime: number;
+
 	abstract tick(): void;
 
 	constructor( options?: GameWorldOptions) {
@@ -62,7 +67,7 @@ export default abstract class GameWorld {
 		this.maxClients = options.maxClients;
 		this._deltaTime = options.deltaTime;
 		this.debug = options.debug;
-
+		this.avgTickTime = 0;
 		this._state = GameWorldState.Ready;
 
 		// this._channelToken = PubSubJS.subscribe(this.uuid, this.channelSubscriber.bind(this));
@@ -147,6 +152,19 @@ export default abstract class GameWorld {
 		this._clients.forEach((client: ClientProxy, key: string) => {
 			console.log(`  GameWorld: Client: ${client.shortId} `)
 		});
+	}
+
+	startTick(): void {
+		this.tickStartTime = now();
+	}
+
+	endTick(): void {
+		this.lastTickTime = now() - this.tickStartTime;
+		this.updateAverageTickTime(this.lastTickTime)
+	}
+
+	updateAverageTickTime(tickTime): void {
+		this.avgTickTime += (tickTime - this.avgTickTime) * 0.1;
 	}
 
 	dispose(): void {
