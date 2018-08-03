@@ -112,7 +112,7 @@ export default class Director {
 
     getPerformanceStats(): any {
         let clientCount: number = this._authenticatedClientSessions.size;
-        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
+        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, accounts: Database.getPlayerCount(), lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
         return this.performanceStats
     }
 

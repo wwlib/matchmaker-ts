@@ -32,7 +32,7 @@ export default class Application extends React.Component < ApplicationProps, App
                 console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'addMockClient':
-                Director.Instance().addMockClients(100);
+                Director.Instance().addMockClients(10000);
                 console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'tick':
