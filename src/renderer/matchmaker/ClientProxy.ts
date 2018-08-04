@@ -1,4 +1,4 @@
-import * as PubSubJS from 'pubsub-js';
+import PubSub from './PubSub';
 import GameWorld from './game/GameWorld';
 import Lobby from './game/Lobby';
 import PlayerAccount from './PlayerAccount';
@@ -21,7 +21,7 @@ export default class ClientProxy {
     constructor(userUUID: string) {
         this._userUUID = userUUID;
         this.playerAccount = Database.getPlayerWithUUID(this._userUUID);
-        this._userToken = PubSubJS.subscribe(`${this._userUUID}.in`, this.userSubscriberIn.bind(this));
+        this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.in`, this.userSubscriberIn.bind(this));
         this._spawnTime = now();
         this._startGameTime = now();
         this._startGameTimeOffset = 0;
@@ -37,7 +37,7 @@ export default class ClientProxy {
 			topic = `${topic}.${subtopic}`;
 		}
         console.log(`ClientProxy publishing to: ${topic}`);
-		PubSubJS.publish(topic, data);
+		PubSub.Instance().publish(topic, data);
 	}
 
     userSubscriberIn(msg: any, data: any): void {
@@ -80,6 +80,6 @@ export default class ClientProxy {
     dispose(): void {
         this.playerAccount = undefined;
         this._gameWorld = undefined;
-        // PubSubJS.unsubscribe(this._userToken);
+        PubSub.Instance().unsubscribe(this._userToken);
     }
 }

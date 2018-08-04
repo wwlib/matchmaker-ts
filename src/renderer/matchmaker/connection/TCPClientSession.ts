@@ -1,4 +1,4 @@
-import * as PubSubJS from 'pubsub-js';
+import PubSub from '../PubSub';
 import Message, { MessageType } from '../message/Message';
 import MessageFactory from '../message/MessageFactory';
 import WebSocket = require('ws');
@@ -46,7 +46,7 @@ export default class TCPClientSession {
 	set userUUID(uuid: string) {
 		this._userUUID = uuid;
 		Director.Instance().addAuthenticatedClientSession(this._userUUID, this);
-		this._userToken = PubSubJS.subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
+		this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
 	}
 
 	userSubscriberOut(msg: any, data: any): void {
@@ -60,7 +60,7 @@ export default class TCPClientSession {
 			if (subtopic) {
 				topic = `${topic}.${subtopic}`;
 			}
-			PubSubJS.publish(topic, data);
+			PubSub.Instance().publish(topic, data);
 		} else {
 			console.log(`TCP_c: publish: error: userUUID undefined.`)
 		}
@@ -160,7 +160,7 @@ export default class TCPClientSession {
 			console.log(err);
 		}
 		this._socket = undefined;
-		// PubSubJS.unsubscribe(this._userToken);
+		PubSub.Instance().unsubscribe(this._userToken);
 		this._userToken = undefined;
 	}
 }

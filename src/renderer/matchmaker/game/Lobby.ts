@@ -1,4 +1,4 @@
-import * as PubSubJS from 'pubsub-js';
+// import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../Director';
 import GameWorld, { GameWorldType, GameWorldState } from './GameWorld';
 import ClientProxy from '../ClientProxy';
@@ -27,7 +27,6 @@ export type LobbyOptions = {
 
 export default class Lobby extends GameWorld {
 
-    //public activeAccounts: Map<string, LobbyAccount> = new Map<string, LobbyAccount>();
     public memberRange: Range;
     public location: PlayerLocation;
     public mmrRange: Range;
@@ -72,7 +71,7 @@ export default class Lobby extends GameWorld {
 
         this._state = GameWorldState.Ready;
 
-        // PubSubJS.publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
+        // PubSub.Instance().publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
         // this.publish('ready');
 
         // this.start();
@@ -100,7 +99,7 @@ export default class Lobby extends GameWorld {
                     // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
                     this.removeClient(client1);
                     this.removeClient(client2);
-                    Director.Instance().handleGameOver(client1, client2);
+                    Director.Instance().handleStartGame(client1, client2);
                     break;
                 }
             }

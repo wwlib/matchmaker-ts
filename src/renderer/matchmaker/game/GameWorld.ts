@@ -1,4 +1,4 @@
-import * as PubSubJS from 'pubsub-js';
+// import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../Director';
 import TCPClientSession from '../connection/TCPClientSession';
 import ClientProxy from '../ClientProxy';
@@ -70,7 +70,7 @@ export default abstract class GameWorld {
 		this.avgTickTime = 0;
 		this._state = GameWorldState.Ready;
 
-		// this._channelToken = PubSubJS.subscribe(this.uuid, this.channelSubscriber.bind(this));
+		// this._channelToken = PubSub.Instance().subscribe(this.uuid, this.channelSubscriber.bind(this));
 	}
 
 	// publish(data: any, subtopic?: string): void {
@@ -78,7 +78,7 @@ export default abstract class GameWorld {
 	// 	if (subtopic) {
 	// 		topic = `${topic}.${subtopic}`;
 	// 	}
-	// 	PubSubJS.publish(topic, data);
+	// 	PubSub.Instance().publish(topic, data);
 	// }
 
 	// channelSubscriber(msg: any, data: any): void {
@@ -168,7 +168,7 @@ export default abstract class GameWorld {
 	}
 
 	dispose(): void {
-		PubSubJS.unsubscribe(this._channelToken);
+		// PubSub.Instance().unsubscribe(this._channelToken);
 		clearInterval(this._tickInterval);
 		this._tickHandler = undefined;
 		this.removeAllClients();

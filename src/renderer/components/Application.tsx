@@ -3,8 +3,8 @@ import * as ReactBootstrap from "react-bootstrap";
 import Client from './Client';
 import Chart from './Chart';
 import Simulator from '../simulator/Simulator';
-import * as PubSubJS from 'pubsub-js';
 import Director, { DirectorTopic } from '../matchmaker/Director';
+import PubSub from '../matchmaker/PubSub';
 import ClientProxy from '../matchmaker/ClientProxy';
 import Lobby from '../matchmaker/game/Lobby';
 
@@ -30,14 +30,16 @@ export default class Application extends React.Component < ApplicationProps, App
         switch (action) {
             case 'getStats':
                 console.log(Director.Instance().getPerformanceStats());
+                console.log(PubSub.Instance().getPerformanceStats());
                 break;
             case 'addMockClient':
-                Director.Instance().addMockClients(10000);
+                Director.Instance().addMockClients(100);
                 console.log(Director.Instance().getPerformanceStats());
                 break;
             case 'tick':
                 Director.Instance().tick();
                 console.log(Director.Instance().getPerformanceStats());
+                console.log(PubSub.Instance().getPerformanceStats());
                 break;
             case 'start':
                 Director.Instance().start();

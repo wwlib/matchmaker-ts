@@ -1,14 +1,14 @@
-import * as PubSubJS from 'pubsub-js';
+import PubSub from './PubSub';
 import ConnectionManager from './connection/ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './connection/TCPClientSession';
 import Lobby, { Range } from './game/Lobby';
+import GameWorld, { GameWorldType } from './game/GameWorld';
+import MockGame from './game/MockGame';
 import ChatLobby from './game/ChatLobby';
 import ClientProxy from './ClientProxy';
 import Msg_Auth from './message/Msg_Auth';
 import PlayerAccount from './PlayerAccount';
 import Database from './Database';
-
-// const accountData: any = require('../../../data/accounts');
 
 const uuidv4 = require('uuid/v4');
 const EloRank = require('elo-rank');
@@ -44,9 +44,11 @@ export default class Director {
     public lobbyStats: any[];
 
     private _connectionManager: ConnectionManager;
-    // private _lobbyToken: any;
-    private _lobbies: Map<string, Lobby> = new Map<string, Lobby>();
+    private _lobbies: Map<string, GameWorld> = new Map<string, GameWorld>();
     private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
+    private _recycleClientQueue: ClientProxy[];
+    private _disposeClientQueue: ClientProxy[];
+    private _disposedCount: number;
 
     private _tickInterval: any;
     private _tickHandler: any = this.tick.bind(this);
@@ -69,12 +71,14 @@ export default class Director {
         this.debug = options.debug;
 
         if (this.mode == DirectorMode.Primary) {
-            this.createGlobalChanels();
         }
 
         this.performanceStats = undefined;
         this.lobbyStats = [];
         this.avgTickTime = 0;
+        this._recycleClientQueue = [];
+        this._disposeClientQueue = [];
+        this._disposedCount = 0;
         Database.init();
     }
 
@@ -89,21 +93,28 @@ export default class Director {
         this._lobbies.forEach((lobby: Lobby, key: string) => {
             if ( !(lobby instanceof ChatLobby) ) {
                 lobby.tick();
-                this.lobbyStats.push( {mmr: `${lobby.mmrRange.min}-${lobby.mmrRange.max}`, avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, comparisons: lobby.lastComparisons, matches: lobby.lastMatches,  uuid: lobby.shortId } )
+                if (lobby instanceof MockGame) {
+                    this.lobbyStats.push( {type: GameWorldType[lobby.type], avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, uuid: lobby.shortId } )
+                } else {
+                    this.lobbyStats.push( {type: GameWorldType[lobby.type], mmr: `${lobby.mmrRange.min}-${lobby.mmrRange.max}`, avgTime: lobby.avgTickTime, lastTime: lobby.lastTickTime, comparisons: lobby.lastComparisons, matches: lobby.lastMatches,  uuid: lobby.shortId } )
+                }
             } else {
                 // console.log(`Director: addClientToLobby: testLobby rejected PlayerAccount:`, testLobby, player);
             }
         });
+        this.disposeQueuedClients();
         this.lastTickTime = now() - startTime;
         this.updateAverageTickTime(this.lastTickTime);
     }
 
     start(): void {
         this._tickInterval = setInterval(this._tickHandler, this._deltaTime);
+        PubSub.Instance().start();
     }
 
     stop(): void {
         clearInterval(this._tickInterval);
+        PubSub.Instance().stop();
     }
 
     updateAverageTickTime(tickTime): void {
@@ -112,21 +123,13 @@ export default class Director {
 
     getPerformanceStats(): any {
         let clientCount: number = this._authenticatedClientSessions.size;
-        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, accounts: Database.getPlayerCount(), lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
+        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, accounts: Database.getPlayerCount(), disposed: this._disposedCount, lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
         return this.performanceStats
-    }
-
-    createGlobalChanels(): void {
-        // this._lobbyToken = PubSubJS.subscribe(DirectorTopic.Lobby, this.lobbySubscriber.bind(this));
     }
 
     startConnectionManager(): void {
         this._connectionManager = new ConnectionManager({debug: this.debug});
     }
-
-    // lobbySubscriber(msg: string, data: any): void {
-    //     this.log(`lobbySubscriber : msg: ${msg}`, data);
-    // }
 
     addChatLobby(): ChatLobby {
         let lobby: ChatLobby = new ChatLobby({
@@ -172,6 +175,15 @@ export default class Director {
         return lobby;
     }
 
+    addClientsToMockGame(client1: ClientProxy, client2: ClientProxy) : void {
+        let game: MockGame = new MockGame();
+        this._lobbies.set(game.uuid, game);
+        game.addClient(client1);
+        client1.gameWorld = game;
+        game.addClient(client2);
+        client2.gameWorld = game;
+    }
+
     addMockClient(): ClientProxy {
         let mockWebSocket: MockWebSocket = {
             host: '0',
@@ -214,7 +226,7 @@ export default class Director {
         loser.mmr = elo.updateRating(expectedScoreB, 0, loser);
     }
 
-    removeLobby(lobby: Lobby): void {
+    removeLobby(lobby: GameWorld): void {
         this._lobbies.delete(lobby.uuid);
         lobby.dispose();
     }
@@ -237,22 +249,43 @@ export default class Director {
         this._authenticatedClientSessions.delete(userUUID);
     }
 
-    removeClient(client: ClientProxy): void {
+    disposeClient(client: ClientProxy): void {
         this.removeAuthenticatedClientSession(client.userUUID);
         Database.removePlayerAccount(client.playerAccount);
         client.dispose();
     }
 
-    handleGameOver(client1: ClientProxy, client2: ClientProxy): void {
+    disposeQueuedClients(): void {
+        let client: ClientProxy;
+        while (client = this._disposeClientQueue.shift()) {
+            this._disposedCount++;
+            this.disposeClient(client);
+        }
+    }
+
+    handleStartGame(client1: ClientProxy, client2: ClientProxy): void {
+        this.addClientsToMockGame(client1, client2);
+    }
+
+    handleMockGameOver(game: MockGame, client1: ClientProxy, client2: ClientProxy): void {
+        // console.log(game.shortId, client1, client2);
         // for now, dispose clients and remove associated player activeAccounts
         // this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
 
-        this.removeAuthenticatedClientSession(client1.userUUID);
-        this.removeAuthenticatedClientSession(client2.userUUID);
-        Database.removePlayerAccount(client1.playerAccount);
-        Database.removePlayerAccount(client2.playerAccount);
-        client1.dispose();
-        client2.dispose();
+        // this.removeAuthenticatedClientSession(client1.userUUID);
+        // this.removeAuthenticatedClientSession(client2.userUUID);
+        // Database.removePlayerAccount(client1.playerAccount);
+        // Database.removePlayerAccount(client2.playerAccount);
+        // client1.dispose();
+        // client2.dispose();
+
+        // this.addClientToLobbyQueue(client1);
+        // this.addClientToLobbyQueue(client2);
+
+        this._disposeClientQueue.push(client1);
+        this._disposeClientQueue.push(client2);
+
+        this.removeLobby(game);
     }
 
     logLobbyStats(): void {
