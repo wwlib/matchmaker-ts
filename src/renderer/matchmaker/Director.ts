@@ -48,7 +48,9 @@ export default class Director {
     private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
     private _recycleClientQueue: ClientProxy[];
     private _disposeClientQueue: ClientProxy[];
-    private _disposedCount: number;
+    private _disposedClientCount: number;
+    private _disposeGameQueue: GameWorld[];
+    private _disposedGameCount: number;
 
     private _tickInterval: any;
     private _tickHandler: any = this.tick.bind(this);
@@ -78,7 +80,9 @@ export default class Director {
         this.avgTickTime = 0;
         this._recycleClientQueue = [];
         this._disposeClientQueue = [];
-        this._disposedCount = 0;
+        this._disposedClientCount = 0;
+        this._disposeGameQueue = [];
+        this._disposedGameCount = 0;
         Database.init();
     }
 
@@ -103,6 +107,7 @@ export default class Director {
             }
         });
         this.disposeQueuedClients();
+        this.disposeQueuedGames();
         this.lastTickTime = now() - startTime;
         this.updateAverageTickTime(this.lastTickTime);
     }
@@ -123,7 +128,7 @@ export default class Director {
 
     getPerformanceStats(): any {
         let clientCount: number = this._authenticatedClientSessions.size;
-        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, accounts: Database.getPlayerCount(), disposed: this._disposedCount, lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
+        this.performanceStats = { lobbies: this._lobbies.size, clients:  clientCount, accounts: Database.getPlayerCount(), disposedClients: this._disposedClientCount, disposedGames: this._disposedGameCount, lobbyStats: this.lobbyStats, lastTickTime: this.lastTickTime, avgTickTime: this.avgTickTime }
         return this.performanceStats
     }
 
@@ -157,7 +162,7 @@ export default class Director {
         let lobby: Lobby;
         if (player) {
             this._lobbies.forEach((testLobby: Lobby, key: string) => {
-                if (testLobby.willAcceptPlayer(player)) {
+                if ( (testLobby instanceof Lobby) && (testLobby.willAcceptPlayer(player)) ) {
                     lobby = testLobby;
                 } else {
                     // console.log(`Director: addClientToLobby: testLobby rejected PlayerAccount:`, testLobby, player);
@@ -226,17 +231,6 @@ export default class Director {
         loser.mmr = elo.updateRating(expectedScoreB, 0, loser);
     }
 
-    removeLobby(lobby: GameWorld): void {
-        this._lobbies.delete(lobby.uuid);
-        lobby.dispose();
-    }
-
-    removeAllLobbies(): void {
-        this._lobbies.forEach((lobby: Lobby, key: string) => {
-            this.removeLobby(lobby);
-        });
-    }
-
     addAuthenticatedClientSession(userUUID: string, clientSession: TCPClientSession): void {
         this._authenticatedClientSessions.set(userUUID, clientSession);
     }
@@ -258,8 +252,27 @@ export default class Director {
     disposeQueuedClients(): void {
         let client: ClientProxy;
         while (client = this._disposeClientQueue.shift()) {
-            this._disposedCount++;
+            this._disposedClientCount++;
             this.disposeClient(client);
+        }
+    }
+
+    disposeLobby(lobby: GameWorld): void {
+        this._lobbies.delete(lobby.uuid);
+        lobby.dispose();
+    }
+
+    disposeAllLobbies(): void {
+        this._lobbies.forEach((lobby: Lobby, key: string) => {
+            this.disposeLobby(lobby);
+        });
+    }
+
+    disposeQueuedGames(): void {
+        let game: GameWorld;
+        while (game = this._disposeGameQueue.shift()) {
+            this._disposedGameCount++;
+            this.disposeLobby(game);
         }
     }
 
@@ -285,7 +298,7 @@ export default class Director {
         this._disposeClientQueue.push(client1);
         this._disposeClientQueue.push(client2);
 
-        this.removeLobby(game);
+        this._disposeGameQueue.push(game);
     }
 
     logLobbyStats(): void {

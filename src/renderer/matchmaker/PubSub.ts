@@ -13,6 +13,7 @@ export default class PubSub {
 
     private static _instance: PubSub;
 
+    public on: boolean = false;
     public uuid: string;
     public debug: boolean;
     public performanceStats: any;
@@ -49,12 +50,16 @@ export default class PubSub {
 
     tick(): void {
         let startTime: number = now();
-        this.lastTickTime = now() - startTime;
-        let tokenToUnsubscribe: string = this._unsubscribeQueue.shift();
-        if (tokenToUnsubscribe) {
-            this._subscriptionsCount--;
-            PubSubJS.unsubscribe(tokenToUnsubscribe);
+        let l: number = this._unsubscribeQueue.length;
+        let batch: number = Math.min(100, l);
+        for (var i=0; i<batch; i++) {
+            let tokenToUnsubscribe: string = this._unsubscribeQueue.shift();
+            if (tokenToUnsubscribe) {
+                this._subscriptionsCount--;
+                PubSubJS.unsubscribe(tokenToUnsubscribe);
+            }
         }
+        this.lastTickTime = now() - startTime;
         this.updateAverageTickTime(this.lastTickTime);
     }
 
@@ -76,16 +81,24 @@ export default class PubSub {
 	}
 
     subscribe(topic: string, callback: any): string {
-        this._subscriptionsCount++;
-        return PubSubJS.subscribe(topic, callback);
+        if (this.on) {
+            this._subscriptionsCount++;
+            return PubSubJS.subscribe(topic, callback);
+        } else {
+            return '';
+        }
     }
 
     publish(topic: string, data: any): void {
-        PubSubJS.publish(topic, data);
+        if (this.on) {
+            PubSubJS.publish(topic, data);
+        }
     }
 
     unsubscribe(token: string): void {
-        this._unsubscribeQueue.push(token);
+        if (this.on) {
+            this._unsubscribeQueue.push(token);
+        }
     }
 
     get unsubscribeQueueCount(): number {
