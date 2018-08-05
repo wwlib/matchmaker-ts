@@ -19,6 +19,7 @@ export default class MessageFactory {
     constructor() { }
 
     static parse(messageBuffer: any, rinfo?: RemoteInfo): Message | undefined {
+        console.log(messageBuffer);
         let type: number = messageBuffer[0];
         try {
             let msgClass: any = MessageFactory.msgClz[type];

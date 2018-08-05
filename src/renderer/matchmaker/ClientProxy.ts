@@ -1,4 +1,4 @@
-import PubSub from './PubSub';
+import PubSub, { PubSubClient } from './PubSub';
 import GameWorld from './game/GameWorld';
 import Lobby from './game/Lobby';
 import PlayerAccount from './PlayerAccount';
@@ -13,6 +13,8 @@ export default class ClientProxy {
     private _userUUID: string;
     private _gameWorld: GameWorld;
     private _userToken: any;
+    private _pubClient: PubSubClient;
+    private _subClient: PubSubClient
     private _spawnTime: number;
     private _startGameTime: number;
     private _startGameTimeOffset: number;
@@ -21,7 +23,11 @@ export default class ClientProxy {
     constructor(userUUID: string) {
         this._userUUID = userUUID;
         this.playerAccount = Database.getPlayerWithUUID(this._userUUID);
-        this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.in`, this.userSubscriberIn.bind(this));
+        // this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.in`, this.userSubscriberIn.bind(this));
+        this._pubClient = PubSub.Instance().createClient();
+        this._subClient = PubSub.Instance().createClient();
+        this._subClient.on('message_buffer', this.userSubscriberIn.bind(this));
+        this._subClient.subscribe(`${this._userUUID}.in`);
         this._spawnTime = now();
         this._startGameTime = now();
         this._startGameTimeOffset = 0;
@@ -36,12 +42,13 @@ export default class ClientProxy {
 		if (subtopic) {
 			topic = `${topic}.${subtopic}`;
 		}
-        console.log(`ClientProxy publishing to: ${topic}`);
-		PubSub.Instance().publish(topic, data);
+        console.log(`ClientProxy publishing to: ${topic}`, data);
+		// PubSub.Instance().publish(topic, data);
+        this._pubClient.publish(topic, data);
 	}
 
     userSubscriberIn(msg: any, data: any): void {
-        console.log(`ClientProxy: userSubscriberIn: ${this._userUUID}: `);
+        console.log(`ClientProxy: userSubscriberIn: ${this._userUUID}, ${msg}: `, data);
         this.sendMessageToGameWorld(data);
     }
 
@@ -80,6 +87,11 @@ export default class ClientProxy {
     dispose(): void {
         this.playerAccount = undefined;
         this._gameWorld = undefined;
-        PubSub.Instance().unsubscribe(this._userToken);
+        // PubSub.Instance().unsubscribe(this._userToken);
+        this._subClient.unsubscribe();
+        this._subClient.quit();
+        this._pubClient.quit();
+        this._pubClient = undefined;
+        this._subClient = undefined;
     }
 }

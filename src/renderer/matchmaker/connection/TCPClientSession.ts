@@ -1,4 +1,4 @@
-import PubSub from '../PubSub';
+import PubSub, { PubSubClient } from '../PubSub';
 import Message, { MessageType } from '../message/Message';
 import MessageFactory from '../message/MessageFactory';
 import WebSocket = require('ws');
@@ -28,7 +28,9 @@ export default class TCPClientSession {
 	private _ip: string;
 	private _port: number;
 	private _spawnTime: number;
-	private _userToken: any;
+	// private _userToken: any;
+	private _pubClient: PubSubClient;
+	private _subClient: PubSubClient;
 
 	constructor(clientServer: TCPClientServer, socket: WebSocket | MockWebSocket) {
 		this.clientServer = clientServer;
@@ -46,7 +48,11 @@ export default class TCPClientSession {
 	set userUUID(uuid: string) {
 		this._userUUID = uuid;
 		Director.Instance().addAuthenticatedClientSession(this._userUUID, this);
-		this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
+		// this._userToken = PubSub.Instance().subscribe(`${this._userUUID}.out`, this.userSubscriberOut.bind(this));
+		this._pubClient = PubSub.Instance().createClient();
+		this._subClient = PubSub.Instance().createClient();
+		this._subClient.on('message_buffer', this.userSubscriberOut.bind(this));
+		this._subClient.subscribe(`${this._userUUID}.out`);
 	}
 
 	userSubscriberOut(msg: any, data: any): void {
@@ -60,7 +66,8 @@ export default class TCPClientSession {
 			if (subtopic) {
 				topic = `${topic}.${subtopic}`;
 			}
-			PubSub.Instance().publish(topic, data);
+			// PubSub.Instance().publish(topic, data);
+			this._pubClient.publish(topic, data);
 		} else {
 			console.log(`TCP_c: publish: error: userUUID undefined.`)
 		}
@@ -160,7 +167,12 @@ export default class TCPClientSession {
 			console.log(err);
 		}
 		this._socket = undefined;
-		PubSub.Instance().unsubscribe(this._userToken);
-		this._userToken = undefined;
+		// PubSub.Instance().unsubscribe(this._userToken);
+		this._subClient.unsubscribe();
+        this._subClient.quit();
+		this._pubClient.quit();
+		// this._userToken = undefined;
+		this._pubClient = undefined;
+		this._subClient = undefined;
 	}
 }
