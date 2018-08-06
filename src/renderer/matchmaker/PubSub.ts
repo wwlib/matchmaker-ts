@@ -57,6 +57,7 @@ export class PubSubJSClient extends EventEmitter {
 
     quit(): void {
         this.removeAllListeners();
+
     }
 
     private onMessage(topic: string, data: any): void {
@@ -104,7 +105,7 @@ export default class PubSub {
         this._clientCount = 0;
 
         this.init();
-        console.log(`PubSub: started in ${PubSubMode[this._mode]} mode.`);
+        console.log(`PubSub: started in ${this._mode} mode.`);
     }
 
     static Instance(options?: PubSubOptions)

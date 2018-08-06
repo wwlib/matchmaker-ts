@@ -10,7 +10,7 @@ import Lobby from '../matchmaker/game/Lobby';
 
 const prettyjson = require('prettyjson');
 
-export interface ApplicationProps { simulator: Simulator }
+export interface ApplicationProps { simulator: Simulator, clientMode: boolean, clientPort: number }
 export interface ApplicationState { gameCount: number; stats: string }
 
 export default class Application extends React.Component < ApplicationProps, ApplicationState > {
@@ -60,27 +60,33 @@ export default class Application extends React.Component < ApplicationProps, App
         }
     }
 
+    controls() {
+        return (
+            <div>
+            <ReactBootstrap.Button bsStyle={'info'} key={"getStats"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "getStats")}>getStats</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"addMockClient"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClients</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"tick"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "tick")}>tick</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"start"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "start")}>start</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"stop"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "stop")}>stop</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"startSim"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "startSim")}>startSim</ReactBootstrap.Button>
+            <ReactBootstrap.Button bsStyle={'info'} key={"stopSim"} style = {{width: 120}}
+                onClick={this.onButtonClicked.bind(this, "stopSim")}>stopSim</ReactBootstrap.Button>
+            </div>
+        )
+    }
+
     render() {
         return(
             <div>
-                <div>
-                <ReactBootstrap.Button bsStyle={'info'} key={"getStats"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "getStats")}>getStats</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"addMockClient"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "addMockClient")}>addMockClients</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"tick"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "tick")}>tick</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"start"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "start")}>start</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"stop"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "stop")}>stop</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"startSim"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "startSim")}>startSim</ReactBootstrap.Button>
-                <ReactBootstrap.Button bsStyle={'info'} key={"stopSim"} style = {{width: 120}}
-                    onClick={this.onButtonClicked.bind(this, "stopSim")}>stopSim</ReactBootstrap.Button>
-                </div>
-                <Client />
-                <Chart />
+                {this.props.clientMode ? null : this.controls()}
+                <Client port={this.props.clientPort}/>
+                {this.props.clientMode ? null : <Chart />}
             </div>
         );
     }

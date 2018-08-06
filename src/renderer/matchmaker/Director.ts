@@ -16,8 +16,8 @@ const elo = new EloRank(32);
 const now = require("performance-now");
 
 export enum DirectorMode {
-    Primary,
-    Replica
+    Primary = 'Primary',
+    Replica = 'Replica'
 }
 
 export enum DirectorTopic {
@@ -28,6 +28,7 @@ export enum DirectorTopic {
 export type DirectorOptions = {
     uuid?: string;
     mode?: DirectorMode;
+    connectionPort?: number;
     deltaTime?: number;
     debug?: boolean;
 }
@@ -44,6 +45,7 @@ export default class Director {
     public lobbyStats: any[];
 
     private _connectionManager: ConnectionManager;
+    private _connectionPort: number;
     private _lobbies: Map<string, GameWorld> = new Map<string, GameWorld>();
     private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
     private _recycleClientQueue: ClientProxy[];
@@ -63,12 +65,15 @@ export default class Director {
         let defaultOptions: DirectorOptions =  {
             uuid: uuidv4(),
 			mode: DirectorMode.Primary,
+            connectionPort: 9696,
             deltaTime: 1000,
             debug: false
         }
 		options = Object.assign(defaultOptions, options);
+        console.log(`Director: constructor: options: `, options);
 		this.uuid = options.uuid;
 		this.mode = options.mode;
+        this._connectionPort = options.connectionPort;
         this._deltaTime = options.deltaTime;
         this.debug = options.debug;
 
@@ -133,7 +138,7 @@ export default class Director {
     }
 
     startConnectionManager(): void {
-        this._connectionManager = new ConnectionManager({debug: this.debug});
+        this._connectionManager = new ConnectionManager({debug: this.debug, port: this._connectionPort});
     }
 
     addChatLobby(): ChatLobby {
@@ -148,6 +153,10 @@ export default class Director {
 
     get lobyCount(): number {
         return this._lobbies.size;
+    }
+
+    get connectionPort(): number {
+        return this._connectionPort;
     }
 
     addLobbyWithPlayerAccount(player: PlayerAccount): Lobby {

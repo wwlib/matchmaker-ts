@@ -1,7 +1,6 @@
 import Msg_Auth from './Msg_Auth';
 import Msg_Chat from './Msg_Chat';
 import Message from './Message';
-import { RemoteInfo } from '../connection/ConnectionManager';
 
 /* From Message
 export enum MessageType {
@@ -9,6 +8,12 @@ export enum MessageType {
     Chat,
 }
 */
+
+export interface RemoteInfo {
+	address: string;
+	port: number;
+	size: number;
+}
 
 export default class MessageFactory {
     private static msgClz: any[] = [
@@ -19,7 +24,7 @@ export default class MessageFactory {
     constructor() { }
 
     static parse(messageBuffer: any, rinfo?: RemoteInfo): Message | undefined {
-        console.log(messageBuffer);
+        // console.log(messageBuffer);
         let type: number = messageBuffer[0];
         try {
             let msgClass: any = MessageFactory.msgClz[type];

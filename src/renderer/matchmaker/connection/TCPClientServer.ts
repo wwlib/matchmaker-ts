@@ -1,4 +1,4 @@
-import ConnectionManager from './ConnectionManager';
+// import ConnectionManager from './ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './TCPClientSession';
 import Message from '../message/Message';
 import Msg_Auth from '../message/Msg_Auth';
@@ -13,13 +13,13 @@ export default class TCPClientServer {
 	// public TCP_m: TCPClientMonitor;
 
 	public clients: Map<TCPClientSession, WebSocket | MockWebSocket> = new Map<TCPClientSession, WebSocket | MockWebSocket>();
-	public connectionManager: ConnectionManager;
+	// public connectionManager: ConnectionManager;
 	public host: string;
 	public port: number;
 
-	constructor(port: number, connectionManager: ConnectionManager) {
+	constructor(port: number) { //, connectionManager: ConnectionManager) {
 		this.port = port;
-		this.connectionManager = connectionManager;
+		// this.connectionManager = connectionManager;
 		this.start();
 	}
 

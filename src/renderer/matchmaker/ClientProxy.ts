@@ -42,13 +42,13 @@ export default class ClientProxy {
 		if (subtopic) {
 			topic = `${topic}.${subtopic}`;
 		}
-        console.log(`ClientProxy publishing to: ${topic}`, data);
+        console.log(`ClientProxy publishing to: ${topic}`);
 		// PubSub.Instance().publish(topic, data);
         this._pubClient.publish(topic, data);
 	}
 
     userSubscriberIn(msg: any, data: any): void {
-        console.log(`ClientProxy: userSubscriberIn: ${this._userUUID}, ${msg}: `, data);
+        console.log(`ClientProxy: userSubscriberIn: ${this._userUUID}, ${msg}: `);
         this.sendMessageToGameWorld(data);
     }
 

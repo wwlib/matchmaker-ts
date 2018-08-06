@@ -18,13 +18,13 @@ const cert = '-----BEGIN CERTIFICATE-----\n\
 CERT\n\
 -----END CERTIFICATE-----';
 
-export interface ClientProps { }
+export interface ClientProps { port: number }
 export interface ClientState { input: string; messages: string }
 
 export default class Client extends React.Component < ClientProps, ClientState > {
 
     public hostname = 'localhost';
-    public port = 9696;
+    // public port = 9696;
     public webSocket;
     public id: string;
     public userUUID: string;
@@ -52,7 +52,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
     }
 
     startWebSocket(onError?: any, onConnect?: any) {
-        let connectionString = `wss://${this.hostname}:${this.port}`;
+        let connectionString = `wss://${this.hostname}:${this.props.port}`;
 
         if (this.webSocket) {
             try {

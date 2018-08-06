@@ -9,12 +9,44 @@ import Simulator from './simulator/Simulator';
 
 let simulator = undefined; //new Simulator();
 
-Director.Instance({ mode: DirectorMode.Primary, debug: true });
-PubSub.Instance({ mode: PubSubMode.Redis, deltaTime: 10 });
+const argv = require('electron').remote.process.argv;
+var argy = require('yargs')(argv).argv;
+
+let options: any = {};
+if (argy.mode && (argy.mode ==  DirectorMode.Primary || argy.mode ==  DirectorMode.Replica) ) {
+    options.mode = argy.mode;
+}
+if (argy.connectionPort) {
+    options.connectionPort = argy.connectionPort;
+}
+if (argy.debug) {
+    options.debug = argy.debug;
+}
+
+Director.Instance(options);
+
+let pubSubMode: PubSubMode = PubSubMode.PubSubJS;
+if (argy.pubsub == 'redis') {
+    pubSubMode = PubSubMode.Redis;
+}
+PubSub.Instance({ mode: pubSubMode, deltaTime: 10 });
 Director.Instance().addChatLobby();
-Director.Instance().startConnectionManager();
+
+let clientPort: number;
+let clientMode: boolean = false;
+if (argy.client) {
+    clientMode = true;
+    clientPort = Director.Instance().connectionPort;
+    if (argy.clientPort) {
+        clientPort = argy.clientPort;
+    }
+    console.log(`starting as client using port: ${clientPort}`);
+} else { // don't start the connection manager if running as a client only
+    Director.Instance().startConnectionManager();
+}
+
 
 render(
-    <Application simulator={simulator}/>,
+    <Application simulator={simulator} clientMode={clientMode} clientPort={clientPort}/>,
     document.getElementById('app')
 );
