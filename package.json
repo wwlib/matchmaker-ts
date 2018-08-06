@@ -45,6 +45,7 @@
   "dependencies": {
     "electron": "^2.0.5",
     "elo-rank": "^1.0.3",
+    "os": "^0.1.1",
     "performance-now": "^2.1.0",
     "prettyjson": "^1.2.1",
     "pubsub-js": "^1.6.0",
