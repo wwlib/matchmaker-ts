@@ -5,7 +5,9 @@ import Lobby, { Range } from './game/Lobby';
 import GameWorld, { GameWorldType } from './game/GameWorld';
 import MockGame from './game/MockGame';
 import ChatLobby from './game/ChatLobby';
+import AstroGame from './game/astrogame/AstroGame';
 import ClientProxy from './ClientProxy';
+import MessageFactory from './message/MessageFactory';
 import Msg_Auth from './message/Msg_Auth';
 import PlayerAccount from './PlayerAccount';
 import Database from './Database';
@@ -89,6 +91,7 @@ export default class Director {
         this._disposeGameQueue = [];
         this._disposedGameCount = 0;
         Database.init();
+        MessageFactory.init();
     }
 
     static Instance(options?: DirectorOptions)
@@ -149,6 +152,12 @@ export default class Director {
         });
         this._lobbies.set(lobby.uuid, lobby);
         return lobby;
+    }
+
+    addAstroGame(): AstroGame {
+        let game: AstroGame = new AstroGame(9595);
+        this._lobbies.set(game.uuid, game);
+        return game;
     }
 
     get lobyCount(): number {

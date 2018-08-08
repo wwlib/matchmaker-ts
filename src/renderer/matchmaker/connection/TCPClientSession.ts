@@ -1,10 +1,10 @@
 import PubSub, { PubSubClient } from '../PubSub';
-import Message, { MessageType } from '../message/Message';
+import Message from '../message/Message';
 import MessageFactory from '../message/MessageFactory';
 import WebSocket = require('ws');
 import Msg_Chat from '../message/Msg_Chat';
 import Msg_Auth from '../message/Msg_Auth';
-import TCPClientServer from './TCPClientServer';
+// import TCPClientServer from './TCPClientServer';
 import Director from '../Director';
 
 const now = require("performance-now");
@@ -20,20 +20,20 @@ export type MockWebSocket = {
 
 export default class TCPClientSession {
 
-	public clientServer: TCPClientServer
+	// public clientServer: TCPClientServer
 	public lastMessageReceivedTime: number;
 
-	private _userUUID: string;
-	private _socket: any; //FIXME: WebSocket;
-	private _ip: string;
-	private _port: number;
-	private _spawnTime: number;
-	// private _userToken: any;
-	private _pubClient: PubSubClient;
-	private _subClient: PubSubClient;
+	protected _userUUID: string;
+	protected _socket: any; //FIXME: WebSocket;
+	protected _ip: string;
+	protected _port: number;
+	protected _spawnTime: number;
+	// protected _userToken: any;
+	protected _pubClient: PubSubClient;
+	protected _subClient: PubSubClient;
 
-	constructor(clientServer: TCPClientServer, socket: WebSocket | MockWebSocket) {
-		this.clientServer = clientServer;
+	constructor(socket: WebSocket | MockWebSocket) { //clientServer: TCPClientServer,
+		// this.clientServer = clientServer;
 		this._socket = socket;
 		this._ip = this._socket.host;
 		this._port = this._socket.port;
@@ -103,7 +103,7 @@ export default class TCPClientSession {
 			let message_type: number = msg.getType();
 
 			switch (message_type) {
-				case MessageType.Auth:
+				case Msg_Auth.type:
 					let authMsg: Msg_Auth = msg as Msg_Auth;
 					authMsg.host = this._ip;
 					authMsg.port = this._port;
@@ -115,7 +115,7 @@ export default class TCPClientSession {
 					authMsg.command = 'authorized';
 					this.sendMessage(authMsg); // ACK
 					break;
-				case MessageType.Chat:
+				case Msg_Chat.type:
 					console.log(`  --> TCP_c: received Msg_Chat: `);
 					this.publish(message);
 					break;
@@ -157,7 +157,7 @@ export default class TCPClientSession {
 	}
 
 	dispose(): void {
-		this.clientServer = undefined;
+		// this.clientServer = undefined;
 		try {
 			if (this._socket) {
 				this._socket.removeAllListeners();

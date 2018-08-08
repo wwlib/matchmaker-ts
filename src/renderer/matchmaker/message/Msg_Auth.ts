@@ -1,4 +1,4 @@
-import Message, { MessageType } from './Message';
+import Message from './Message';
 
 const sp = require('schemapack');
 
@@ -20,6 +20,8 @@ export type AuthMessageOptions = {
 }
 
 export default class Msg_Auth extends Message {
+
+    static type: number = 0;
 
 	public command: string;
     public authToken: string;
@@ -73,6 +75,6 @@ export default class Msg_Auth extends Message {
 	}
 
 	public getType(): number {
-		return MessageType.Auth;
+		return Msg_Auth.type;
 	}
 }

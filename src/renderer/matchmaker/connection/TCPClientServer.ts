@@ -83,7 +83,7 @@ export default class TCPClientServer {
 	}
 
 	onConnection(socket: WebSocket | MockWebSocket): TCPClientSession {
-		let client: TCPClientSession = new TCPClientSession(this, socket);
+		let client: TCPClientSession = new TCPClientSession(socket);
 		// console.log(`${client.ip} : ${client.port} connected to the server.`);
 		this.clients.set(client, socket);
 		let authMsg: Msg_Auth = new Msg_Auth({
@@ -137,5 +137,12 @@ export default class TCPClientServer {
 		console.log("Timing out client: " + client.ip + ":" + client.port);
 		this.clients.delete(client);
 
+	}
+
+	dispose(): void {
+		this.clients.forEach((socket: WebSocket, clientSession: TCPClientSession) => {
+			clientSession.dispose();
+		});
+		this.killServer();
 	}
 }

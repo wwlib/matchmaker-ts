@@ -30,19 +30,20 @@ if (argy.pubsub == 'redis') {
     pubSubMode = PubSubMode.Redis;
 }
 PubSub.Instance({ mode: pubSubMode, deltaTime: 10 });
-Director.Instance().addChatLobby();
 
-let clientPort: number;
+
+let clientPort: number = Director.Instance().connectionPort;
 let clientMode: boolean = false;
 if (argy.client) {
     clientMode = true;
-    clientPort = Director.Instance().connectionPort;
     if (argy.clientPort) {
         clientPort = argy.clientPort;
     }
     console.log(`starting as client using port: ${clientPort}`);
 } else { // don't start the connection manager if running as a client only
     Director.Instance().startConnectionManager();
+    Director.Instance().addChatLobby();
+    Director.Instance().addAstroGame();
 }
 
 
