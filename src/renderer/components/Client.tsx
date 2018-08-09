@@ -1,10 +1,13 @@
 import * as React from "react";
 import * as ReactBootstrap from "react-bootstrap";
 import WebSocket = require('ws');
-import Msg_Auth from '../matchmaker/message/Msg_Auth';
-import Msg_Chat from '../matchmaker/message/Msg_Chat';
-import Message from '../matchmaker/message/Message';
-import MessageFactory from '../matchmaker/message/MessageFactory';
+import {
+	Message,
+	MessageFactory,
+	Msg_Chat,
+	Msg_Auth,
+	Msg_JSON
+} from '../matchmaker/message';
 
 // const prettyjson = require('prettyjson');
 // const sp = require('schemapack');
@@ -129,6 +132,12 @@ export default class Client extends React.Component < ClientProps, ClientState >
                     console.log(`  --> Client: received Msg_Chat: `, chatMsg.body);
                     this.setState({messages: this.state.messages + '\n' + chatMsg.sourceUUID + ': ' + chatMsg.body});
                     break;
+                case Msg_JSON.type:
+					let jsonMsg: Msg_JSON = msg as Msg_JSON;
+					console.log(`  --> Client: received Msg_JSON: `);
+					// this.publish(message);
+					console.log(jsonMsg.name, jsonMsg.json);
+					break;
                 default:
                     console.log("Unidentified packet type.");
                     break;

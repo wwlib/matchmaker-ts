@@ -9,6 +9,7 @@ import AstroGame from './game/astrogame/AstroGame';
 import ClientProxy from './ClientProxy';
 import MessageFactory from './message/MessageFactory';
 import Msg_Auth from './message/Msg_Auth';
+import Msg_JSON from './message/Msg_JSON';
 import PlayerAccount from './PlayerAccount';
 import Database from './Database';
 
@@ -48,6 +49,7 @@ export default class Director {
 
     private _connectionManager: ConnectionManager;
     private _connectionPort: number;
+    private _clients: Map<string, ClientProxy> = new Map<string, ClientProxy>();
     private _lobbies: Map<string, GameWorld> = new Map<string, GameWorld>();
     private _authenticatedClientSessions: Map<string, TCPClientSession> = new Map<string, TCPClientSession>();
     private _recycleClientQueue: ClientProxy[];
@@ -220,6 +222,7 @@ export default class Director {
         let playerAccount: PlayerAccount = Database.generateMockPlayerAccount();
         clientSession.userUUID = playerAccount.uuid;
         let client: ClientProxy = new ClientProxy(playerAccount.uuid);
+        this._clients.set(playerAccount.uuid, client);
         this.addClientToLobby(client);
         return client;
     }
@@ -230,13 +233,46 @@ export default class Director {
         }
     }
 
+    ////// MANAGED LOBBY/GAME INSTANCES
+
+    createNewManagedLobbyWithClient(client: ClientProxy): GameWorld {
+        return null;
+    }
+
+    createNewManagedGameWithClient(client: ClientProxy, type: string): GameWorld {
+        return null;
+    }
+
+    addClientToManagedLobby(client: ClientProxy, invitationToken: string): GameWorld {
+        return null;
+    }
+
+    addClientToManagedGame(client: ClientProxy, invitationToken: string): GameWorld {
+        return null;
+    }
+
+    //////
+
     authenticateUser(authMsg: Msg_Auth): string {
         //TODO: implement authentication
         // console.log(`Director: authenticateUser: `, authMsg);
         let playerAccount: PlayerAccount = Database.generateMockPlayerAccount({mmr: 100});
         let client: ClientProxy = new ClientProxy(playerAccount.uuid);
+        this._clients.set(playerAccount.uuid, client);
         this.addClientToLobby(client);
         return playerAccount.uuid;
+    }
+
+    sendServerDetailsToClientWithUUID(userUUID: string): void {
+        let client: ClientProxy = this._clients.get(userUUID);
+        let details: any = {
+            lobbies: [4,5,6],
+            games: [1,2,3],
+            lobbyTypes: ['chat'],
+            gameTypes: ['astro']
+        }
+        let msg: Msg_JSON = new Msg_JSON({ name: 'details', json: details });
+        client.publish(msg.getBytes());
     }
 
     updateMMR(winner: PlayerAccount, loser: PlayerAccount): void {
@@ -247,6 +283,18 @@ export default class Director {
         //update score, 1 if won 0 if lost
         winner.mmr = elo.updateRating(expectedScoreA, 1, winner);
         loser.mmr = elo.updateRating(expectedScoreB, 0, loser);
+    }
+
+    getFriends(player: PlayerAccount): void {
+        //TODO
+    }
+
+    addFriend(player: PlayerAccount, friend: PlayerAccount): void {
+        //TODO
+    }
+
+    removeFriend(player: PlayerAccount, friend: PlayerAccount): void {
+        //TODO
     }
 
     addAuthenticatedClientSession(userUUID: string, clientSession: TCPClientSession): void {
@@ -264,6 +312,7 @@ export default class Director {
     disposeClient(client: ClientProxy): void {
         this.removeAuthenticatedClientSession(client.userUUID);
         Database.removePlayerAccount(client.playerAccount);
+        this._clients.delete(client.userUUID);
         client.dispose();
     }
 
@@ -299,23 +348,8 @@ export default class Director {
     }
 
     handleMockGameOver(game: MockGame, client1: ClientProxy, client2: ClientProxy): void {
-        // console.log(game.shortId, client1, client2);
-        // for now, dispose clients and remove associated player activeAccounts
-        // this.log(`handleGameOver: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
-
-        // this.removeAuthenticatedClientSession(client1.userUUID);
-        // this.removeAuthenticatedClientSession(client2.userUUID);
-        // Database.removePlayerAccount(client1.playerAccount);
-        // Database.removePlayerAccount(client2.playerAccount);
-        // client1.dispose();
-        // client2.dispose();
-
-        // this.addClientToLobbyQueue(client1);
-        // this.addClientToLobbyQueue(client2);
-
         this._disposeClientQueue.push(client1);
         this._disposeClientQueue.push(client2);
-
         this._disposeGameQueue.push(game);
     }
 

@@ -126,7 +126,7 @@ export default class Lobby extends GameWorld {
         this.broadcast(data);
     }
 
-    willAcceptPlayer(player: PlayerAccount): boolean {
+    willAcceptPlayer(player: PlayerAccount, invitationToken?: string): boolean {
         let result: boolean = true;
         if (player.location != this.location) { result = false };
         if (!Lobby.inRange(player.mmr, this.mmrRange)) { result = false };

@@ -1,6 +1,7 @@
 // import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../Director';
 import TCPClientSession from '../connection/TCPClientSession';
+import PlayerAccount from '../PlayerAccount';
 import ClientProxy from '../ClientProxy';
 
 const uuidv4 = require('uuid/v4');
@@ -88,6 +89,17 @@ export default abstract class GameWorld {
 	// publishViaClientProxy(data: any, client: ClientProxy, subtopic?: string): void {
 	// 	client.publish(data, subtopic);
 	// }
+
+	getInvitationToken(): string {
+		//TODO: ecode gw uuid, host, ip
+		return '<INVITATION-TOKEN>';
+	}
+
+	willAcceptPlayer(player: PlayerAccount, invitationToken?: string): boolean {
+		let result: boolean = false;
+		//TODO
+		return result;
+	}
 
 	broadcast(data: any, sourceClient?: ClientProxy, subtopic?: string): void {
 		// this.log(`broadcasting...`);

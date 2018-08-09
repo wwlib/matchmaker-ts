@@ -1,5 +1,6 @@
 import Msg_Auth from './Msg_Auth';
 import Msg_Chat from './Msg_Chat';
+import Msg_JSON from './Msg_JSON';
 import Message from './Message';
 
 /* From Message
@@ -17,22 +18,19 @@ export interface RemoteInfo {
 
 export default class MessageFactory {
 	private static _classMap: Map<number, any>;
-    private static msgClz: any[] = [
-        Msg_Auth,
-        Msg_Chat,
-    ];
 
 	static init(): void {
 		MessageFactory._classMap = new Map<number, any>();
-		MessageFactory.registerMessageClass(Msg_Auth, 0);
-		MessageFactory.registerMessageClass(Msg_Chat, 1);
+		MessageFactory.registerMessageClass(Msg_Auth);
+		MessageFactory.registerMessageClass(Msg_Chat);
+		MessageFactory.registerMessageClass(Msg_JSON);
 	}
 
     static parse(messageBuffer: any, rinfo?: RemoteInfo): Message | undefined {
         // console.log(messageBuffer);
         let type: number = messageBuffer[0];
         try {
-            let msgClass: any = MessageFactory.msgClz[type];
+            let msgClass: any = MessageFactory._classMap.get(type);
             let msg: Message = new msgClass() as Message;
             if (rinfo) {
                 msg.host = rinfo.address;
@@ -46,7 +44,7 @@ export default class MessageFactory {
         }
     }
 
-	static registerMessageClass(messageClass: any, type: number): void {
+	static registerMessageClass(messageClass: any): void {
 		console.log(`registerMessageClass: type: ${messageClass.type}: `);
 		let testClass: any ;
 		if (testClass = MessageFactory._classMap.get(messageClass.type) ) {

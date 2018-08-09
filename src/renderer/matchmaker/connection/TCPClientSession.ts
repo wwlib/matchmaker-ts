@@ -1,9 +1,12 @@
 import PubSub, { PubSubClient } from '../PubSub';
-import Message from '../message/Message';
-import MessageFactory from '../message/MessageFactory';
 import WebSocket = require('ws');
-import Msg_Chat from '../message/Msg_Chat';
-import Msg_Auth from '../message/Msg_Auth';
+import {
+	Message,
+	MessageFactory,
+	Msg_Chat,
+	Msg_Auth,
+	Msg_JSON
+ } from '../message';
 // import TCPClientServer from './TCPClientServer';
 import Director from '../Director';
 
@@ -109,6 +112,7 @@ export default class TCPClientSession {
 					authMsg.port = this._port;
 					console.log(`  --> TCP_c: received Msg_Auth: `, authMsg.command);
 					this.userUUID = Director.Instance().authenticateUser(authMsg); //TODO: add real authentication flow
+					this.sendServerDetails();
 					authMsg.userUUID = this.userUUID;
 					authMsg.password = '';
 					authMsg.authToken = '<AUTH-TOKEN>';
@@ -119,6 +123,12 @@ export default class TCPClientSession {
 					console.log(`  --> TCP_c: received Msg_Chat: `);
 					this.publish(message);
 					break;
+				case Msg_JSON.type:
+					let jsonMsg: Msg_JSON = msg as Msg_JSON;
+					console.log(`  --> TCP_c: received Msg_JSON: `);
+					// this.publish(message);
+					console.log(jsonMsg.name, jsonMsg.json);
+					break;
 				default:
 					console.log("  --> TCP_c: unrecognized message type.");
 					break;
@@ -126,6 +136,10 @@ export default class TCPClientSession {
 		} else {
 			console.log(`  --> TCP_c: unrecognized message format: `, message);
 		}
+	}
+
+	sendServerDetails(): void {
+		 Director.Instance().sendServerDetailsToClientWithUUID(this.userUUID);
 	}
 
 	get port(): string {

@@ -27,7 +27,7 @@ export default class AstroGame extends GameWorld {
         if (options && options.connectionPort) {
             this.connectionPort = options.connectionPort;
         }
-        MessageFactory.registerMessageClass(Msg_Astro, Msg_Astro.type);
+        MessageFactory.registerMessageClass(Msg_Astro);
         this.start();
     }
 
@@ -50,7 +50,7 @@ export default class AstroGame extends GameWorld {
 
     dispose(): void {
         super.dispose();
-        MessageFactory.registerMessageClass(Msg_Astro, Msg_Astro.type);
+        MessageFactory.registerMessageClass(Msg_Astro);
         this.server.dispose();
     }
 }
