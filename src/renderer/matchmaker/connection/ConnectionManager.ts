@@ -1,12 +1,6 @@
 import TCPClientServer from './TCPClientServer';
 import Message from '../message/Message';
 
-export interface RemoteInfo {
-	address: string;
-	port: number;
-	size: number;
-}
-
 export default class ConnectionManager {
 
 	public TCP_s: TCPClientServer;
@@ -25,10 +19,8 @@ export default class ConnectionManager {
         this.debug = options.debug;
         this.port = options.port;
 
-		this.log("Initializing MessageRouter.");
-		this.log("Starting Packet Thread.");
-
-		this.TCP_s = new TCPClientServer(this.port, this);
+		this.log(`Starting ConnectionManager on port: ${this.port}`);
+		this.TCP_s = new TCPClientServer(this.port); //, this);
 	}
 
 	public restart(): void {

@@ -1,9 +1,10 @@
-import * as PubSubJS from 'pubsub-js';
+// import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../Director';
 import TCPClientSession from '../connection/TCPClientSession';
 import ClientProxy from '../ClientProxy';
 
 const uuidv4 = require('uuid/v4');
+const now = require("performance-now");
 
 export enum GameWorldState {
 	Ready,
@@ -42,6 +43,10 @@ export default abstract class GameWorld {
 	private _tickInterval: any;
 	private _tickHandler: any = this.tick.bind(this);
 
+	public tickStartTime: number;
+	public avgTickTime: number;
+	public lastTickTime: number;
+
 	abstract tick(): void;
 
 	constructor( options?: GameWorldOptions) {
@@ -62,10 +67,10 @@ export default abstract class GameWorld {
 		this.maxClients = options.maxClients;
 		this._deltaTime = options.deltaTime;
 		this.debug = options.debug;
-
+		this.avgTickTime = 0;
 		this._state = GameWorldState.Ready;
 
-		// this._channelToken = PubSubJS.subscribe(this.uuid, this.channelSubscriber.bind(this));
+		// this._channelToken = PubSub.Instance().subscribe(this.uuid, this.channelSubscriber.bind(this));
 	}
 
 	// publish(data: any, subtopic?: string): void {
@@ -73,7 +78,7 @@ export default abstract class GameWorld {
 	// 	if (subtopic) {
 	// 		topic = `${topic}.${subtopic}`;
 	// 	}
-	// 	PubSubJS.publish(topic, data);
+	// 	PubSub.Instance().publish(topic, data);
 	// }
 
 	// channelSubscriber(msg: any, data: any): void {
@@ -149,8 +154,21 @@ export default abstract class GameWorld {
 		});
 	}
 
+	startTick(): void {
+		this.tickStartTime = now();
+	}
+
+	endTick(): void {
+		this.lastTickTime = now() - this.tickStartTime;
+		this.updateAverageTickTime(this.lastTickTime)
+	}
+
+	updateAverageTickTime(tickTime): void {
+		this.avgTickTime += (tickTime - this.avgTickTime) * 0.1;
+	}
+
 	dispose(): void {
-		PubSubJS.unsubscribe(this._channelToken);
+		// PubSub.Instance().unsubscribe(this._channelToken);
 		clearInterval(this._tickInterval);
 		this._tickHandler = undefined;
 		this.removeAllClients();

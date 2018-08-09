@@ -1,4 +1,4 @@
-import Message from './Message';
+import Message from '../../message/Message';
 
 const sp = require('schemapack');
 
@@ -19,9 +19,9 @@ export type ChatMessageOptions = {
     direct?: boolean;
 }
 
-export default class Msg_Chat extends Message {
+export default class Msg_Astro extends Message {
 
-    static type: number = 1;
+    static type: number = 3;
 
     public sourceUUID: string;
 	public targetUUID: string;
@@ -77,6 +77,6 @@ export default class Msg_Chat extends Message {
 	}
 
 	public getType(): number {
-		return Msg_Chat.type;
+		return Msg_Astro.type;
 	}
 }

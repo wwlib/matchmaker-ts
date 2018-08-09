@@ -16,7 +16,7 @@ export default class Simulator {
     constructor( options?: SimulatorOptions) {
         options = options || {};
         let defaultOptions: SimulatorOptions =  {
-            deltaTime: 10,
+            deltaTime: 1000,
         }
 		options = Object.assign(defaultOptions, options);
         this._deltaTime = options.deltaTime;
@@ -28,7 +28,8 @@ export default class Simulator {
     }
 
     tick(): void {
-		Director.Instance().addMockClient();
+		Director.Instance().addMockClients(100);
+		console.log(Director.Instance().getPerformanceStats());
     }
 
     start(): void {

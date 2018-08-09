@@ -1,11 +1,6 @@
 // import Player from './Player';
 import TCPClientSession from '../connection/TCPClientSession';
 
-export enum MessageType {
-    Auth,
-    Chat,
-}
-
 export type MessageOptions = {
 	id?: string;
 	password?: string
@@ -13,6 +8,8 @@ export type MessageOptions = {
 }
 
 export default abstract class Message {
+
+    static type: number = -1;
 
     protected _id: string;
     protected _password: string;

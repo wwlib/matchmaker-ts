@@ -1,4 +1,4 @@
-import * as PubSubJS from 'pubsub-js';
+// import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../Director';
 import GameWorld, { GameWorldType, GameWorldState } from './GameWorld';
 import ClientProxy from '../ClientProxy';
@@ -27,7 +27,6 @@ export type LobbyOptions = {
 
 export default class Lobby extends GameWorld {
 
-    //public activeAccounts: Map<string, LobbyAccount> = new Map<string, LobbyAccount>();
     public memberRange: Range;
     public location: PlayerLocation;
     public mmrRange: Range;
@@ -35,6 +34,8 @@ export default class Lobby extends GameWorld {
     public priorityRange: Range;
     public maxCombinedClientWaitTime: number = 30000;
     public maxClientMMRDifference: number = 100;
+    public lastComparisons: number;
+    public lastMatches: number;
 
     constructor(options?: any) {
         super();
@@ -65,20 +66,25 @@ export default class Lobby extends GameWorld {
 		this._deltaTime = options.deltaTime;
 		this.debug = options.debug;
 
+        this.lastComparisons = 0;
+        this.lastMatches = 0;
+
         this._state = GameWorldState.Ready;
 
-        // PubSubJS.publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
+        // PubSub.Instance().publish(DirectorTopic.Lobby, `${this.uuid}: ready`);
         // this.publish('ready');
 
-        this.start();
+        // this.start();
     }
 
     tick(): number {
+        this.startTick();
         let iterator1: IterableIterator<[string, ClientProxy]> = this._clients.entries();
         let iterator2: IterableIterator<[string, ClientProxy]>;
         let client1: ClientProxy;
         let client2: ClientProxy;
-        let matchCount: number = 0;
+        this.lastComparisons = 0;
+        this.lastMatches = 0;
 
         let element1: any;
         let element2: any;
@@ -87,18 +93,33 @@ export default class Lobby extends GameWorld {
             iterator2 = this._clients.entries();
             while (element2 = iterator2.next().value ) {
                 client2 = element2[1];
+                this.lastComparisons++;
                 if ((client1 != client2) && this.willMatchClients(client1, client2)) {
-                    matchCount++;
+                    this.lastMatches++;
                     // this.log(`MATCH: ${client1.shortId} ${client1.playerAccount.mmr} ${client1.gameTime} <-> ${client2.shortId} ${client2.playerAccount.mmr} ${client2.gameTime}`)
                     this.removeClient(client1);
                     this.removeClient(client2);
-                    Director.Instance().handleGameOver(client1, client2);
+                    Director.Instance().handleStartGame(client1, client2);
                     break;
                 }
             }
         }
-        return matchCount;
+        this.endTick();
+        return this.lastMatches;
     }
+
+    // tick(): number {
+    //     this.startTick();
+    //     this.lastComparisons = 0;
+    //     this.lastMatches = 0;
+    //     this._clients.forEach((client: ClientProxy, key: string) => {
+    //         this.lastComparisons++;
+	// 		this.removeClient(client);
+    //         Director.Instance().removeClient(client);
+	// 	});
+    //     this.endTick();
+    //     return 0;
+    // }
 
     receiveMessageFromClient(data: any, client: ClientProxy): void {
         // this.log(`receiveMessageFromClient: ${client.shortId}`, data);
@@ -116,7 +137,8 @@ export default class Lobby extends GameWorld {
     willMatchClients(client1: ClientProxy, client2: ClientProxy): boolean {
         let result: boolean = false;
         let combinedWaitTime: number = client1.gameTime + client2.gameTime;
-        if (Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr) <= this.maxClientMMRDifference) {result = true};
+        let mmrDifference: number = Math.abs(client1.playerAccount.mmr - client2.playerAccount.mmr);
+        if  (mmrDifference <= this.maxClientMMRDifference) {result = true};
         if (combinedWaitTime >= this.maxCombinedClientWaitTime) {result = true};
         return result;
     }

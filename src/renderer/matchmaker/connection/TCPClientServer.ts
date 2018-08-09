@@ -1,9 +1,11 @@
-import ConnectionManager from './ConnectionManager';
+// import ConnectionManager from './ConnectionManager';
 import TCPClientSession, { MockWebSocket } from './TCPClientSession';
 import Message from '../message/Message';
 import Msg_Auth from '../message/Msg_Auth';
 // import TCPClientMonitor from './TCPClientMonitor';
 import WebSocket = require('ws');
+const os = require('os');
+const hostname = os.hostname();
 const fs = require('fs');
 const https = require('https');
 
@@ -13,13 +15,13 @@ export default class TCPClientServer {
 	// public TCP_m: TCPClientMonitor;
 
 	public clients: Map<TCPClientSession, WebSocket | MockWebSocket> = new Map<TCPClientSession, WebSocket | MockWebSocket>();
-	public connectionManager: ConnectionManager;
+	// public connectionManager: ConnectionManager;
 	public host: string;
 	public port: number;
 
-	constructor(port: number, connectionManager: ConnectionManager) {
+	constructor(port: number) { //, connectionManager: ConnectionManager) {
 		this.port = port;
-		this.connectionManager = connectionManager;
+		// this.connectionManager = connectionManager;
 		this.start();
 	}
 
@@ -42,7 +44,7 @@ export default class TCPClientServer {
 
 		var cfg = {
 			ssl: false,
-			port: 9696,
+			port: this.port,
 			//FIXME: the path should be relative
 			ssl_key: "certs/key.pem",
 			ssl_cert: "certs/certificate.pem",
@@ -52,33 +54,36 @@ export default class TCPClientServer {
 			// providing server with  SSL key/cert
 			key: fs.readFileSync( cfg.ssl_key ),
 			cert: fs.readFileSync( cfg.ssl_cert )
-		}, processRequest ).listen( cfg.port );
+		}, processRequest ).listen( cfg.port, ((err) => {
+				let address: any = httpsServer.address();
+				this.host = address.address;
+				if (this.host === "::") {
+					this.host = hostname;
+				}
+				this.port = address.port;
+				console.log(`SocketServer: starting server: host ${this.host}, port ${this.port}`);
+				this.socketServer = new WebSocket.Server({
+					server: httpsServer,
+				});
 
+				this.socketServer.on('connection', (socket: any, req: any) => { //FIXME: WebSocket
+					console.log(`SocketServer: on connection ${req.headers.host}`);
+					var terms = req.headers.host.split(':');
+					socket.host = terms[0];
+					socket.port = Number(terms[1]);
+					this.onConnection(socket);
+				});
 
-		console.log(`SocketServer: starting server: host ${this.host}, port ${this.port}`);
-		this.socketServer = new WebSocket.Server({
-			server: httpsServer,
-		});
-		// this.socketServer = new WebSocket.Server({
-		//     port: 9696
-		// });
-
-		this.socketServer.on('connection', (socket: any, req: any) => { //FIXME: WebSocket
-			console.log(`SocketServer: on connection ${req.headers.host}`);
-			var terms = req.headers.host.split(':');
-			socket.host = terms[0];
-			socket.port = Number(terms[1]);
-			this.onConnection(socket);
-		});
-
-		this.socketServer.on('error', (error: any) => {
-			console.log(`SocketServer: on error: `, error);
-			// this.killServer();
-		});
+				this.socketServer.on('error', (error: any) => {
+					console.log(`SocketServer: on error: `, error);
+					// this.killServer();
+				});
+			})
+		);
 	}
 
 	onConnection(socket: WebSocket | MockWebSocket): TCPClientSession {
-		let client: TCPClientSession = new TCPClientSession(this, socket);
+		let client: TCPClientSession = new TCPClientSession(socket);
 		// console.log(`${client.ip} : ${client.port} connected to the server.`);
 		this.clients.set(client, socket);
 		let authMsg: Msg_Auth = new Msg_Auth({
@@ -132,5 +137,12 @@ export default class TCPClientServer {
 		console.log("Timing out client: " + client.ip + ":" + client.port);
 		this.clients.delete(client);
 
+	}
+
+	dispose(): void {
+		this.clients.forEach((socket: WebSocket, clientSession: TCPClientSession) => {
+			clientSession.dispose();
+		});
+		this.killServer();
 	}
 }

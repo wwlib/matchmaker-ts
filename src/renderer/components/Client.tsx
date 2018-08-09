@@ -3,7 +3,7 @@ import * as ReactBootstrap from "react-bootstrap";
 import WebSocket = require('ws');
 import Msg_Auth from '../matchmaker/message/Msg_Auth';
 import Msg_Chat from '../matchmaker/message/Msg_Chat';
-import Message, { MessageType } from '../matchmaker/message/Message';
+import Message from '../matchmaker/message/Message';
 import MessageFactory from '../matchmaker/message/MessageFactory';
 
 // const prettyjson = require('prettyjson');
@@ -18,13 +18,13 @@ const cert = '-----BEGIN CERTIFICATE-----\n\
 CERT\n\
 -----END CERTIFICATE-----';
 
-export interface ClientProps { }
+export interface ClientProps { port: number }
 export interface ClientState { input: string; messages: string }
 
 export default class Client extends React.Component < ClientProps, ClientState > {
 
     public hostname = 'localhost';
-    public port = 9696;
+    // public port = 9696;
     public webSocket;
     public id: string;
     public userUUID: string;
@@ -52,7 +52,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
     }
 
     startWebSocket(onError?: any, onConnect?: any) {
-        let connectionString = `wss://${this.hostname}:${this.port}`;
+        let connectionString = `wss://${this.hostname}:${this.props.port}`;
 
         if (this.webSocket) {
             try {
@@ -116,7 +116,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
             let message_type: number = msg.getType();
 
             switch (message_type) {
-                case MessageType.Auth:
+                case Msg_Auth.type:
                     let authMsg: Msg_Auth = msg as Msg_Auth;
                     console.log(`  --> Client: received Msg_Auth: ${authMsg.command}`);
                     if (authMsg.command === 'authorized') {
@@ -124,7 +124,7 @@ export default class Client extends React.Component < ClientProps, ClientState >
                         this.userUUID = authMsg.userUUID;
                     }
                     break;
-                case MessageType.Chat:
+                case Msg_Chat.type:
                     let chatMsg: Msg_Chat = msg as Msg_Chat;
                     console.log(`  --> Client: received Msg_Chat: `, chatMsg.body);
                     this.setState({messages: this.state.messages + '\n' + chatMsg.sourceUUID + ': ' + chatMsg.body});
