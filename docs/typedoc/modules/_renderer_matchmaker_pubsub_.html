@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;renderer/matchmaker/game/Lobby&quot; | matchmaker-ts</title>
+	<title>&quot;renderer/matchmaker/PubSub&quot; | matchmaker-ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_renderer_matchmaker_game_lobby_.html">&quot;renderer/matchmaker/game/Lobby&quot;</a>
+					<a href="_renderer_matchmaker_pubsub_.html">&quot;renderer/matchmaker/PubSub&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;renderer/matchmaker/game/Lobby&quot;</h1>
+			<h1>External module &quot;renderer/matchmaker/PubSub&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,16 +71,36 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/_renderer_matchmaker_pubsub_.pubsubmode.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Mode</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-kind-icon">Lobby</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_renderer_matchmaker_pubsub_.pubsub.html" class="tsd-kind-icon">Pub<wbr>Sub</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_renderer_matchmaker_pubsub_.pubsubjsclient.html" class="tsd-kind-icon">Pub<wbr>SubJSClient</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_renderer_matchmaker_pubsub_.pubsubclient.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Client</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_renderer_matchmaker_game_lobby_.html#lobbyoptions" class="tsd-kind-icon">Lobby<wbr>Options</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-kind-icon">Range</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_renderer_matchmaker_pubsub_.html#pubsuboptions" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Options</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_renderer_matchmaker_pubsub_.html#now" class="tsd-kind-icon">now</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_renderer_matchmaker_pubsub_.html#redis" class="tsd-kind-icon">redis</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_renderer_matchmaker_pubsub_.html#uuidv4" class="tsd-kind-icon">uuidv4</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,12 +109,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="lobbyoptions" class="tsd-anchor"></a>
-					<h3>Lobby<wbr>Options</h3>
-					<div class="tsd-signature tsd-kind-icon">Lobby<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="pubsuboptions" class="tsd-anchor"></a>
+					<h3>Pub<wbr>Sub<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Pub<wbr>Sub<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/Lobby.ts#L14">renderer/matchmaker/game/Lobby.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L14">renderer/matchmaker/PubSub.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -107,28 +127,7 @@
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> delta<wbr>Time<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
 							</li>
 							<li class="tsd-parameter">
-								<h5>latency<wbr>Range<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-signature-type">Range</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>location<span class="tsd-signature-symbol">: </span><a href="../enums/_renderer_matchmaker_playeraccount_.playerlocation.html" class="tsd-signature-type">PlayerLocation</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Clients<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>member<wbr>Range<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-signature-type">Range</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> min<wbr>Clients<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>mmr<wbr>Range<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-signature-type">Range</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>priority<wbr>Range<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-signature-type">Range</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> type<span class="tsd-signature-symbol">?: </span><a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-signature-type">GameWorldType</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> mode<span class="tsd-signature-symbol">?: </span><a href="../enums/_renderer_matchmaker_pubsub_.pubsubmode.html" class="tsd-signature-type">PubSubMode</a></h5>
 							</li>
 							<li class="tsd-parameter">
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> uuid<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
@@ -136,26 +135,38 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="range" class="tsd-anchor"></a>
-					<h3>Range</h3>
-					<div class="tsd-signature tsd-kind-icon">Range<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="now" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> now</h3>
+					<div class="tsd-signature tsd-kind-icon">now<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&quot;performance-now&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/Lobby.ts#L9">renderer/matchmaker/game/Lobby.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L6">renderer/matchmaker/PubSub.ts:6</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="redis" class="tsd-anchor"></a>
+					<h3>redis</h3>
+					<div class="tsd-signature tsd-kind-icon">redis<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&quot;redis&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L4">renderer/matchmaker/PubSub.ts:4</a></li>
 						</ul>
-					</div>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="uuidv4" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> uuidv4</h3>
+					<div class="tsd-signature tsd-kind-icon">uuidv4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;uuid/v4&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L5">renderer/matchmaker/PubSub.ts:5</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -180,7 +191,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_renderer_matchmaker_pubsub_.html">"renderer/matchmaker/<wbr>Pub<wbr>Sub"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -201,7 +212,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_renderer_matchmaker_game_gameworld_.html">"renderer/matchmaker/game/<wbr>Game<wbr>World"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -244,14 +255,29 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_renderer_matchmaker_pubsub_.pubsubmode.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Mode</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-kind-icon">Lobby</a>
+						<a href="../classes/_renderer_matchmaker_pubsub_.pubsub.html" class="tsd-kind-icon">Pub<wbr>Sub</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_renderer_matchmaker_pubsub_.pubsubjsclient.html" class="tsd-kind-icon">Pub<wbr>SubJSClient</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_renderer_matchmaker_pubsub_.pubsubclient.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Client</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_renderer_matchmaker_game_lobby_.html#lobbyoptions" class="tsd-kind-icon">Lobby<wbr>Options</a>
+						<a href="_renderer_matchmaker_pubsub_.html#pubsuboptions" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Options</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_renderer_matchmaker_game_lobby_.html#range" class="tsd-kind-icon">Range</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_renderer_matchmaker_pubsub_.html#now" class="tsd-kind-icon">now</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_renderer_matchmaker_pubsub_.html#redis" class="tsd-kind-icon">redis</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_renderer_matchmaker_pubsub_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>
 					</li>
 				</ul>
 			</nav>

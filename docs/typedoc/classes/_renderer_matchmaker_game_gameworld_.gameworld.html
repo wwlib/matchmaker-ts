@@ -78,6 +78,12 @@
 							<li>
 								<a href="_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-signature-type">Lobby</a>
 							</li>
+							<li>
+								<a href="_renderer_matchmaker_game_mockgame_.mockgame.html" class="tsd-signature-type">MockGame</a>
+							</li>
+							<li>
+								<a href="_renderer_matchmaker_game_astrogame_astrogame_.astrogame.html" class="tsd-signature-type">AstroGame</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -102,9 +108,12 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#_tickhandler" class="tsd-kind-icon">_tick<wbr>Handler</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#_tickinterval" class="tsd-kind-icon">_tick<wbr>Interval</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#_type" class="tsd-kind-icon">_type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#avgticktime" class="tsd-kind-icon">avg<wbr>Tick<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#lastticktime" class="tsd-kind-icon">last<wbr>Tick<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#maxclients" class="tsd-kind-icon">max<wbr>Clients</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#minclients" class="tsd-kind-icon">min<wbr>Clients</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#tickstarttime" class="tsd-kind-icon">tick<wbr>Start<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#uuid" class="tsd-kind-icon">uuid</a></li>
 							</ul>
 						</section>
@@ -123,6 +132,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#addclient" class="tsd-kind-icon">add<wbr>Client</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#broadcast" class="tsd-kind-icon">broadcast</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#dispose" class="tsd-kind-icon">dispose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#endtick" class="tsd-kind-icon">end<wbr>Tick</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#getinvitationtoken" class="tsd-kind-icon">get<wbr>Invitation<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#logclients" class="tsd-kind-icon">log<wbr>Clients</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#over" class="tsd-kind-icon">over</a></li>
@@ -130,8 +141,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#removeallclients" class="tsd-kind-icon">remove<wbr>All<wbr>Clients</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#removeclient" class="tsd-kind-icon">remove<wbr>Client</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#start" class="tsd-kind-icon">start</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#starttick" class="tsd-kind-icon">start<wbr>Tick</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#stop" class="tsd-kind-icon">stop</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#tick" class="tsd-kind-icon">tick</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#updateaverageticktime" class="tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_game_gameworld_.gameworld.html#willacceptplayer" class="tsd-kind-icon">will<wbr>Accept<wbr>Player</a></li>
 							</ul>
 						</section>
 					</div>
@@ -149,7 +163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L45">renderer/matchmaker/game/GameWorld.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L51">renderer/matchmaker/game/GameWorld.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -171,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">_channel<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L41">renderer/matchmaker/game/GameWorld.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L43">renderer/matchmaker/game/GameWorld.ts:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,7 +195,7 @@
 					<div class="tsd-signature tsd-kind-icon">_clients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, ClientProxy&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L30">renderer/matchmaker/game/GameWorld.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L32">renderer/matchmaker/game/GameWorld.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -191,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">_delta<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L38">renderer/matchmaker/game/GameWorld.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L40">renderer/matchmaker/game/GameWorld.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -201,7 +215,7 @@
 					<div class="tsd-signature tsd-kind-icon">_state<span class="tsd-signature-symbol">:</span> <a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldstate.html" class="tsd-signature-type">GameWorldState</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L39">renderer/matchmaker/game/GameWorld.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L41">renderer/matchmaker/game/GameWorld.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -211,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;this.tick.bind(this)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L43">renderer/matchmaker/game/GameWorld.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L45">renderer/matchmaker/game/GameWorld.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -221,7 +235,7 @@
 					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L42">renderer/matchmaker/game/GameWorld.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L44">renderer/matchmaker/game/GameWorld.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +245,17 @@
 					<div class="tsd-signature tsd-kind-icon">_type<span class="tsd-signature-symbol">:</span> <a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-signature-type">GameWorldType</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L37">renderer/matchmaker/game/GameWorld.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L39">renderer/matchmaker/game/GameWorld.ts:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="avgticktime" class="tsd-anchor"></a>
+					<h3>avg<wbr>Tick<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">avg<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L48">renderer/matchmaker/game/GameWorld.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -241,7 +265,17 @@
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L35">renderer/matchmaker/game/GameWorld.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L37">renderer/matchmaker/game/GameWorld.ts:37</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="lastticktime" class="tsd-anchor"></a>
+					<h3>last<wbr>Tick<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L49">renderer/matchmaker/game/GameWorld.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -251,7 +285,7 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Clients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L34">renderer/matchmaker/game/GameWorld.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L36">renderer/matchmaker/game/GameWorld.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -261,7 +295,17 @@
 					<div class="tsd-signature tsd-kind-icon">min<wbr>Clients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L33">renderer/matchmaker/game/GameWorld.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L35">renderer/matchmaker/game/GameWorld.ts:35</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="tickstarttime" class="tsd-anchor"></a>
+					<h3>tick<wbr>Start<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">tick<wbr>Start<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L47">renderer/matchmaker/game/GameWorld.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -271,7 +315,7 @@
 					<div class="tsd-signature tsd-kind-icon">uuid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L32">renderer/matchmaker/game/GameWorld.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L34">renderer/matchmaker/game/GameWorld.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -288,7 +332,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L142">renderer/matchmaker/game/GameWorld.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L159">renderer/matchmaker/game/GameWorld.ts:159</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -305,7 +349,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L130">renderer/matchmaker/game/GameWorld.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L147">renderer/matchmaker/game/GameWorld.ts:147</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -328,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L138">renderer/matchmaker/game/GameWorld.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L155">renderer/matchmaker/game/GameWorld.ts:155</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -345,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L134">renderer/matchmaker/game/GameWorld.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L151">renderer/matchmaker/game/GameWorld.ts:151</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/_renderer_matchmaker_game_gameworld_.gameworldtype.html" class="tsd-signature-type">GameWorldType</a></h4>
@@ -365,7 +409,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L115">renderer/matchmaker/game/GameWorld.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L132">renderer/matchmaker/game/GameWorld.ts:132</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -388,7 +432,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L87">renderer/matchmaker/game/GameWorld.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L104">renderer/matchmaker/game/GameWorld.ts:104</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -417,10 +461,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L152">renderer/matchmaker/game/GameWorld.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L182">renderer/matchmaker/game/GameWorld.ts:182</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="endtick" class="tsd-anchor"></a>
+					<h3>end<wbr>Tick</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">end<wbr>Tick<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L173">renderer/matchmaker/game/GameWorld.ts:173</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getinvitationtoken" class="tsd-anchor"></a>
+					<h3>get<wbr>Invitation<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Invitation<wbr>Token<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L93">renderer/matchmaker/game/GameWorld.ts:93</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -434,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L159">renderer/matchmaker/game/GameWorld.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L189">renderer/matchmaker/game/GameWorld.ts:189</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -460,7 +538,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L146">renderer/matchmaker/game/GameWorld.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L163">renderer/matchmaker/game/GameWorld.ts:163</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -477,7 +555,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L110">renderer/matchmaker/game/GameWorld.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L127">renderer/matchmaker/game/GameWorld.ts:127</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -494,7 +572,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L97">renderer/matchmaker/game/GameWorld.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L114">renderer/matchmaker/game/GameWorld.ts:114</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -520,7 +598,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L124">renderer/matchmaker/game/GameWorld.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L141">renderer/matchmaker/game/GameWorld.ts:141</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -537,7 +615,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L120">renderer/matchmaker/game/GameWorld.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L137">renderer/matchmaker/game/GameWorld.ts:137</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -560,7 +638,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L101">renderer/matchmaker/game/GameWorld.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L118">renderer/matchmaker/game/GameWorld.ts:118</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="starttick" class="tsd-anchor"></a>
+					<h3>start<wbr>Tick</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Tick<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L169">renderer/matchmaker/game/GameWorld.ts:169</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -577,7 +672,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L106">renderer/matchmaker/game/GameWorld.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L123">renderer/matchmaker/game/GameWorld.ts:123</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -594,10 +689,59 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/game/GameWorld.ts#L45">renderer/matchmaker/game/GameWorld.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L51">renderer/matchmaker/game/GameWorld.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updateaverageticktime" class="tsd-anchor"></a>
+					<h3>update<wbr>Average<wbr>Tick<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">(</span>tickTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L178">renderer/matchmaker/game/GameWorld.ts:178</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tickTime: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="willacceptplayer" class="tsd-anchor"></a>
+					<h3>will<wbr>Accept<wbr>Player</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">will<wbr>Accept<wbr>Player<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a>, invitationToken<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/game/GameWorld.ts#L98">renderer/matchmaker/game/GameWorld.ts:98</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>player: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> invitationToken: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -625,6 +769,9 @@
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_pubsub_.html">"renderer/matchmaker/<wbr>Pub<wbr>Sub"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -646,6 +793,21 @@
 						<a href="../modules/_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_mockgame_.html">"renderer/matchmaker/game/<wbr>Mock<wbr>Game"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrogame_.html">"renderer/matchmaker/game/astrogame/<wbr>Astro<wbr>Game"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrotcpclientserver_.html">"renderer/matchmaker/game/astrogame/<wbr>AstroTCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrotcpclientsession_.html">"renderer/matchmaker/game/astrogame/<wbr>AstroTCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_msg_astro_.html">"renderer/matchmaker/game/astrogame/<wbr>Msg_<wbr><wbr>Astro"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -656,6 +818,12 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_json_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr>JSON"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_index_.html">"renderer/matchmaker/message/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -700,13 +868,22 @@
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#_type" class="tsd-kind-icon">_type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#avgticktime" class="tsd-kind-icon">avg<wbr>Tick<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#debug" class="tsd-kind-icon">debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#lastticktime" class="tsd-kind-icon">last<wbr>Tick<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#maxclients" class="tsd-kind-icon">max<wbr>Clients</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#minclients" class="tsd-kind-icon">min<wbr>Clients</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#tickstarttime" class="tsd-kind-icon">tick<wbr>Start<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#uuid" class="tsd-kind-icon">uuid</a>
@@ -733,6 +910,12 @@
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#dispose" class="tsd-kind-icon">dispose</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#endtick" class="tsd-kind-icon">end<wbr>Tick</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#getinvitationtoken" class="tsd-kind-icon">get<wbr>Invitation<wbr>Token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#log" class="tsd-kind-icon">log</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -754,10 +937,19 @@
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#start" class="tsd-kind-icon">start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#starttick" class="tsd-kind-icon">start<wbr>Tick</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#stop" class="tsd-kind-icon">stop</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#tick" class="tsd-kind-icon">tick</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#updateaverageticktime" class="tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_game_gameworld_.gameworld.html#willacceptplayer" class="tsd-kind-icon">will<wbr>Accept<wbr>Player</a>
 							</li>
 						</ul>
 					</li>
@@ -765,6 +957,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_game_gameworld_.html#gameworldoptions" class="tsd-kind-icon">Game<wbr>World<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_renderer_matchmaker_game_gameworld_.html#now" class="tsd-kind-icon">now</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_renderer_matchmaker_game_gameworld_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>

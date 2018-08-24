@@ -1,7 +1,9 @@
-// import WebSocket = require('ws');
-import TCPClientSession from '../../connection/TCPClientSession';
+import WebSocket = require('ws');
+import TCPClientSession, { MockWebSocket } from '../../connection/TCPClientSession';
+import AstroGame from './AstroGame';
 import Msg_Auth from '../../message/Msg_Auth';
 import Msg_Chat from '../../message/Msg_Chat';
+import Msg_JSON from '../../message/Msg_JSON';
 import Msg_Astro from './Msg_Astro';
 
 // import PubSub, { PubSubClient } from '../../PubSub';
@@ -15,6 +17,12 @@ const now = require("performance-now");
 
 export default class AstroTCPClientSession extends TCPClientSession {
 
+    public astroGame: AstroGame;
+
+    constructor(socket: WebSocket | MockWebSocket, astroGame: AstroGame) {
+        super(socket);
+        this.astroGame = astroGame;
+    }
     onMessage(message: any): void {
 		// console.log(`AstroTCPClientSession: onMessage: `, message);
 		this.lastMessageReceivedTime = now();
@@ -30,7 +38,8 @@ export default class AstroTCPClientSession extends TCPClientSession {
 					authMsg.port = this._port;
 					console.log(`  --> AstroTCPClientSession: received Msg_Auth: `, authMsg.command);
 					this.userUUID = `PLAYER-${Math.floor(Math.random()*1000)}`; //Director.Instance().authenticateUser(authMsg); //TODO: add real authentication flow
-					authMsg.userUUID = this.userUUID;
+                    this.sendServerDetails();
+                    authMsg.userUUID = this.userUUID;
 					authMsg.password = '';
 					authMsg.authToken = '<AUTH-TOKEN>';
 					authMsg.command = 'authorized';
@@ -54,5 +63,13 @@ export default class AstroTCPClientSession extends TCPClientSession {
 			console.log(`  --> AstroTCPClientSession: unrecognized message format: `, message);
 		}
 	}
+
+    sendServerDetails(): void {
+        let details: any = {
+            players: this.astroGame.clientUUIDArray
+        }
+        let msg: Msg_JSON = new Msg_JSON({ name: 'details', json: details });
+        this.sendMessage(msg);
+    }
 
 }

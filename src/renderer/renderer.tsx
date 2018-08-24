@@ -34,16 +34,16 @@ PubSub.Instance({ mode: pubSubMode, deltaTime: 10 });
 
 let clientPort: number = Director.Instance().connectionPort;
 let clientMode: boolean = false;
-if (argy.client) {
+if (argy.client) { // don't start the connection manager if running as a client only
     clientMode = true;
     if (argy.clientPort) {
         clientPort = argy.clientPort;
     }
     console.log(`starting as client using port: ${clientPort}`);
-} else { // don't start the connection manager if running as a client only
+} else {
     Director.Instance().startConnectionManager();
     Director.Instance().addChatLobby();
-    Director.Instance().addAstroGame();
+    Director.Instance().addAstroGame({ connectionPort: 9494 });
 }
 
 

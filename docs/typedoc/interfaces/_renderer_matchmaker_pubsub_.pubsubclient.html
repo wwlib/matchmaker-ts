@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DirectorMode | matchmaker-ts</title>
+	<title>PubSubClient | matchmaker-ts</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,54 +56,154 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_renderer_matchmaker_director_.html">&quot;renderer/matchmaker/Director&quot;</a>
+					<a href="../modules/_renderer_matchmaker_pubsub_.html">&quot;renderer/matchmaker/PubSub&quot;</a>
 				</li>
 				<li>
-					<a href="_renderer_matchmaker_director_.directormode.html">DirectorMode</a>
+					<a href="_renderer_matchmaker_pubsub_.pubsubclient.html">PubSubClient</a>
 				</li>
 			</ul>
-			<h1>Enumeration DirectorMode</h1>
+			<h1>Interface PubSubClient</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PubSubClient</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumeration members</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_renderer_matchmaker_director_.directormode.html#primary" class="tsd-kind-icon">Primary</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_renderer_matchmaker_director_.directormode.html#replica" class="tsd-kind-icon">Replica</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_renderer_matchmaker_pubsub_.pubsubclient.html#on" class="tsd-kind-icon">on</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_renderer_matchmaker_pubsub_.pubsubclient.html#publish" class="tsd-kind-icon">publish</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_renderer_matchmaker_pubsub_.pubsubclient.html#quit" class="tsd-kind-icon">quit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_renderer_matchmaker_pubsub_.pubsubclient.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_renderer_matchmaker_pubsub_.pubsubclient.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="primary" class="tsd-anchor"></a>
-					<h3>Primary</h3>
-					<div class="tsd-signature tsd-kind-icon">Primary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Primary&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L22">renderer/matchmaker/Director.ts:22</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="on" class="tsd-anchor"></a>
+					<h3>on</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L23">renderer/matchmaker/PubSub.ts:23</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>callback: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="replica" class="tsd-anchor"></a>
-					<h3>Replica</h3>
-					<div class="tsd-signature tsd-kind-icon">Replica<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Replica&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L23">renderer/matchmaker/Director.ts:23</a></li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="publish" class="tsd-anchor"></a>
+					<h3>publish</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">publish<span class="tsd-signature-symbol">(</span>topic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L25">renderer/matchmaker/PubSub.ts:25</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>topic: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="quit" class="tsd-anchor"></a>
+					<h3>quit</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">quit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L26">renderer/matchmaker/PubSub.ts:26</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="subscribe" class="tsd-anchor"></a>
+					<h3>subscribe</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>topic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L22">renderer/matchmaker/PubSub.ts:22</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>topic: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="unsubscribe" class="tsd-anchor"></a>
+					<h3>unsubscribe</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">unsubscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/PubSub.ts#L24">renderer/matchmaker/PubSub.ts:24</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -122,13 +222,13 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_database_.html">"renderer/matchmaker/<wbr>Database"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_director_.html">"renderer/matchmaker/<wbr>Director"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_pubsub_.html">"renderer/matchmaker/<wbr>Pub<wbr>Sub"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -192,41 +292,50 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_renderer_matchmaker_pubsub_.pubsubmode.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_renderer_matchmaker_pubsub_.pubsub.html" class="tsd-kind-icon">Pub<wbr>Sub</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_renderer_matchmaker_pubsub_.pubsubjsclient.html" class="tsd-kind-icon">Pub<wbr>SubJSClient</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="_renderer_matchmaker_director_.directormode.html" class="tsd-kind-icon">Director<wbr>Mode</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_renderer_matchmaker_pubsub_.pubsubclient.html" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Client</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_renderer_matchmaker_director_.directormode.html#primary" class="tsd-kind-icon">Primary</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_renderer_matchmaker_pubsub_.pubsubclient.html#on" class="tsd-kind-icon">on</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_renderer_matchmaker_director_.directormode.html#replica" class="tsd-kind-icon">Replica</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_renderer_matchmaker_pubsub_.pubsubclient.html#publish" class="tsd-kind-icon">publish</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_renderer_matchmaker_pubsub_.pubsubclient.html#quit" class="tsd-kind-icon">quit</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_renderer_matchmaker_pubsub_.pubsubclient.html#subscribe" class="tsd-kind-icon">subscribe</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_renderer_matchmaker_pubsub_.pubsubclient.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="_renderer_matchmaker_director_.directortopic.html" class="tsd-kind-icon">Director<wbr>Topic</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_renderer_matchmaker_director_.director.html" class="tsd-kind-icon">Director</a>
-					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_renderer_matchmaker_director_.html#directoroptions" class="tsd-kind-icon">Director<wbr>Options</a>
+						<a href="../modules/_renderer_matchmaker_pubsub_.html#pubsuboptions" class="tsd-kind-icon">Pub<wbr>Sub<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_renderer_matchmaker_director_.html#elorank" class="tsd-kind-icon">Elo<wbr>Rank</a>
+						<a href="../modules/_renderer_matchmaker_pubsub_.html#now" class="tsd-kind-icon">now</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_renderer_matchmaker_director_.html#elo" class="tsd-kind-icon">elo</a>
+						<a href="../modules/_renderer_matchmaker_pubsub_.html#redis" class="tsd-kind-icon">redis</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_renderer_matchmaker_director_.html#now" class="tsd-kind-icon">now</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_renderer_matchmaker_director_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>
+						<a href="../modules/_renderer_matchmaker_pubsub_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>
 					</li>
 				</ul>
 			</nav>

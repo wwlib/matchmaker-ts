@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Director (a singleton) coordiates the server subsystems</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -91,11 +98,25 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_authenticatedclientsessions" class="tsd-kind-icon">_authenticated<wbr>Client<wbr>Sessions</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_clients" class="tsd-kind-icon">_clients</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_connectionmanager" class="tsd-kind-icon">_connection<wbr>Manager</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_connectionport" class="tsd-kind-icon">_connection<wbr>Port</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_deltatime" class="tsd-kind-icon">_delta<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_disposeclientqueue" class="tsd-kind-icon">_dispose<wbr>Client<wbr>Queue</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_disposegamequeue" class="tsd-kind-icon">_dispose<wbr>Game<wbr>Queue</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_disposedclientcount" class="tsd-kind-icon">_disposed<wbr>Client<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_disposedgamecount" class="tsd-kind-icon">_disposed<wbr>Game<wbr>Count</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_lobbies" class="tsd-kind-icon">_lobbies</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_recycleclientqueue" class="tsd-kind-icon">_recycle<wbr>Client<wbr>Queue</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_tickhandler" class="tsd-kind-icon">_tick<wbr>Handler</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_renderer_matchmaker_director_.director.html#_tickinterval" class="tsd-kind-icon">_tick<wbr>Interval</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#avgticktime" class="tsd-kind-icon">avg<wbr>Tick<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#lastticktime" class="tsd-kind-icon">last<wbr>Tick<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#lobbystats" class="tsd-kind-icon">lobby<wbr>Stats</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#maxlobbies" class="tsd-kind-icon">max<wbr>Lobbies</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#mode" class="tsd-kind-icon">mode</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#performancestats" class="tsd-kind-icon">performance<wbr>Stats</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#uuid" class="tsd-kind-icon">uuid</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_renderer_matchmaker_director_.director.html#_instance" class="tsd-kind-icon">_instance</a></li>
 							</ul>
@@ -103,27 +124,46 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#connectionport" class="tsd-kind-icon">connection<wbr>Port</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#lobycount" class="tsd-kind-icon">loby<wbr>Count</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addastrogame" class="tsd-kind-icon">add<wbr>Astro<wbr>Game</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addauthenticatedclientsession" class="tsd-kind-icon">add<wbr>Authenticated<wbr>Client<wbr>Session</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addchatlobby" class="tsd-kind-icon">add<wbr>Chat<wbr>Lobby</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addclienttolobby" class="tsd-kind-icon">add<wbr>Client<wbr>ToLobby</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addclienttomanagedgame" class="tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Game</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addclienttomanagedlobby" class="tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Lobby</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addclientstomockgame" class="tsd-kind-icon">add<wbr>Clients<wbr>ToMock<wbr>Game</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addfriend" class="tsd-kind-icon">add<wbr>Friend</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addlobbywithplayeraccount" class="tsd-kind-icon">add<wbr>Lobby<wbr>With<wbr>Player<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addmockclient" class="tsd-kind-icon">add<wbr>Mock<wbr>Client</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#addmockclients" class="tsd-kind-icon">add<wbr>Mock<wbr>Clients</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#authenticateuser" class="tsd-kind-icon">authenticate<wbr>User</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#createglobalchanels" class="tsd-kind-icon">create<wbr>Global<wbr>Chanels</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#createnewmanagedgamewithclient" class="tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Game<wbr>With<wbr>Client</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#createnewmanagedlobbywithclient" class="tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Lobby<wbr>With<wbr>Client</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#disposealllobbies" class="tsd-kind-icon">dispose<wbr>All<wbr>Lobbies</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#disposeclient" class="tsd-kind-icon">dispose<wbr>Client</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#disposelobby" class="tsd-kind-icon">dispose<wbr>Lobby</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#disposequeuedclients" class="tsd-kind-icon">dispose<wbr>Queued<wbr>Clients</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#disposequeuedgames" class="tsd-kind-icon">dispose<wbr>Queued<wbr>Games</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#getfriends" class="tsd-kind-icon">get<wbr>Friends</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#getperformancestats" class="tsd-kind-icon">get<wbr>Performance<wbr>Stats</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#handlegameover" class="tsd-kind-icon">handle<wbr>Game<wbr>Over</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#handlemockgameover" class="tsd-kind-icon">handle<wbr>Mock<wbr>Game<wbr>Over</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#handlestartgame" class="tsd-kind-icon">handle<wbr>Start<wbr>Game</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#loglobbystats" class="tsd-kind-icon">log<wbr>Lobby<wbr>Stats</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#removealllobbies" class="tsd-kind-icon">remove<wbr>All<wbr>Lobbies</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#removeauthenticatedclientsession" class="tsd-kind-icon">remove<wbr>Authenticated<wbr>Client<wbr>Session</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#removelobby" class="tsd-kind-icon">remove<wbr>Lobby</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#removefriend" class="tsd-kind-icon">remove<wbr>Friend</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#sendserverdetailstoclientwithuuid" class="tsd-kind-icon">send<wbr>Server<wbr>Details<wbr>ToClient<wbr>WithUUID</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#start" class="tsd-kind-icon">start</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#startconnectionmanager" class="tsd-kind-icon">start<wbr>Connection<wbr>Manager</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#tick" class="tsd-kind-icon">tick</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#updateaverageticktime" class="tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_renderer_matchmaker_director_.director.html#updatemmr" class="tsd-kind-icon">updateMMR</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_renderer_matchmaker_director_.director.html#instance" class="tsd-kind-icon">Instance</a></li>
 							</ul>
@@ -143,7 +183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L45">renderer/matchmaker/Director.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L68">renderer/matchmaker/Director.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -165,7 +205,17 @@
 					<div class="tsd-signature tsd-kind-icon">_authenticated<wbr>Client<wbr>Sessions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_connection_tcpclientsession_.tcpclientsession.html" class="tsd-signature-type">TCPClientSession</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, TCPClientSession&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L45">renderer/matchmaker/Director.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L57">renderer/matchmaker/Director.ts:57</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_clients" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _clients</h3>
+					<div class="tsd-signature tsd-kind-icon">_clients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, ClientProxy&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L55">renderer/matchmaker/Director.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -175,17 +225,117 @@
 					<div class="tsd-signature tsd-kind-icon">_connection<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_connection_connectionmanager_.connectionmanager.html" class="tsd-signature-type">ConnectionManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L42">renderer/matchmaker/Director.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L53">renderer/matchmaker/Director.ts:53</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_connectionport" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _connection<wbr>Port</h3>
+					<div class="tsd-signature tsd-kind-icon">_connection<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L54">renderer/matchmaker/Director.ts:54</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_deltatime" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _delta<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">_delta<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L66">renderer/matchmaker/Director.ts:66</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_disposeclientqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _dispose<wbr>Client<wbr>Queue</h3>
+					<div class="tsd-signature tsd-kind-icon">_dispose<wbr>Client<wbr>Queue<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L59">renderer/matchmaker/Director.ts:59</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_disposegamequeue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _dispose<wbr>Game<wbr>Queue</h3>
+					<div class="tsd-signature tsd-kind-icon">_dispose<wbr>Game<wbr>Queue<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L61">renderer/matchmaker/Director.ts:61</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_disposedclientcount" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _disposed<wbr>Client<wbr>Count</h3>
+					<div class="tsd-signature tsd-kind-icon">_disposed<wbr>Client<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L60">renderer/matchmaker/Director.ts:60</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_disposedgamecount" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _disposed<wbr>Game<wbr>Count</h3>
+					<div class="tsd-signature tsd-kind-icon">_disposed<wbr>Game<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L62">renderer/matchmaker/Director.ts:62</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_lobbies" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _lobbies</h3>
-					<div class="tsd-signature tsd-kind-icon">_lobbies<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-signature-type">Lobby</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, Lobby&gt;()</span></div>
+					<div class="tsd-signature tsd-kind-icon">_lobbies<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, GameWorld&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L44">renderer/matchmaker/Director.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L56">renderer/matchmaker/Director.ts:56</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_recycleclientqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _recycle<wbr>Client<wbr>Queue</h3>
+					<div class="tsd-signature tsd-kind-icon">_recycle<wbr>Client<wbr>Queue<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L58">renderer/matchmaker/Director.ts:58</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tickhandler" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tick<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;this.tick.bind(this)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L65">renderer/matchmaker/Director.ts:65</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tickinterval" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tick<wbr>Interval</h3>
+					<div class="tsd-signature tsd-kind-icon">_tick<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L64">renderer/matchmaker/Director.ts:64</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="avgticktime" class="tsd-anchor"></a>
+					<h3>avg<wbr>Tick<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">avg<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L67">renderer/matchmaker/Director.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -195,7 +345,27 @@
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L40">renderer/matchmaker/Director.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L49">renderer/matchmaker/Director.ts:49</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="lastticktime" class="tsd-anchor"></a>
+					<h3>last<wbr>Tick<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L68">renderer/matchmaker/Director.ts:68</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="lobbystats" class="tsd-anchor"></a>
+					<h3>lobby<wbr>Stats</h3>
+					<div class="tsd-signature tsd-kind-icon">lobby<wbr>Stats<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L51">renderer/matchmaker/Director.ts:51</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -205,7 +375,7 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Lobbies<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L39">renderer/matchmaker/Director.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L48">renderer/matchmaker/Director.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,7 +385,17 @@
 					<div class="tsd-signature tsd-kind-icon">mode<span class="tsd-signature-symbol">:</span> <a href="../enums/_renderer_matchmaker_director_.directormode.html" class="tsd-signature-type">DirectorMode</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L38">renderer/matchmaker/Director.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L47">renderer/matchmaker/Director.ts:47</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="performancestats" class="tsd-anchor"></a>
+					<h3>performance<wbr>Stats</h3>
+					<div class="tsd-signature tsd-kind-icon">performance<wbr>Stats<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L50">renderer/matchmaker/Director.ts:50</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -225,7 +405,7 @@
 					<div class="tsd-signature tsd-kind-icon">uuid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L37">renderer/matchmaker/Director.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L46">renderer/matchmaker/Director.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -235,13 +415,30 @@
 					<div class="tsd-signature tsd-kind-icon">_instance<span class="tsd-signature-symbol">:</span> <a href="_renderer_matchmaker_director_.director.html" class="tsd-signature-type">Director</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L35">renderer/matchmaker/Director.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L44">renderer/matchmaker/Director.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="connectionport" class="tsd-anchor"></a>
+					<h3>connection<wbr>Port</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> connectionPort<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L172">renderer/matchmaker/Director.ts:172</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
 					<a name="lobycount" class="tsd-anchor"></a>
 					<h3>loby<wbr>Count</h3>
@@ -252,7 +449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L93">renderer/matchmaker/Director.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L168">renderer/matchmaker/Director.ts:168</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -263,6 +460,23 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addastrogame" class="tsd-anchor"></a>
+					<h3>add<wbr>Astro<wbr>Game</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Astro<wbr>Game<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_astrogame_astrogame_.astrogame.html" class="tsd-signature-type">AstroGame</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L162">renderer/matchmaker/Director.ts:162</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_astrogame_astrogame_.astrogame.html" class="tsd-signature-type">AstroGame</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="addauthenticatedclientsession" class="tsd-anchor"></a>
 					<h3>add<wbr>Authenticated<wbr>Client<wbr>Session</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -272,7 +486,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L174">renderer/matchmaker/Director.ts:174</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L303">renderer/matchmaker/Director.ts:303</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -298,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L83">renderer/matchmaker/Director.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L152">renderer/matchmaker/Director.ts:152</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_chatlobby_.chatlobby.html" class="tsd-signature-type">ChatLobby</a></h4>
@@ -315,7 +529,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L104">renderer/matchmaker/Director.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L183">renderer/matchmaker/Director.ts:183</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -329,6 +543,110 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addclienttomanagedgame" class="tsd-anchor"></a>
+					<h3>add<wbr>Client<wbr>ToManaged<wbr>Game</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Game<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, invitationToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L253">renderer/matchmaker/Director.ts:253</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+								<li>
+									<h5>invitationToken: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addclienttomanagedlobby" class="tsd-anchor"></a>
+					<h3>add<wbr>Client<wbr>ToManaged<wbr>Lobby</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Lobby<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, invitationToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L249">renderer/matchmaker/Director.ts:249</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+								<li>
+									<h5>invitationToken: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addclientstomockgame" class="tsd-anchor"></a>
+					<h3>add<wbr>Clients<wbr>ToMock<wbr>Game</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Clients<wbr>ToMock<wbr>Game<span class="tsd-signature-symbol">(</span>client1<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, client2<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L206">renderer/matchmaker/Director.ts:206</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client1: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+								<li>
+									<h5>client2: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addfriend" class="tsd-anchor"></a>
+					<h3>add<wbr>Friend</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Friend<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a>, friend<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L295">renderer/matchmaker/Director.ts:295</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>player: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
+								</li>
+								<li>
+									<h5>friend: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="addlobbywithplayeraccount" class="tsd-anchor"></a>
 					<h3>add<wbr>Lobby<wbr>With<wbr>Player<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -338,7 +656,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L97">renderer/matchmaker/Director.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L176">renderer/matchmaker/Director.ts:176</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -361,10 +679,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L127">renderer/matchmaker/Director.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L215">renderer/matchmaker/Director.ts:215</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addmockclients" class="tsd-anchor"></a>
+					<h3>add<wbr>Mock<wbr>Clients</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Mock<wbr>Clients<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L233">renderer/matchmaker/Director.ts:233</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>count: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -378,7 +719,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L144">renderer/matchmaker/Director.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L259">renderer/matchmaker/Director.ts:259</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -392,18 +733,170 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="createglobalchanels" class="tsd-anchor"></a>
-					<h3>create<wbr>Global<wbr>Chanels</h3>
+					<a name="createnewmanagedgamewithclient" class="tsd-anchor"></a>
+					<h3>create<wbr>New<wbr>Managed<wbr>Game<wbr>With<wbr>Client</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Global<wbr>Chanels<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Game<wbr>With<wbr>Client<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L71">renderer/matchmaker/Director.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L245">renderer/matchmaker/Director.ts:245</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+								<li>
+									<h5>type: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createnewmanagedlobbywithclient" class="tsd-anchor"></a>
+					<h3>create<wbr>New<wbr>Managed<wbr>Lobby<wbr>With<wbr>Client</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Lobby<wbr>With<wbr>Client<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L241">renderer/matchmaker/Director.ts:241</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disposealllobbies" class="tsd-anchor"></a>
+					<h3>dispose<wbr>All<wbr>Lobbies</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<wbr>All<wbr>Lobbies<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L335">renderer/matchmaker/Director.ts:335</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disposeclient" class="tsd-anchor"></a>
+					<h3>dispose<wbr>Client</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<wbr>Client<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L315">renderer/matchmaker/Director.ts:315</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disposelobby" class="tsd-anchor"></a>
+					<h3>dispose<wbr>Lobby</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<wbr>Lobby<span class="tsd-signature-symbol">(</span>lobby<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L330">renderer/matchmaker/Director.ts:330</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lobby: <a href="_renderer_matchmaker_game_gameworld_.gameworld.html" class="tsd-signature-type">GameWorld</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disposequeuedclients" class="tsd-anchor"></a>
+					<h3>dispose<wbr>Queued<wbr>Clients</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<wbr>Queued<wbr>Clients<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L322">renderer/matchmaker/Director.ts:322</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="disposequeuedgames" class="tsd-anchor"></a>
+					<h3>dispose<wbr>Queued<wbr>Games</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<wbr>Queued<wbr>Games<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L341">renderer/matchmaker/Director.ts:341</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getfriends" class="tsd-anchor"></a>
+					<h3>get<wbr>Friends</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Friends<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L291">renderer/matchmaker/Director.ts:291</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>player: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -418,7 +911,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L198">renderer/matchmaker/Director.ts:198</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L142">renderer/matchmaker/Director.ts:142</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -426,16 +919,45 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="handlegameover" class="tsd-anchor"></a>
-					<h3>handle<wbr>Game<wbr>Over</h3>
+					<a name="handlemockgameover" class="tsd-anchor"></a>
+					<h3>handle<wbr>Mock<wbr>Game<wbr>Over</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">handle<wbr>Game<wbr>Over<span class="tsd-signature-symbol">(</span>client1<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, client2<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Mock<wbr>Game<wbr>Over<span class="tsd-signature-symbol">(</span>game<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_mockgame_.mockgame.html" class="tsd-signature-type">MockGame</a>, client1<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, client2<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L186">renderer/matchmaker/Director.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L353">renderer/matchmaker/Director.ts:353</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>game: <a href="_renderer_matchmaker_game_mockgame_.mockgame.html" class="tsd-signature-type">MockGame</a></h5>
+								</li>
+								<li>
+									<h5>client1: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+								<li>
+									<h5>client2: <a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="handlestartgame" class="tsd-anchor"></a>
+					<h3>handle<wbr>Start<wbr>Game</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Start<wbr>Game<span class="tsd-signature-symbol">(</span>client1<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a>, client2<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_clientproxy_.clientproxy.html" class="tsd-signature-type">ClientProxy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L349">renderer/matchmaker/Director.ts:349</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -461,7 +983,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L210">renderer/matchmaker/Director.ts:210</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L366">renderer/matchmaker/Director.ts:366</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -487,24 +1009,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L203">renderer/matchmaker/Director.ts:203</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="removealllobbies" class="tsd-anchor"></a>
-					<h3>remove<wbr>All<wbr>Lobbies</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>All<wbr>Lobbies<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L168">renderer/matchmaker/Director.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L359">renderer/matchmaker/Director.ts:359</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -521,7 +1026,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L178">renderer/matchmaker/Director.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L307">renderer/matchmaker/Director.ts:307</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -535,24 +1040,67 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="removelobby" class="tsd-anchor"></a>
-					<h3>remove<wbr>Lobby</h3>
+					<a name="removefriend" class="tsd-anchor"></a>
+					<h3>remove<wbr>Friend</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Lobby<span class="tsd-signature-symbol">(</span>lobby<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-signature-type">Lobby</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Friend<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a>, friend<span class="tsd-signature-symbol">: </span><a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L163">renderer/matchmaker/Director.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L299">renderer/matchmaker/Director.ts:299</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>lobby: <a href="_renderer_matchmaker_game_lobby_.lobby.html" class="tsd-signature-type">Lobby</a></h5>
+									<h5>player: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
+								</li>
+								<li>
+									<h5>friend: <a href="_renderer_matchmaker_playeraccount_.playeraccount.html" class="tsd-signature-type">PlayerAccount</a></h5>
 								</li>
 							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sendserverdetailstoclientwithuuid" class="tsd-anchor"></a>
+					<h3>send<wbr>Server<wbr>Details<wbr>ToClient<wbr>WithUUID</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Server<wbr>Details<wbr>ToClient<wbr>WithUUID<span class="tsd-signature-symbol">(</span>userUUID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L269">renderer/matchmaker/Director.ts:269</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userUUID: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L128">renderer/matchmaker/Director.ts:128</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -567,9 +1115,66 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L75">renderer/matchmaker/Director.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L148">renderer/matchmaker/Director.ts:148</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="stop" class="tsd-anchor"></a>
+					<h3>stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L133">renderer/matchmaker/Director.ts:133</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tick" class="tsd-anchor"></a>
+					<h3>tick</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">tick<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L107">renderer/matchmaker/Director.ts:107</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updateaverageticktime" class="tsd-anchor"></a>
+					<h3>update<wbr>Average<wbr>Tick<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time<span class="tsd-signature-symbol">(</span>tickTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L138">renderer/matchmaker/Director.ts:138</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tickTime: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -584,7 +1189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L153">renderer/matchmaker/Director.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L281">renderer/matchmaker/Director.ts:281</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -610,7 +1215,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/c0399c4/src/renderer/matchmaker/Director.ts#L66">renderer/matchmaker/Director.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/wwlib/matchmaker-ts/blob/95577eb/src/renderer/matchmaker/Director.ts#L102">renderer/matchmaker/Director.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -647,6 +1252,9 @@
 						<a href="../modules/_renderer_matchmaker_playeraccount_.html">"renderer/matchmaker/<wbr>Player<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_pubsub_.html">"renderer/matchmaker/<wbr>Pub<wbr>Sub"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_connection_connectionmanager_.html">"renderer/matchmaker/connection/<wbr>Connection<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -668,6 +1276,21 @@
 						<a href="../modules/_renderer_matchmaker_game_lobby_.html">"renderer/matchmaker/game/<wbr>Lobby"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_mockgame_.html">"renderer/matchmaker/game/<wbr>Mock<wbr>Game"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrogame_.html">"renderer/matchmaker/game/astrogame/<wbr>Astro<wbr>Game"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrotcpclientserver_.html">"renderer/matchmaker/game/astrogame/<wbr>AstroTCPClient<wbr>Server"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_astrotcpclientsession_.html">"renderer/matchmaker/game/astrogame/<wbr>AstroTCPClient<wbr>Session"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_game_astrogame_msg_astro_.html">"renderer/matchmaker/game/astrogame/<wbr>Msg_<wbr><wbr>Astro"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_message_message_.html">"renderer/matchmaker/message/<wbr>Message"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -678,6 +1301,12 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_matchmaker_message_msg_chat_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr><wbr>Chat"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_msg_json_.html">"renderer/matchmaker/message/<wbr>Msg_<wbr>JSON"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_matchmaker_message_index_.html">"renderer/matchmaker/message/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_renderer_simulator_simulator_.html">"renderer/simulator/<wbr>Simulator"</a>
@@ -704,13 +1333,52 @@
 								<a href="_renderer_matchmaker_director_.director.html#_authenticatedclientsessions" class="tsd-kind-icon">_authenticated<wbr>Client<wbr>Sessions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_clients" class="tsd-kind-icon">_clients</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_renderer_matchmaker_director_.director.html#_connectionmanager" class="tsd-kind-icon">_connection<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_connectionport" class="tsd-kind-icon">_connection<wbr>Port</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_deltatime" class="tsd-kind-icon">_delta<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_disposeclientqueue" class="tsd-kind-icon">_dispose<wbr>Client<wbr>Queue</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_disposegamequeue" class="tsd-kind-icon">_dispose<wbr>Game<wbr>Queue</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_disposedclientcount" class="tsd-kind-icon">_disposed<wbr>Client<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_disposedgamecount" class="tsd-kind-icon">_disposed<wbr>Game<wbr>Count</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_renderer_matchmaker_director_.director.html#_lobbies" class="tsd-kind-icon">_lobbies</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_recycleclientqueue" class="tsd-kind-icon">_recycle<wbr>Client<wbr>Queue</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_tickhandler" class="tsd-kind-icon">_tick<wbr>Handler</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_renderer_matchmaker_director_.director.html#_tickinterval" class="tsd-kind-icon">_tick<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#avgticktime" class="tsd-kind-icon">avg<wbr>Tick<wbr>Time</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#debug" class="tsd-kind-icon">debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#lastticktime" class="tsd-kind-icon">last<wbr>Tick<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#lobbystats" class="tsd-kind-icon">lobby<wbr>Stats</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#maxlobbies" class="tsd-kind-icon">max<wbr>Lobbies</a>
@@ -719,13 +1387,22 @@
 								<a href="_renderer_matchmaker_director_.director.html#mode" class="tsd-kind-icon">mode</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#performancestats" class="tsd-kind-icon">performance<wbr>Stats</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#uuid" class="tsd-kind-icon">uuid</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="_renderer_matchmaker_director_.director.html#_instance" class="tsd-kind-icon">_instance</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#connectionport" class="tsd-kind-icon">connection<wbr>Port</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#lobycount" class="tsd-kind-icon">loby<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addastrogame" class="tsd-kind-icon">add<wbr>Astro<wbr>Game</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#addauthenticatedclientsession" class="tsd-kind-icon">add<wbr>Authenticated<wbr>Client<wbr>Session</a>
@@ -737,22 +1414,61 @@
 								<a href="_renderer_matchmaker_director_.director.html#addclienttolobby" class="tsd-kind-icon">add<wbr>Client<wbr>ToLobby</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addclienttomanagedgame" class="tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Game</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addclienttomanagedlobby" class="tsd-kind-icon">add<wbr>Client<wbr>ToManaged<wbr>Lobby</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addclientstomockgame" class="tsd-kind-icon">add<wbr>Clients<wbr>ToMock<wbr>Game</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addfriend" class="tsd-kind-icon">add<wbr>Friend</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#addlobbywithplayeraccount" class="tsd-kind-icon">add<wbr>Lobby<wbr>With<wbr>Player<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#addmockclient" class="tsd-kind-icon">add<wbr>Mock<wbr>Client</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#addmockclients" class="tsd-kind-icon">add<wbr>Mock<wbr>Clients</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#authenticateuser" class="tsd-kind-icon">authenticate<wbr>User</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_director_.director.html#createglobalchanels" class="tsd-kind-icon">create<wbr>Global<wbr>Chanels</a>
+								<a href="_renderer_matchmaker_director_.director.html#createnewmanagedgamewithclient" class="tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Game<wbr>With<wbr>Client</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#createnewmanagedlobbywithclient" class="tsd-kind-icon">create<wbr>New<wbr>Managed<wbr>Lobby<wbr>With<wbr>Client</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#disposealllobbies" class="tsd-kind-icon">dispose<wbr>All<wbr>Lobbies</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#disposeclient" class="tsd-kind-icon">dispose<wbr>Client</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#disposelobby" class="tsd-kind-icon">dispose<wbr>Lobby</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#disposequeuedclients" class="tsd-kind-icon">dispose<wbr>Queued<wbr>Clients</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#disposequeuedgames" class="tsd-kind-icon">dispose<wbr>Queued<wbr>Games</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#getfriends" class="tsd-kind-icon">get<wbr>Friends</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#getperformancestats" class="tsd-kind-icon">get<wbr>Performance<wbr>Stats</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_director_.director.html#handlegameover" class="tsd-kind-icon">handle<wbr>Game<wbr>Over</a>
+								<a href="_renderer_matchmaker_director_.director.html#handlemockgameover" class="tsd-kind-icon">handle<wbr>Mock<wbr>Game<wbr>Over</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#handlestartgame" class="tsd-kind-icon">handle<wbr>Start<wbr>Game</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#log" class="tsd-kind-icon">log</a>
@@ -761,16 +1477,28 @@
 								<a href="_renderer_matchmaker_director_.director.html#loglobbystats" class="tsd-kind-icon">log<wbr>Lobby<wbr>Stats</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_director_.director.html#removealllobbies" class="tsd-kind-icon">remove<wbr>All<wbr>Lobbies</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#removeauthenticatedclientsession" class="tsd-kind-icon">remove<wbr>Authenticated<wbr>Client<wbr>Session</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_renderer_matchmaker_director_.director.html#removelobby" class="tsd-kind-icon">remove<wbr>Lobby</a>
+								<a href="_renderer_matchmaker_director_.director.html#removefriend" class="tsd-kind-icon">remove<wbr>Friend</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#sendserverdetailstoclientwithuuid" class="tsd-kind-icon">send<wbr>Server<wbr>Details<wbr>ToClient<wbr>WithUUID</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#start" class="tsd-kind-icon">start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#startconnectionmanager" class="tsd-kind-icon">start<wbr>Connection<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#stop" class="tsd-kind-icon">stop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#tick" class="tsd-kind-icon">tick</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_renderer_matchmaker_director_.director.html#updateaverageticktime" class="tsd-kind-icon">update<wbr>Average<wbr>Tick<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_renderer_matchmaker_director_.director.html#updatemmr" class="tsd-kind-icon">updateMMR</a>
@@ -790,6 +1518,9 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_renderer_matchmaker_director_.html#elo" class="tsd-kind-icon">elo</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_renderer_matchmaker_director_.html#now" class="tsd-kind-icon">now</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_renderer_matchmaker_director_.html#uuidv4" class="tsd-kind-icon">uuidv4</a>

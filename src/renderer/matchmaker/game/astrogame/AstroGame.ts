@@ -1,6 +1,6 @@
 // import PubSub from '../PubSub';
 import Director, { DirectorTopic } from '../../Director';
-import GameWorld, { GameWorldType, GameWorldState } from '../GameWorld';
+import GameWorld, { GameWorldType, GameWorldState, GameWorldOptions } from '../GameWorld';
 import Lobby, { LobbyOptions } from '../Lobby';
 import ClientProxy from '../../ClientProxy';
 import PlayerAccount, { PlayerLocation } from '../../PlayerAccount';
@@ -13,6 +13,10 @@ import AstroTCPClientSession from './AstroTCPClientSession';
 
 const now = require("performance-now");
 
+export interface AstroGameOptions extends GameWorldOptions {
+    connectionPort: number;
+}
+
 export default class AstroGame extends GameWorld {
 
     public maxTime: number = 3000;
@@ -21,9 +25,9 @@ export default class AstroGame extends GameWorld {
 
     private _startTime: number;
 
-    constructor(options?: any) {
+    constructor(options?: AstroGameOptions) {
         super(options);
-        this.connectionPort = 9595;
+        this.connectionPort = options.connectionPort || 9595;
         if (options && options.connectionPort) {
             this.connectionPort = options.connectionPort;
         }
@@ -44,7 +48,7 @@ export default class AstroGame extends GameWorld {
 
     start(): void {
         this._startTime = now();
-        this.server = new AstroTCPClientServer(this.connectionPort);
+        this.server = new AstroTCPClientServer(this.connectionPort, this);
 
     }
 

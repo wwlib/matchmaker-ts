@@ -160,6 +160,14 @@ export default abstract class GameWorld {
 		return this._clients.size;
 	}
 
+	get clientArray(): ClientProxy[] {
+		return Array.from(this._clients.values());
+	}
+
+	get clientUUIDArray(): string[] {
+		return Array.from(this._clients.keys());
+	}
+
 	logClients(): void {
 		this._clients.forEach((client: ClientProxy, key: string) => {
 			console.log(`  GameWorld: Client: ${client.shortId} `)

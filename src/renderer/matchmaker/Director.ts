@@ -5,7 +5,7 @@ import Lobby, { Range } from './game/Lobby';
 import GameWorld, { GameWorldType } from './game/GameWorld';
 import MockGame from './game/MockGame';
 import ChatLobby from './game/ChatLobby';
-import AstroGame from './game/astrogame/AstroGame';
+import AstroGame, { AstroGameOptions } from './game/astrogame/AstroGame';
 import ClientProxy from './ClientProxy';
 import MessageFactory from './message/MessageFactory';
 import Msg_Auth from './message/Msg_Auth';
@@ -36,6 +36,9 @@ export type DirectorOptions = {
     debug?: boolean;
 }
 
+/**
+ * Director (a singleton) coordiates the server subsystems
+ */
 export default class Director {
 
     private static _instance: Director;
@@ -156,8 +159,8 @@ export default class Director {
         return lobby;
     }
 
-    addAstroGame(): AstroGame {
-        let game: AstroGame = new AstroGame(9595);
+    addAstroGame(options?: AstroGameOptions): AstroGame {
+        let game: AstroGame = new AstroGame(options);
         this._lobbies.set(game.uuid, game);
         return game;
     }
